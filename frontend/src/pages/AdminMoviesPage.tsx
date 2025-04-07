@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { deleteMovie, fetchMovies } from '../api/MoviesAPI';
 import { Movie } from '../types/Movie';
-import NewMovieForm from '../componentsJD/NewMovieForm';
-import EditMovieForm from '../componentsJD/EditMovieForm';
-import Pagination from '../componentsJD/Pagination';
-import MovieFilter from '../componentsJD/MovieFilter';
+import NewMovieForm from '../components/NewMovieForm';
+import EditMovieForm from '../components/EditMovieForm';
+import Pagination from '../components/Pagination';
+import MovieFilter from '../components/MovieFilter';
 
 const AdminMoviesPage = () => {
   const [movies, setMovies] = useState<Movie[]>([]);

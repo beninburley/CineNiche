@@ -1,13 +1,13 @@
 // src/pages/Homepage.tsx
 import React from 'react';
 import './homepage.css'; // Link to your CSS file for this page
-import Header from '../HomepageComponents/Header';
-import HeroBanner from '../HomepageComponents/HeroBanner';
-import MoodBoardGrid from '../HomepageComponents/MoodBoardGrid';
-import FilmJourneyCarousel from '../HomepageComponents/FilmJourneyCarousel';
-import UndergroundPick from '../HomepageComponents/UndergroundPick';
-import UserRecommendationRow from '../HomepageComponents/UserRecommendationRow';
-import ReviewHighlight from '../HomepageComponents/ReviewHighlight';
+import Header from '../components/Header';
+import HeroBanner from '../components/HeroBanner';
+import MoodBoardGrid from '../components/MoodBoardGrid';
+import FilmJourneyCarousel from '../components/FilmJourneyCarousel';
+import UndergroundPick from '../components/UndergroundPick';
+import UserRecommendationRow from '../components/UserRecommendationRow';
+import ReviewHighlight from '../components/ReviewHighlight';
 
 const Homepage: React.FC = () => {
   return (
