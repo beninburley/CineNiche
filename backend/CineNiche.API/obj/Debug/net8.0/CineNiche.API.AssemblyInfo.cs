@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CineNiche.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+422669a1aa8f7d9be9a36012bc92949aad2288b2")]
 [assembly: System.Reflection.AssemblyProductAttribute("CineNiche.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CineNiche.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
