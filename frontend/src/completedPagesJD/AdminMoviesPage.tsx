@@ -4,6 +4,7 @@ import { Movie } from '../types/Movie';
 import NewMovieForm from '../componentsJD/NewMovieForm';
 import EditMovieForm from '../componentsJD/EditMovieForm';
 import Pagination from '../componentsJD/Pagination';
+import MovieFilter from '../componentsJD/MovieFilter';
 
 const AdminMoviesPage = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -14,11 +15,12 @@ const AdminMoviesPage = () => {
   const [totalPages, setTotalPages] = useState<number>(0);
   const [showForm, setShowForm] = useState(false);
   const [editingMovie, setEditingMovie] = useState<Movie | null>(null);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   useEffect(() => {
     const loadMovies = async () => {
       try {
-        const data = await fetchMovies(pageSize, pageNum, []);
+        const data = await fetchMovies(pageSize, pageNum, selectedCategories);
         setMovies(data.movies);
         setTotalPages(Math.ceil(data.totalNumMovies / pageSize));
       } catch (error) {
@@ -29,7 +31,7 @@ const AdminMoviesPage = () => {
     };
 
     loadMovies();
-  }, [pageSize, pageNum]);
+  }, [pageSize, pageNum, selectedCategories]);
 
   const handleDelete = async (show_id: string) => {
     const confirmDelete = window.confirm(
@@ -84,6 +86,11 @@ const AdminMoviesPage = () => {
           onCancel={() => setEditingMovie(null)}
         />
       )}
+
+      <MovieFilter
+        selectedCategories={selectedCategories}
+        setSelectedCategories={setSelectedCategories}
+      />
 
       <table className='table table-bordered table-striped'>
         <thead className='table-dark'>
