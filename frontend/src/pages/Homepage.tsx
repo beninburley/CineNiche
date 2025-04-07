@@ -1,6 +1,6 @@
 // src/pages/Homepage.tsx
 import React from 'react';
-import './homepage.css'; // Link to your CSS file for this page
+import './Homepage.css'; // Link to your CSS file for this page
 import Header from '../components/Header';
 import HeroBanner from '../components/HeroBanner';
 import MoodBoardGrid from '../components/MoodBoardGrid';

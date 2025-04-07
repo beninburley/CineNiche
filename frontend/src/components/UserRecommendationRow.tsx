@@ -1,6 +1,6 @@
 // src/components/UserRecommendationRow.tsx
 import React from 'react';
-import '/src/HomepageComplete/Homepage.CSS';
+import '../pages/Homepage.css';
 
 // Mock data
 const recommendedMovies = [

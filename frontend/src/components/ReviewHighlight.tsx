@@ -1,6 +1,6 @@
 // src/components/ReviewHighlight.tsx
 import React from 'react';
-import '/src/HomepageComplete/Homepage.CSS';
+import '../pages/Homepage.css';
 
 // Mock review
 const review = {

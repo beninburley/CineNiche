@@ -1,6 +1,6 @@
 // src/components/UndergroundPick.tsx
 import React from 'react';
-import '/src/HomepageComplete/Homepage.CSS';
+import '../pages/Homepage.css';
 
 // Placeholder mock data
 const undergroundPick = {
