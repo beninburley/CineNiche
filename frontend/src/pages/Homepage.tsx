@@ -9,6 +9,7 @@ import UndergroundPick from '../components/UndergroundPick';
 import UserRecommendationRow from '../components/UserRecommendationRow';
 import ReviewHighlight from '../components/ReviewHighlight';
 
+
 const Homepage: React.FC = () => {
   return (
     <div className='homepage'>
@@ -41,6 +42,7 @@ const Homepage: React.FC = () => {
           <h2 className='section-title'>What People Are Saying</h2>
           <ReviewHighlight />
         </section>
+       
       </main>
     </div>
   );
