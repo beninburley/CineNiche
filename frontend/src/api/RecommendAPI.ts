@@ -4,8 +4,7 @@ import { ContentRec } from '../types/ContentRec';
 import { DirectorRec } from '../types/DirectorRec';
 import { GenreRec } from '../types/GenreRec';
 
-const RECOMMEND_API_URL =
-  'https://214cinenichebackend-g8a5h7bqe5auc5hw.westus3-01.azurewebsites.net/recommendation';
+const RECOMMEND_API_URL = `${import.meta.env.VITE_API_URL}/recommendation`;
 
 export const fetchCollabRecommendations = async (
   userId: number
