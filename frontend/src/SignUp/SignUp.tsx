@@ -1,6 +1,6 @@
 // src/pages/SignUpPage.tsx
 import React, { useState } from 'react';
-import './signUp.css';
+import './SignUp.css';
 import { Link } from 'react-router-dom';
 
 const SignUpPage: React.FC = () => {
