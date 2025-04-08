@@ -12,7 +12,7 @@ import AuthorizeView, { AuthorizedUser } from '../components/AuthorizeView';
 import Logout from '../components/Logout';
 
 const AdminMoviesPage = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  // const [movies, setMovies] = useState<Movie[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [pageSize, setPageSize] = useState<number>(5);
@@ -39,7 +39,9 @@ const AdminMoviesPage = () => {
   }, [selectedCategories]);
 
   const handleDelete = async (show_id: string) => {
-    const confirmDelete = window.confirm('Are you sure you want to delete this movie?');
+    const confirmDelete = window.confirm(
+      'Are you sure you want to delete this movie?'
+    );
     if (!confirmDelete) return;
 
     try {
@@ -73,10 +75,7 @@ const AdminMoviesPage = () => {
         </div>
 
         {!showForm && (
-          <button
-            className='admin-button'
-            onClick={() => setShowForm(true)}
-          >
+          <button className='admin-button' onClick={() => setShowForm(true)}>
             Add Movie
           </button>
         )}
