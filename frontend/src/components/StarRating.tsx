@@ -6,11 +6,14 @@ const StarRating = ({ movieId }: { movieId: string }) => {
 
   const handleRating = async (newRating: number) => {
     setRating(newRating);
-    await fetch(`http://localhost:4000/movie/rate`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ movieId, rating: newRating }),
-    });
+    await fetch(
+      `https://214cinenichebackend-g8a5h7bqe5auc5hw.westus3-01.azurewebsites.net/movie/rate`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ movieId, rating: newRating }),
+      }
+    );
   };
 
   return (

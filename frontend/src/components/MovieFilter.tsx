@@ -14,7 +14,7 @@ function MovieFilter({
     const fetchCategories = async () => {
       try {
         const response = await fetch(
-          'http://localhost:5050/movie/getmovietypes'
+          'https://214cinenichebackend-g8a5h7bqe5auc5hw.westus3-01.azurewebsites.net/movie/getmovietypes'
         );
         const data = await response.json();
         setCategories(data);

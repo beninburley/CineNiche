@@ -9,7 +9,9 @@ const MovieDetailPage = () => {
 
   useEffect(() => {
     const fetchMovie = async () => {
-      const res = await fetch(`https://localhost:5000/movie/${id}`);
+      const res = await fetch(
+        `https://214cinenichebackend-g8a5h7bqe5auc5hw.westus3-01.azurewebsites.net/movie/${id}`
+      );
       const data = await res.json();
       setMovie(data);
     };
