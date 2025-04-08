@@ -82,3 +82,9 @@
 .signup-logo:hover {
   color: #e6b800;
 }
+
+.signup-error {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
