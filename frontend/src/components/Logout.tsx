@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import './Logout.css'; // Import your CSS file for styling
 
 function Logout(props: { children: React.ReactNode }) {
   const navigate = useNavigate();
