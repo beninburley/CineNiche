@@ -65,29 +65,30 @@ const Homepage: React.FC = () => {
             <UndergroundPick />
           </section>
 
-        <section className='section user-recommendations'>
-          <h2 className='section-title'>Recommended for You</h2>
-          <UserRecommendationRow />
-        </section>
-        <section className='section user-recommendations'>
-          <ActorRecommendationRow />
-        </section>
+          <section className='section user-recommendations'>
+            <h2 className='section-title'>Recommended for You</h2>
+            <UserRecommendationRow />
+          </section>
+          <section className='section user-recommendations'>
+            <ActorRecommendationRow />
+          </section>
 
-        <section className='section user-recommendations'>
-          <DirectorRecommendationRow />
-        </section>
+          <section className='section user-recommendations'>
+            <DirectorRecommendationRow />
+          </section>
 
-        <section className='section user-recommendations'>
-          <GenreRecommendationRow />
-        </section>
+          <section className='section user-recommendations'>
+            <GenreRecommendationRow />
+          </section>
 
-        <section className='section reviews'>
-          <h2 className='section-title'>What People Are Saying</h2>
-          <ReviewHighlight />
-        </section>
-      </main>
-      <Footer />
-    </div>
+          <section className='section reviews'>
+            <h2 className='section-title'>What People Are Saying</h2>
+            <ReviewHighlight />
+          </section>
+        </main>
+        <Footer />
+      </div>
+    </AuthorizeView>
   );
 };
 

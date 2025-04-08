@@ -59,7 +59,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy("AllowFrontend", policy =>
+    options.AddPolicy("AllowFrontend", policy =>
     {
         policy.WithOrigins("http://localhost:3000", "https://mango-wave-0d9aec81e.6.azurestaticapps.net")
               .AllowCredentials()
