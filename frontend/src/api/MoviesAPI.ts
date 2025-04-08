@@ -5,7 +5,8 @@ interface FetchMovieResponse {
   totalNumMovies: number;
 }
 
-const API_URL = 'https://localhost:5000/movie';
+const API_URL =
+  'https://214cinenichebackend-g8a5h7bqe5auc5hw.westus3-01.azurewebsites.net/movie';
 
 export const fetchMovies = async (
   pageSize: number,
