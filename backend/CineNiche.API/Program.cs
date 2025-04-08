@@ -34,11 +34,21 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddAuthorization();
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+// builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+//     .AddEntityFrameworkStores<ApplicationDbContext>()
+//     .AddDefaultTokenProviders();
+
+builder.Services.AddIdentityCore<IdentityUser>(options =>
+{
+    options.User.RequireUniqueEmail = true;
+})
+    .AddRoles<IdentityRole>() // ✅ Adds RoleManager support
     .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddSignInManager()
     .AddDefaultTokenProviders();
 
-builder.Services.AddIdentityApiEndpoints<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>(); //This needs to be uncommented for deployment
+builder.Services.AddIdentityApiEndpoints<IdentityUser>(); // This stays to expose endpoints
+ //This needs to be uncommented for deployment
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
@@ -48,14 +58,14 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 builder.Services.AddScoped<IUserClaimsPrincipalFactory<IdentityUser>, CustomUserClaimsPrincipalFactory>();
 
-builder.Services.ConfigureApplicationCookie(options =>
-{
-    options.Cookie.HttpOnly = true;
-    options.Cookie.SameSite = SameSiteMode.None; // change after adding https for production, change to strict i think
-    options.Cookie.Name = ".AspNetCore.Identity.Application";
-    options.LoginPath = "/login";
-    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-});
+// builder.Services.ConfigureApplicationCookie(options =>
+// {
+//     options.Cookie.HttpOnly = true;
+//     options.Cookie.SameSite = SameSiteMode.None; // change after adding https for production, change to strict i think
+//     options.Cookie.Name = ".AspNetCore.Identity.Application";
+//     options.LoginPath = "/login";
+//     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+// });
 
 builder.Services.AddCors(options =>
 {
