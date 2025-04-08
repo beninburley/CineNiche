@@ -9,6 +9,27 @@ import UndergroundPick from './UndergroundPick';
 import UserRecommendationRow from './UserRecommendationRow';
 import ReviewHighlight from './ReviewHighlight';
 
+// import { useNavigate } from 'react-router-dom';
+
+// const Homepage = () => {
+//   const navigate = useNavigate();
+
+//   return (
+//     <div>
+//       {movies.map((movie) => (
+//         <div
+//           key={movie.show_id}
+//           className="movie-card"
+//           onClick={() => navigate(`/movie/${movie.show_id}`)}
+//         >
+//           <h3>{movie.title}</h3>
+//           {/* more movie summary info here */}
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
+
 const Homepage: React.FC = () => {
   return (
     <div className='homepage'>

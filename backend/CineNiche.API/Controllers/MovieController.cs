@@ -104,6 +104,19 @@ namespace CineNiche.API.Controllers
             return NoContent();
         }
 
+        [HttpGet("{show_id}")]
+        public IActionResult GetMovieById(string show_id)
+        {
+            var movie = _movieContext.Movies.FirstOrDefault(m => m.show_id == show_id);
+
+            if (movie == null)
+            {
+                return NotFound(new { message = "Movie not found." });
+            }
+
+            return Ok(movie);
+        }
+
         private string Camelize(string category)
         {
             return string.Concat(
@@ -126,6 +139,7 @@ namespace CineNiche.API.Controllers
 
             return Ok(movies);
         }
+
 
     }
 }

@@ -69,3 +69,4 @@ C:\Users\daynes13\OneDrive - Brigham Young University\Desktop\Intex\CineNiche\ba
 C:\Users\daynes13\OneDrive - Brigham Young University\Desktop\Intex\CineNiche\backend\CineNiche.API\obj\Debug\net8.0\CineNiche.API.pdb
 C:\Users\daynes13\OneDrive - Brigham Young University\Desktop\Intex\CineNiche\backend\CineNiche.API\obj\Debug\net8.0\CineNiche.API.genruntimeconfig.cache
 C:\Users\daynes13\OneDrive - Brigham Young University\Desktop\Intex\CineNiche\backend\CineNiche.API\obj\Debug\net8.0\ref\CineNiche.API.dll
+C:\Users\daynes13\OneDrive - Brigham Young University\Desktop\Intex\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\Movies.db
