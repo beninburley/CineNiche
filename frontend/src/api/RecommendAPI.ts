@@ -10,7 +10,9 @@ export const fetchCollabRecommendations = async (
   userId: number
 ): Promise<CollabRec[]> => {
   try {
-    const response = await fetch(`${RECOMMEND_API_URL}/collab/${userId}`);
+    const response = await fetch(`${RECOMMEND_API_URL}/collab/${userId}`, {
+      credentials: 'include', // ✅ Ensures cookies are sent & received
+    });
     if (!response.ok) {
       throw new Error('Failed to fetch collaborative recommendations');
     }
@@ -25,7 +27,9 @@ export const fetchActorRecommendations = async (
   userId: number
 ): Promise<ActorRec[]> => {
   try {
-    const response = await fetch(`${RECOMMEND_API_URL}/actor/${userId}`);
+    const response = await fetch(`${RECOMMEND_API_URL}/actor/${userId}`, {
+      credentials: 'include', // ✅ Ensures cookies are sent & received
+    });
     if (!response.ok) {
       throw new Error('Failed to fetch actor recommendations');
     }
@@ -40,7 +44,9 @@ export const fetchDirectorRecommendations = async (
   userId: number
 ): Promise<DirectorRec[]> => {
   try {
-    const response = await fetch(`${RECOMMEND_API_URL}/director/${userId}`);
+    const response = await fetch(`${RECOMMEND_API_URL}/director/${userId}`, {
+      credentials: 'include', // ✅ Ensures cookies are sent & received
+    });
     if (!response.ok) {
       throw new Error('Failed to fetch director recommendations');
     }
@@ -55,7 +61,9 @@ export const fetchGenreRecommendations = async (
   userId: number
 ): Promise<GenreRec[]> => {
   try {
-    const response = await fetch(`${RECOMMEND_API_URL}/genre/${userId}`);
+    const response = await fetch(`${RECOMMEND_API_URL}/genre/${userId}`, {
+      credentials: 'include', // ✅ Ensures cookies are sent & received
+    });
     if (!response.ok) {
       throw new Error('Failed to fetch genre recommendations');
     }
@@ -70,7 +78,9 @@ export const fetchContentRecommendations = async (
   seedShowId: string
 ): Promise<ContentRec[]> => {
   try {
-    const response = await fetch(`${RECOMMEND_API_URL}/content/${seedShowId}`);
+    const response = await fetch(`${RECOMMEND_API_URL}/content/${seedShowId}`, {
+      credentials: 'include', // ✅ Ensures cookies are sent & received
+    });
     if (!response.ok) {
       throw new Error('Failed to fetch content-based recommendations');
     }

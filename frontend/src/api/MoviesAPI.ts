@@ -37,6 +37,7 @@ export const addMovie = async (newMovie: Movie): Promise<Movie> => {
   try {
     const response = await fetch(`${API_URL}/AddMovie`, {
       method: 'POST',
+      credentials: 'include', // ✅ Ensures cookies are sent & received
       headers: {
         'Content-Type': 'application/json',
       },
@@ -61,6 +62,7 @@ export const updateMovie = async (
   try {
     const response = await fetch(`${API_URL}/UpdateMovie/${show_id}`, {
       method: 'PUT',
+      credentials: 'include', // ✅ Ensures cookies are sent & received
       headers: {
         'Content-Type': 'application/json',
       },
@@ -83,6 +85,7 @@ export const deleteMovie = async (show_id: string): Promise<void> => {
   try {
     const response = await fetch(`${API_URL}/DeleteMovie/${show_id}`, {
       method: 'DELETE',
+      credentials: 'include', // ✅ Ensures cookies are sent & received
     });
 
     if (!response.ok) {
@@ -98,6 +101,7 @@ export const fetchMoviesByIds = async (showIds: string[]): Promise<Movie[]> => {
   try {
     const response = await fetch(`${API_URL}/batch`, {
       method: 'POST',
+      credentials: 'include', // ✅ Ensures cookies are sent & received
       headers: {
         'Content-Type': 'application/json',
       },
