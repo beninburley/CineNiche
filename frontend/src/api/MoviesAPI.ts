@@ -17,7 +17,10 @@ export const fetchMovies = async (
       .map((cat) => `movieTypes=${encodeURIComponent(cat)}`)
       .join('&');
     const response = await fetch(
-      `${API_URL}/allmovies/?pageSize=${pageSize}&pageNum=${pageNum}${selectedCategories.length ? `&${categoryParams}` : ''}`
+      `${API_URL}/allmovies/?pageSize=${pageSize}&pageNum=${pageNum}${selectedCategories.length ? `&${categoryParams}` : ''}`,
+      {
+        credentials: 'include',
+      }
     );
 
     if (!response.ok) {

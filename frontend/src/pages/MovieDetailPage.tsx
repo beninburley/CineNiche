@@ -2,6 +2,8 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Movie } from '../types/Movie';
 import StarRating from '../components/StarRating';
+import AuthorizeView, { AuthorizedUser } from '../components/AuthorizeView';
+import Logout from '../components/Logout';
 
 const MovieDetailPage = () => {
   const { id } = useParams();
@@ -10,7 +12,9 @@ const MovieDetailPage = () => {
   useEffect(() => {
     const fetchMovie = async () => {
       const res = await fetch(
-        `https://214cinenichebackend-g8a5h7bqe5auc5hw.westus3-01.azurewebsites.net/movie/${id}`
+        `https://214cinenichebackend-g8a5h7bqe5auc5hw.westus3-01.azurewebsites.net/movie/${id}`, {
+          credentials: 'include',
+        }
       );
       const data = await res.json();
       setMovie(data);
@@ -22,15 +26,22 @@ const MovieDetailPage = () => {
   if (!movie) return <p>Loading...</p>;
 
   return (
-    <div>
-      <h1>{movie.title}</h1>
-      <p>{movie.description}</p>
-      <p>Directed by: {movie.director}</p>
-      <p>Cast: {movie.cast}</p>
-      <p>Genres: {movie.categoriesString}</p>
-      {/* ⭐ 5-star rating component */}
-      <StarRating movieId={movie.show_id} />
-    </div>
+    <AuthorizeView>
+      <span>
+        <Logout>
+          Logout <AuthorizedUser value='email' />
+        </Logout>
+      </span>
+      <div>
+        <h1>{movie.title}</h1>
+        <p>{movie.description}</p>
+        <p>Directed by: {movie.director}</p>
+        <p>Cast: {movie.cast}</p>
+        <p>Genres: {movie.categoriesString}</p>
+        {/* ⭐ 5-star rating component */}
+        <StarRating movieId={movie.show_id} />
+      </div>
+    </AuthorizeView>
   );
 };
 
