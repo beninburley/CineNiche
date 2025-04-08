@@ -116,5 +116,16 @@ namespace CineNiche.API.Controllers
                             : char.ToUpper(word[0]) + word.Substring(1))
             );
         }
+
+        [HttpPost("batch")]
+        public IActionResult GetMoviesByIds([FromBody] List<string> showIds)
+        {
+            var movies = _movieContext.Movies
+                .Where(m => showIds.Contains(m.show_id))
+                .ToList();
+
+            return Ok(movies);
+        }
+
     }
 }
