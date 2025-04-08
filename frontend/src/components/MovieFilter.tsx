@@ -14,7 +14,10 @@ function MovieFilter({
     const fetchCategories = async () => {
       try {
         const response = await fetch(
-          'http://localhost:5050/movie/getmovietypes'
+          'https://localhost:5000/movie/getmovietypes',
+          {
+            credentials: 'include',
+          }
         );
         const data = await response.json();
         setCategories(data);

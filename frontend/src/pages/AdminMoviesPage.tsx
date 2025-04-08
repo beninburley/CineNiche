@@ -5,6 +5,8 @@ import NewMovieForm from '../components/NewMovieForm';
 import EditMovieForm from '../components/EditMovieForm';
 import Pagination from '../components/Pagination';
 import MovieFilter from '../components/MovieFilter';
+import AuthorizeView, { AuthorizedUser } from '../components/AuthorizeView';
+import Logout from '../components/Logout';
 
 const AdminMoviesPage = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -51,98 +53,105 @@ const AdminMoviesPage = () => {
   if (error) return <p className='text-red-500'>Error: {error}</p>;
 
   return (
-    <div>
-      <h1>Admin - Movies</h1>
+    <AuthorizeView>
+      <span>
+        <Logout>
+          Logout <AuthorizedUser value='email' />
+        </Logout>
+      </span>
+      <div>
+        <h1>Admin - Movies</h1>
 
-      {!showForm && (
-        <button
-          className='btn btn-success mb-3'
-          onClick={() => setShowForm(true)}
-        >
-          Add Movie
-        </button>
-      )}
-      {showForm && (
-        <NewMovieForm
-          onSuccess={() => {
-            setShowForm(false);
-            fetchMovies(pageSize, pageNum, []).then((data) =>
-              setMovies(data.movies)
-            );
-          }}
-          onCancel={() => setShowForm(false)}
+        {!showForm && (
+          <button
+            className='btn btn-success mb-3'
+            onClick={() => setShowForm(true)}
+          >
+            Add Movie
+          </button>
+        )}
+        {showForm && (
+          <NewMovieForm
+            onSuccess={() => {
+              setShowForm(false);
+              fetchMovies(pageSize, pageNum, []).then((data) =>
+                setMovies(data.movies)
+              );
+            }}
+            onCancel={() => setShowForm(false)}
+          />
+        )}
+
+        {editingMovie && (
+          <EditMovieForm
+            movie={editingMovie}
+            onSuccess={() => {
+              setEditingMovie(null);
+              fetchMovies(pageSize, pageNum, []).then((data) =>
+                setMovies(data.movies)
+              );
+            }}
+            onCancel={() => setEditingMovie(null)}
+          />
+        )}
+
+        <MovieFilter
+          selectedCategories={selectedCategories}
+          setSelectedCategories={setSelectedCategories}
         />
-      )}
 
-      {editingMovie && (
-        <EditMovieForm
-          movie={editingMovie}
-          onSuccess={() => {
-            setEditingMovie(null);
-            fetchMovies(pageSize, pageNum, []).then((data) =>
-              setMovies(data.movies)
-            );
-          }}
-          onCancel={() => setEditingMovie(null)}
-        />
-      )}
-
-      <MovieFilter
-        selectedCategories={selectedCategories}
-        setSelectedCategories={setSelectedCategories}
-      />
-
-      <table className='table table-bordered table-striped'>
-        <thead className='table-dark'>
-          <tr>
-            <th>Show ID</th>
-            <th>Title</th>
-            <th>Director</th>
-            <th>Cast</th>
-            <th>Release Year</th>
-            <th>Genres</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {movies.map((m) => (
-            <tr key={m.show_id}>
-              <td>{m.show_id}</td>
-              <td>{m.title}</td>
-              <td>{m.director}</td>
-              <td>{m.cast}</td>
-              <td>{m.release_year}</td>
-              <td>{m.categoriesString}</td>
-              <td>
-                <button
-                  className='btn btn-primary btn-sm w-100 mb-1'
-                  onClick={() => setEditingMovie(m)}
-                >
-                  Edit
-                </button>
-                <button
-                  className='btn btn-danger btn-sm w-100'
-                  onClick={() => handleDelete(m.show_id!)}
-                >
-                  Delete
-                </button>
-              </td>
+        <table className='table table-bordered table-striped'>
+          <thead className='table-dark'>
+            <tr>
+              <th>Show ID</th>
+              <th>Title</th>
+              <th>Director</th>
+              <th>Cast</th>
+              <th>Release Year</th>
+              <th>Genres</th>
+              <th></th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {movies.map((m) => (
+              <tr key={m.show_id}>
+                <td>{m.show_id}</td>
+                <td>{m.title}</td>
+                <td>{m.director}</td>
+                <td>{m.cast}</td>
+                <td>{m.release_year}</td>
+                <td>{m.categoriesString}</td>
+                <td>
+                  <button
+                    className='btn btn-primary btn-sm w-100 mb-1'
+                    onClick={() => setEditingMovie(m)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className='btn btn-danger btn-sm w-100'
+                    onClick={() => handleDelete(m.show_id!)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
-      <Pagination
-        currentPage={pageNum}
-        totalPages={totalPages}
-        pageSize={pageSize}
-        onPageChange={setPageNum}
-        onPageSizeChange={(newSize) => {
-          setPageSize(newSize);
-          setPageNum(1);
-        }}
-      />
-    </div>
+        <Pagination
+          currentPage={pageNum}
+          totalPages={totalPages}
+          pageSize={pageSize}
+          onPageChange={setPageNum}
+          onPageSizeChange={(newSize) => {
+            setPageSize(newSize);
+            setPageNum(1);
+          }}
+        />
+      </div>
+    </AuthorizeView>
   );
 };
 

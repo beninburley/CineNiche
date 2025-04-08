@@ -5,7 +5,7 @@ interface FetchMovieResponse {
   totalNumMovies: number;
 }
 
-const API_URL = 'https://localhost:5000/movie';
+const API_URL = 'https://localhost:5000/Movie';
 
 export const fetchMovies = async (
   pageSize: number,
@@ -17,7 +17,10 @@ export const fetchMovies = async (
       .map((cat) => `movieTypes=${encodeURIComponent(cat)}`)
       .join('&');
     const response = await fetch(
-      `${API_URL}/allmovies/?pageSize=${pageSize}&pageNum=${pageNum}${selectedCategories.length ? `&${categoryParams}` : ''}`
+      `${API_URL}/allmovies/?pageSize=${pageSize}&pageNum=${pageNum}${selectedCategories.length ? `&${categoryParams}` : ''}`,
+      {
+        credentials: 'include',
+      }
     );
 
     if (!response.ok) {
