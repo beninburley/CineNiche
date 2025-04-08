@@ -1,0 +1,278 @@
+.landing-page {
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+/* HEADER */
+.landing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1c1c1c;
+  border-bottom: 1px solid #333;
+  height: 120px;
+}
+
+.landing-header .logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #ffcc00;
+}
+
+.landing-header nav a {
+  margin-left: 1rem;
+  color: #f5f5f5;
+  text-decoration: none;
+}
+
+.cta-button {
+  background-color: #ffcc00;
+  color: #000;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* HERO SECTION */
+.hero-section {
+  position: relative;
+  height: 90vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f5f5f5;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  filter: brightness(0.7);
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 4rem 2rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.318);
+  border-radius: 12px;
+  max-width: 800px;
+  height: 100%;
+  margin-bottom:;
+}
+
+.hero-overlay h1 {
+  font-size: 3.2rem;
+  color: #ffcc00;
+  margin-bottom: 1rem;
+}
+
+.hero-bottom-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-bottom-content p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  line-height: 1.5;
+  color: #f5f5f5;
+}
+
+.hero-cta {
+  background-color: #ffcc00;
+  color: #000;
+  padding: 0.9rem 2rem;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.hero-cta:hover {
+  background-color: #e6b800;
+  transform: scale(1.05);
+}
+
+/* OTHER SECTIONS */
+.about-section,
+.features-section,
+.testimonial-section,
+.final-cta {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.film-examples-section {
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.film-examples-section h2 {
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
+  color: #ffcc00;
+}
+
+.film-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 0 auto 2rem;
+}
+
+.film-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.film-card img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.film-card img:hover {
+  transform: scale(1.03);
+}
+
+.film-label {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: #ccc;
+  font-style: italic;
+}
+
+.film-explainer {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  color: #ddd;
+  line-height: 1.6;
+}
+
+.testimonial-section {
+  background: linear-gradient(to bottom, #1c1c1c, #121212);
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.testimonial-section blockquote {
+  font-size: 1.4rem;
+  font-style: italic;
+  color: #ccc;
+  max-width: 700px;
+  margin: 0 auto 1rem;
+  line-height: 1.6;
+}
+
+.testimonial-section cite {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #ffcc00;
+}
+
+.final-cta {
+  padding: 5rem 2rem;
+  text-align: center;
+  background-color: #1a1a1a;
+}
+
+.final-cta h2 {
+  font-size: 2rem;
+  color: #f5f5f5;
+  margin-bottom: 2rem;
+}
+
+.final-button {
+  background-color: #ffcc00;
+  color: #000;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.final-button:hover {
+  background-color: #e6b800;
+}
+
+/* ABOUT SECTION */
+
+.about-section {
+  padding: 5rem 2rem;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #ffcc00;
+  letter-spacing: 0.5px;
+}
+
+.about-section p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #ddd;
+}
+
+/* FOOTER */
+.landing-footer {
+  background-color: #1c1c1c;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+/* SIGNUP LINK VARIANT */
+.custom-signup {
+  color: #e6b800;
+}
+
+.custom-signup:hover {
+  color: #ffcc00;
+}
+
+/* SCROLL FADE-IN EFFECT */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

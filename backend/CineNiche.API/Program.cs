@@ -11,6 +11,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MovieDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("MovieConnection")));
 
+builder.Services.AddDbContext<RecommendationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("RecommendConnection")));
+
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>

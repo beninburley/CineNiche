@@ -90,3 +90,24 @@ export const deleteMovie = async (show_id: string): Promise<void> => {
     throw error;
   }
 };
+
+export const fetchMoviesByIds = async (showIds: string[]): Promise<Movie[]> => {
+  try {
+    const response = await fetch(`${API_URL}/batch`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(showIds),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch movie details');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching movies by IDs:', error);
+    throw error;
+  }
+};
