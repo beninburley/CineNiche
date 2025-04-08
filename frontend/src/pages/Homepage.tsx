@@ -8,6 +8,9 @@ import FilmJourneyCarousel from '../components/FilmJourneyCarousel';
 import UndergroundPick from '../components/UndergroundPick';
 import UserRecommendationRow from '../components/UserRecommendationRow';
 import ReviewHighlight from '../components/ReviewHighlight';
+import ActorRecommendationRow from '../components/ActorRecommendationRow';
+import DirectorRecommendationRow from '../components/DirectorRecommendationRow';
+import GenreRecommendationRow from '../components/GenreRecommendationRow';
 
 const Homepage: React.FC = () => {
   return (
@@ -35,6 +38,17 @@ const Homepage: React.FC = () => {
         <section className='section user-recommendations'>
           <h2 className='section-title'>Recommended for You</h2>
           <UserRecommendationRow />
+        </section>
+        <section className='section user-recommendations'>
+          <ActorRecommendationRow />
+        </section>
+
+        <section className='section user-recommendations'>
+          <DirectorRecommendationRow />
+        </section>
+
+        <section className='section user-recommendations'>
+          <GenreRecommendationRow />
         </section>
 
         <section className='section reviews'>
