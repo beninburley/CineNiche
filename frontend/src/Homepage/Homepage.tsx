@@ -11,6 +11,7 @@ import ReviewHighlight from './ReviewHighlight';
 import ActorRecommendationRow from './ActorRecommendationRow';
 import DirectorRecommendationRow from './DirectorRecommendationRow';
 import GenreRecommendationRow from './GenreRecommendationRow';
+import Footer from '../components/Footer';
 
 // import { useNavigate } from 'react-router-dom';
 
@@ -77,6 +78,7 @@ const Homepage: React.FC = () => {
           <ReviewHighlight />
         </section>
       </main>
+      <Footer />
     </div>
   );
 };
