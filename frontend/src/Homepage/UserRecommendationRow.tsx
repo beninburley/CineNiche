@@ -1,35 +1,9 @@
 // src/components/UserRecommendationRow.tsx
-import React from 'react';
-import '/src/Homepage/Homepage.CSS';
-
-// Mock data
-const recommendedMovies = [
-  {
-    id: 1,
-    title: 'Shadows in Berlin',
-    imageUrl: '/images/reco1.jpg',
-  },
-  {
-    id: 2,
-    title: 'The Color of Forgetting',
-    imageUrl: '/images/reco2.jpg',
-  },
-  {
-    id: 3,
-    title: 'Celestial Silence',
-    imageUrl: '/images/reco3.jpg',
-  },
-  {
-    id: 4,
-    title: 'Nostalgia Café',
-    imageUrl: '/images/reco4.jpg',
-  },
-  {
-    id: 5,
-    title: 'Whispers of Clay',
-    imageUrl: '/images/reco5.jpg',
-  },
-];
+import React, { useEffect, useState } from 'react';
+import './Homepage.css';
+import { Movie } from '../types/Movie';
+import { fetchCollabRecommendations } from '../api/RecommendAPI';
+import { fetchMoviesByIds } from '../api/MoviesAPI';
 
 const UserRecommendationRow: React.FC = () => {
   const [recommendedMovies, setRecommendedMovies] = useState<Movie[]>([]);

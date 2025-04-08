@@ -1,6 +1,6 @@
 // src/pages/Homepage.tsx
 import React from 'react';
-import '/src/Homepage/Homepage.CSS'; // Link to your CSS file for this page
+import './Homepage.css'; // Link to your CSS file for this page
 import Header from './Header';
 import HeroBanner from './HeroBanner';
 import MoodBoardGrid from './MoodBoardGrid';
@@ -8,6 +8,9 @@ import FilmJourneyCarousel from './FilmJourneyCarousel';
 import UndergroundPick from './UndergroundPick';
 import UserRecommendationRow from './UserRecommendationRow';
 import ReviewHighlight from './ReviewHighlight';
+import ActorRecommendationRow from './ActorRecommendationRow';
+import DirectorRecommendationRow from './DirectorRecommendationRow';
+import GenreRecommendationRow from './GenreRecommendationRow';
 
 // import { useNavigate } from 'react-router-dom';
 
