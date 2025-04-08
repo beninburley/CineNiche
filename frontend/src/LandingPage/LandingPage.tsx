@@ -1,6 +1,6 @@
 // src/pages/LandingPage.tsx
 import React, { useEffect } from 'react';
-import './landingPage.css';
+import './LandingPage.css';
 import { Link } from 'react-router-dom';
 
 //feratured movies

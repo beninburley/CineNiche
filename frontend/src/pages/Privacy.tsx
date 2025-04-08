@@ -1,6 +1,6 @@
 // src/pages/Homepage.tsx
 import React from 'react';
-import './Homepage.css'; // Link to your CSS file for this page
+import '../Homepage/Homepage.css'; // Link to your CSS file for this page
 import Header from '../Homepage/Header';
 import Pirvacypolicy from '../components/Privacy';
 
