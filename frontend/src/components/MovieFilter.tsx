@@ -14,7 +14,10 @@ function MovieFilter({
     const fetchCategories = async () => {
       try {
         const response = await fetch(
-          'https://214cinenichebackend-g8a5h7bqe5auc5hw.westus3-01.azurewebsites.net/movie/getmovietypes'
+          'https://214cinenichebackend-g8a5h7bqe5auc5hw.westus3-01.azurewebsites.net/movie/getmovietypes',
+          {
+            credentials: 'include',
+          }
         );
         const data = await response.json();
         setCategories(data);
@@ -35,7 +38,6 @@ function MovieFilter({
 
   return (
     <div className='category-filter'>
-      <h5>Genres:</h5>
       <div className='category-list'>
         {categories.map((c) => (
           <div key={c} className='category-item'>

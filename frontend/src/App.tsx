@@ -6,6 +6,8 @@ import LandingPage from './LandingPage/LandingPage';
 import SignUp from './SignUp/SignUp';
 import Login from './Login/Login';
 import MovieDetailPage from './pages/MovieDetailPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 function App() {
   return (

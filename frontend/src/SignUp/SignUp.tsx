@@ -1,9 +1,9 @@
 // src/pages/SignUpPage.tsx
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './SignUp.css';
-import { Link } from 'react-router-dom';
 
-const SignUpPage: React.FC = () => {
+const SignUpPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,19 +11,57 @@ const SignUpPage: React.FC = () => {
     confirmPassword: '',
   });
 
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Signing up:', formData);
+
+    const { email, password, confirmPassword } = formData;
+
+    // Simple validation
+    if (!email || !password || !confirmPassword) {
+      setError('Please fill in all fields.');
+      return;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError('Please enter a valid email address.');
+      return;
+    } else if (password !== confirmPassword) {
+      setError('Passwords do not match.');
+      return;
+    }
+
+    try {
+      const response = await fetch('https://localhost:5000/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+
+      if (response.ok) {
+        navigate('/login');
+      } else {
+        const data = await response.json();
+        setError(data.message || 'Registration failed.');
+      }
+    } catch (err) {
+      console.error(err);
+      setError('Something went wrong.');
+    }
   };
 
   return (
     <div className='signup-page split-layout'>
       <div className='signup-left'>
-        {/* You can use an <img> or <video> here */}
         <video autoPlay muted loop playsInline>
           <source src='/videos/signup-cinema.mp4' type='video/mp4' />
         </video>
@@ -69,6 +107,9 @@ const SignUpPage: React.FC = () => {
               onChange={handleChange}
               required
             />
+
+            {error && <p className='signup-error'>{error}</p>}
+
             <button type='submit' className='signup-button'>
               Sign Up
             </button>

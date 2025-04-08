@@ -11,6 +11,9 @@ import ReviewHighlight from './ReviewHighlight';
 import ActorRecommendationRow from './ActorRecommendationRow';
 import DirectorRecommendationRow from './DirectorRecommendationRow';
 import GenreRecommendationRow from './GenreRecommendationRow';
+import Footer from '../components/Footer';
+import AuthorizeView, { AuthorizedUser } from '../components/AuthorizeView';
+import Logout from '../components/Logout';
 
 // import { useNavigate } from 'react-router-dom';
 
@@ -35,49 +38,57 @@ import GenreRecommendationRow from './GenreRecommendationRow';
 
 const Homepage: React.FC = () => {
   return (
-    <div className='homepage'>
-      <Header />
+    <AuthorizeView>
+      <span>
+        <Logout>
+          Logout <AuthorizedUser value='email' />
+        </Logout>
+      </span>
+      <div className='homepage'>
+        <Header />
 
-      <main className='homepage-main'>
-        <HeroBanner />
+        <main className='homepage-main'>
+          <HeroBanner />
 
-        <section className='section mood-board'>
-          <h2 className='section-title'>Mood Board</h2>
-          <MoodBoardGrid />
-        </section>
+          <section className='section mood-board'>
+            <h2 className='section-title'>Mood Board</h2>
+            <MoodBoardGrid />
+          </section>
 
-        <section className='section film-journeys'>
-          <h2 className='section-title'>Film Journeys</h2>
-          <FilmJourneyCarousel />
-        </section>
+          <section className='section film-journeys'>
+            <h2 className='section-title'>Film Journeys</h2>
+            <FilmJourneyCarousel />
+          </section>
 
-        <section className='section underground-pick'>
-          <h2 className='section-title'>Underground Pick</h2>
-          <UndergroundPick />
-        </section>
+          <section className='section underground-pick'>
+            <h2 className='section-title'>Underground Pick</h2>
+            <UndergroundPick />
+          </section>
 
-        <section className='section user-recommendations'>
-          <h2 className='section-title'>Recommended for You</h2>
-          <UserRecommendationRow />
-        </section>
-        <section className='section user-recommendations'>
-          <ActorRecommendationRow />
-        </section>
+          <section className='section user-recommendations'>
+            <h2 className='section-title'>Recommended for You</h2>
+            <UserRecommendationRow />
+          </section>
+          <section className='section user-recommendations'>
+            <ActorRecommendationRow />
+          </section>
 
-        <section className='section user-recommendations'>
-          <DirectorRecommendationRow />
-        </section>
+          <section className='section user-recommendations'>
+            <DirectorRecommendationRow />
+          </section>
 
-        <section className='section user-recommendations'>
-          <GenreRecommendationRow />
-        </section>
+          <section className='section user-recommendations'>
+            <GenreRecommendationRow />
+          </section>
 
-        <section className='section reviews'>
-          <h2 className='section-title'>What People Are Saying</h2>
-          <ReviewHighlight />
-        </section>
-      </main>
-    </div>
+          <section className='section reviews'>
+            <h2 className='section-title'>What People Are Saying</h2>
+            <ReviewHighlight />
+          </section>
+        </main>
+        <Footer />
+      </div>
+    </AuthorizeView>
   );
 };
 

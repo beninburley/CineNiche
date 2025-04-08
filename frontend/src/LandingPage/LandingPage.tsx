@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 import './LandingPage.css';
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 //feratured movies
 const exampleMovies = [
@@ -133,19 +134,7 @@ const LandingPage: React.FC = () => {
           Join CineNiche
         </a>
       </section>
-
-      <footer className='landing-footer'>
-        <p>
-          &copy; 2025 CineNiche •{' '}
-          <Link to='/signup' className='custom-signup'>
-            Sign Up
-          </Link>
-          •{' '}
-          <Link to='/' className='custom-signup'>
-            Privacy Policy
-          </Link>
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 };

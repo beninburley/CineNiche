@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+**/obj/
+**/bin/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -22,3 +25,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+.vs/
+bin/
+obj/
+*.db
+

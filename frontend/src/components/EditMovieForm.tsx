@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Movie } from '../types/Movie';
 import { updateMovie } from '../api/MoviesAPI';
+
 interface EditMovieFormProps {
   movie: Movie;
   onSuccess: () => void;
@@ -88,101 +89,135 @@ const EditMovieForm = ({ movie, onSuccess, onCancel }: EditMovieFormProps) => {
     await updateMovie(formData.show_id!, formData);
     onSuccess();
   };
+  const toggleGenre = (genre: string) => {
+    const updatedGenres = formData.categories.includes(genre)
+      ? formData.categories.filter((g) => g !== genre)
+      : [...formData.categories, genre];
+
+    const updatedFlags = genreOptions.reduce((acc, g) => {
+      const propName = camelize(g);
+      acc[propName] = updatedGenres.includes(g);
+      return acc;
+    }, {} as any);
+
+    setFormData({
+      ...formData,
+      ...updatedFlags,
+      categories: updatedGenres,
+      categoriesString: updatedGenres.join(', '),
+    });
+  };
+
+  const handleBackdropClick = () => {
+    onCancel();
+  };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Edit Movie</h2>
-      <label>
-        Title:
-        <input
-          type='text'
-          name='title'
-          value={formData.title}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Director:
-        <input
-          type='text'
-          name='director'
-          value={formData.director}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Cast:
-        <input
-          type='text'
-          name='cast'
-          value={formData.cast}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Country:
-        <input
-          type='text'
-          name='country'
-          value={formData.country}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Release Year:
-        <input
-          type='number'
-          name='release_year'
-          value={formData.release_year}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Rating:
-        <input
-          type='text'
-          name='rating'
-          value={formData.rating}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Duration:
-        <input
-          type='text'
-          name='duration'
-          value={formData.duration}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Description:
-        <input
-          type='text'
-          name='description'
-          value={formData.description}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Genres:
-        <select
-          multiple
-          value={formData.categories}
-          onChange={handleGenreChange}
-        >
-          {genreOptions.map((genre) => (
-            <option key={genre} value={genre}>
-              {genre}
-            </option>
-          ))}
-        </select>
-      </label>
-      <button type='submit'>Save Changes</button>
-      <button type='button' onClick={onCancel}>
-        Cancel
-      </button>
-    </form>
+    <div className='modal-overlay' onClick={handleBackdropClick}>
+      <div className='modal-content' onClick={(e) => e.stopPropagation()}>
+        <button className='close-button' onClick={onCancel}>
+          &times;
+        </button>
+        <form onSubmit={handleSubmit} className='new-movie-form'>
+          <h2>Edit Movie</h2>
+
+          <label>
+            Title:
+            <input
+              type='text'
+              name='title'
+              value={formData.title}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Director:
+            <input
+              type='text'
+              name='director'
+              value={formData.director}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Cast:
+            <input
+              type='text'
+              name='cast'
+              value={formData.cast}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Country:
+            <input
+              type='text'
+              name='country'
+              value={formData.country}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Release Year:
+            <input
+              type='number'
+              name='release_year'
+              value={formData.release_year}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Rating:
+            <input
+              type='text'
+              name='rating'
+              value={formData.rating}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Duration:
+            <input
+              type='text'
+              name='duration'
+              value={formData.duration}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Description:
+            <input
+              type='text'
+              name='description'
+              value={formData.description}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Genres:
+            <div className='genre-tags'>
+              {genreOptions.map((genre) => {
+                const isSelected = formData.categories.includes(genre);
+                return (
+                  <span
+                    key={genre}
+                    className={`genre-tag ${isSelected ? 'selected' : ''}`}
+                    onClick={() => toggleGenre(genre)}
+                  >
+                    {genre}
+                  </span>
+                );
+              })}
+            </div>
+          </label>
+
+          <button type='submit'>Save Changes</button>
+          <button type='button' onClick={onCancel}>
+            Cancel
+          </button>
+        </form>
+      </div>
+    </div>
   );
 };
 
