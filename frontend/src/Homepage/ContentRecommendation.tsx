@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../pages/Homepage.css';
+import './Homepage.css';
 import { fetchContentRecommendations } from '../api/RecommendAPI';
 import { fetchMoviesByIds } from '../api/MoviesAPI';
 import { ContentRec } from '../types/ContentRec';
