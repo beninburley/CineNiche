@@ -1,7 +1,6 @@
 // src/components/MoodBoardGrid.tsx
 import React from 'react';
-import '/src/Homepage/Homepage.CSS';
-
+import './Homepage.css';
 
 // Mock data for now
 const moodBoardMovies = [

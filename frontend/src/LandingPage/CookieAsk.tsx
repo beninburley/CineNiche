@@ -1,4 +1,4 @@
-import CookieConsent, { Cookies } from 'react-cookie-consent';
+import CookieConsent from 'react-cookie-consent';
 
 function CookieAsk() {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '/src/Homepage/Homepage.CSS';
+import './Homepage.css';
 
 const HeroBanner: React.FC = () => {
   return (
