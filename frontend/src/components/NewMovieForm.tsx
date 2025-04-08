@@ -115,26 +115,26 @@ const NewMovieForm = ({ onSuccess, onCancel }: NewMovieFormProps) => {
     setFormData({ ...formData, [name]: parsedValue });
   };
 
-  const handleGenreChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedGenres = Array.from(
-      e.target.selectedOptions,
-      (option) => option.value
-    );
+  // const handleGenreChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   const selectedGenres = Array.from(
+  //     e.target.selectedOptions,
+  //     (option) => option.value
+  //   );
 
-    // Reset all genres to false
-    const updatedFlags = genreOptions.reduce((acc, genre) => {
-      const propName = camelize(genre);
-      acc[propName] = selectedGenres.includes(genre);
-      return acc;
-    }, {} as any);
+  //   // Reset all genres to false
+  //   const updatedFlags = genreOptions.reduce((acc, genre) => {
+  //     const propName = camelize(genre);
+  //     acc[propName] = selectedGenres.includes(genre);
+  //     return acc;
+  //   }, {} as any);
 
-    setFormData({
-      ...formData,
-      ...updatedFlags,
-      categories: selectedGenres,
-      categoriesString: selectedGenres.join(', '),
-    });
-  };
+  //   setFormData({
+  //     ...formData,
+  //     ...updatedFlags,
+  //     categories: selectedGenres,
+  //     categoriesString: selectedGenres.join(', '),
+  //   });
+  // };
 
   const camelize = (text: string): string => {
     return text
