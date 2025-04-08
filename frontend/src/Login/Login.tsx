@@ -1,22 +1,51 @@
 // src/pages/LoginPage.tsx
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
-import { Link } from 'react-router-dom';
 
-const LoginPage: React.FC = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
+const LoginPage = () => {
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [rememberme, setRememberme] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Logging in:', formData);
-    // Hook this up to your backend later
+    setError('');
+
+    if (!email || !password) {
+      setError('Please fill in all fields.');
+      return;
+    }
+
+    const loginUrl = rememberme
+      ? 'https://localhost:5000/login?useCookies=true'
+      : 'https://localhost:5000/login?useSessionCookies=true';
+
+    try {
+      const response = await fetch(loginUrl, {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const contentLength = response.headers.get('content-length');
+      const data =
+        contentLength && parseInt(contentLength, 10) > 0
+          ? await response.json()
+          : null;
+
+      if (!response.ok) {
+        throw new Error(data?.message || 'Invalid email or password.');
+      }
+
+      navigate('/home');
+    } catch (err: any) {
+      setError(err.message || 'Error logging in.');
+    }
   };
 
   return (
@@ -27,10 +56,8 @@ const LoginPage: React.FC = () => {
 
       <div className='login-right'>
         <div className='login-container'>
-          <h1 className='login-logo'>
-            <Link to='/' className='login-logo'>
-              CineNiche
-            </Link>
+          <h1 className='login-logo' onClick={() => navigate('/')}>
+            CineNiche
           </h1>
           <h2>Welcome Back</h2>
           <form className='login-form' onSubmit={handleSubmit}>
@@ -38,18 +65,30 @@ const LoginPage: React.FC = () => {
               type='email'
               name='email'
               placeholder='Email'
-              value={formData.email}
-              onChange={handleChange}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
             <input
               type='password'
               name='password'
               placeholder='Password'
-              value={formData.password}
-              onChange={handleChange}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
+
+            <label className='remember-label'>
+              <input
+                type='checkbox'
+                checked={rememberme}
+                onChange={(e) => setRememberme(e.target.checked)}
+              />
+              Remember me
+            </label>
+
+            {error && <p className='login-error'>{error}</p>}
+
             <button type='submit' className='login-button'>
               Log In
             </button>
