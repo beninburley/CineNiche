@@ -35,7 +35,7 @@ export const fetchMovies = async (
 
 export const fetchSuggestedMovies = async (count: number): Promise<Movie[]> => {
   try {
-    const response = await fetch(`${API_URL}/suggestedMovies?countt=${count}`, {
+    const response = await fetch(`${API_URL}/suggestedMovies?count=${count}`, {
       credentials: 'include',
     });
 
