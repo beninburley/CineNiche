@@ -51,7 +51,7 @@ const LoginPage = () => {
   return (
     <div className='login-page split-layout'>
       <div className='login-left'>
-        <img src='/img/old-movie.webp' alt='Cinema entrance' />
+        <img src='/img/fillm.webp' alt='Cinema entrance' />
       </div>
 
       <div className='login-right'>
