@@ -70,7 +70,7 @@ const AdminMoviesPage = () => {
       <div className='admin-page'>
         <div className='admin-header'>
           <h1>
-            <Link to='/home' className='logo-link'>
+            <Link to='/search' className='logo-link'>
               CineNiche
             </Link>
           </h1>
