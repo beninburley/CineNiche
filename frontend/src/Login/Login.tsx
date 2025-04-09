@@ -22,18 +22,14 @@ const LoginPage = () => {
 
     const loginUrl = rememberme
       ? `${import.meta.env.VITE_API_URL}/login?useCookies=true`
-      : `${import.meta.env.VITE_API_URL}/login?useSessionCookies=true`; // ✅ Clean base login endpoint
+      : `${import.meta.env.VITE_API_URL}/login?useSessionCookies=true`;
 
     try {
       const response = await fetch(loginUrl, {
         method: 'POST',
-        credentials: 'include', // ✅ Required for cookie-based auth
+        credentials: 'include', // Ensures cookies are sent & received
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          password,
-          rememberMe: rememberme, // ✅ ✅ ✅ This must be in the body
-        }),
+        body: JSON.stringify({ email, password }),
       });
 
       const contentLength = response.headers.get('content-length');
