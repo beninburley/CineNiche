@@ -1,15 +1,45 @@
 // src/pages/LoginPage.tsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
+
+// This is the login stuff that works parallel to the backend.
+// The backend already blocks more than 5 attempts, but this helps display that to the user.
+
+const MAX_ATTEMPTS = 5;
+const LOCKOUT_MINUTES = 5;
+
+const getLockoutKey = (email: string) => `lockout_${email.toLowerCase()}`;
+
+const isLockedOut = (email: string) => {
+  const lockoutData = localStorage.getItem(getLockoutKey(email));
+  if (!lockoutData) return false;
+
+  const { lockedUntil } = JSON.parse(lockoutData);
+  return new Date().getTime() < new Date(lockedUntil).getTime();
+};
+
+const setLockout = (email: string) => {
+  const lockedUntil = new Date(Date.now() + LOCKOUT_MINUTES * 60 * 1000);
+  localStorage.setItem(getLockoutKey(email), JSON.stringify({ lockedUntil }));
+};
+
+const clearLockout = (email: string) => {
+  localStorage.removeItem(getLockoutKey(email));
+};
 
 const LoginPage = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [rememberme, setRememberme] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
+  const [attemptCount, setAttemptCount] = useState<number>(0);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setAttemptCount(0);
+  }, [email]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,11 +50,16 @@ const LoginPage = () => {
       return;
     }
 
-    // const loginUrl = rememberme
-    //   ? `${import.meta.env.VITE_API_URL}/login?useCookies=true`
-    //   : `${import.meta.env.VITE_API_URL}/login?useSessionCookies=true`;
+    if (isLockedOut(email)) {
+      setError(
+        `Too many failed login attempts. Please wait ${LOCKOUT_MINUTES} minutes.`
+      );
+      return;
+    }
 
-    const loginUrl = `${import.meta.env.VITE_API_URL}/auth/login`;
+    const loginUrl = rememberme
+      ? `${import.meta.env.VITE_API_URL}/login?useCookies=true`
+      : `${import.meta.env.VITE_API_URL}/login?useSessionCookies=true`;
 
     try {
       const response = await fetch(loginUrl, {
@@ -44,17 +79,27 @@ const LoginPage = () => {
         throw new Error(data?.message || 'Invalid email or password.');
       }
 
+      clearLockout(email); // success: clear any lockout
       navigate('/home');
     } catch (err: any) {
-      setError(err.message || 'Error logging in.');
-      console.error('Login failed:', err);
+      const newAttemptCount = attemptCount + 1;
+      setAttemptCount(newAttemptCount);
+
+      if (newAttemptCount >= MAX_ATTEMPTS) {
+        setLockout(email);
+        setError(
+          `Too many failed login attempts. Please wait ${LOCKOUT_MINUTES} minutes.`
+        );
+      } else {
+        setError(err.message || 'Error logging in.');
+      }
     }
   };
 
   return (
     <div className='login-page split-layout'>
       <div className='login-left'>
-        <img src='/img/old-movie.webp' alt='Cinema entrance' />
+        <img src='/img/fillm.webp' alt='Cinema entrance' />
       </div>
 
       <div className='login-right'>

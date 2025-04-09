@@ -27,7 +27,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .admin-button:hover {
@@ -35,7 +35,7 @@
 }
 
 .edit-button {
-  background-color: #5d6165;
+  background-color: #ffcc00;
   color: white;
   border: none;
   padding: 0.4rem 0.8rem;
@@ -45,12 +45,13 @@
 }
 
 .delete-button {
-  background-color: #c0392b;
-  color: white;
+  background-color: #1e1e1e;
+  color: #771515;
   border: none;
   padding: 0.4rem 0.8rem;
   border-radius: 6px;
   width: 100%;
+  border: 1px solid #771515;
 }
 
 .movie-table {
@@ -241,4 +242,53 @@
   background-color: #1a1a1a;
   margin-top: 2rem;
   flex: 1;
+}
+
+/* --- Top control bar (button + search + filters) --- */
+.admin-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Optional: Give search input and filters a bit of width control */
+.admin-controls .search-input {
+  flex: 1;
+  min-width: 250px;
+}
+
+.admin-controls .admin-button {
+  flex-shrink: 0;
+  margin-bottom: 0; /* Already handled by wrapper margin */
+}
+
+/* Admin header alignment */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.admin-header h1 {
+  margin: 0;
+}
+
+/* Optional: Wrap everything neatly on smaller screens */
+@media (max-width: 768px) {
+  .admin-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
 }

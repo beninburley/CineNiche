@@ -70,17 +70,34 @@ namespace CineNiche.API.Controllers
         }
 
         [HttpPost("AddMovie")]
+        [Authorize(Roles = "Administrator")]
         public IActionResult AddMovie([FromBody] Movie newMovie)
         {
             if (newMovie == null)
                 return BadRequest("Movie data is required.");
 
+            // Get the current sequence row (should only be one row in the table)
+            var sequence = _movieContext.ShowIdSequence.FirstOrDefault();
+            if (sequence == null)
+            {
+                return StatusCode(500, "Show ID sequence is not initialized.");
+            }
+
+            // Increment the last ID and generate the new show_id
+            sequence.LastId += 1;
+            newMovie.show_id = $"s{sequence.LastId}";
+
+            // Save movie and update the sequence
             _movieContext.Movies.Add(newMovie);
+            _movieContext.ShowIdSequence.Update(sequence);
             _movieContext.SaveChanges();
+
             return Ok(newMovie);
         }
 
+
         [HttpPut("UpdateMovie/{show_id}")]
+        [Authorize(Roles = "Administrator")]
         public IActionResult UpdateMovie(string show_id, [FromBody] Movie updatedMovie)
         {
             var existingMovie = _movieContext.Movies.FirstOrDefault(m => m.show_id == show_id);
@@ -94,6 +111,7 @@ namespace CineNiche.API.Controllers
         }
 
         [HttpDelete("DeleteMovie/{show_id}")]
+        [Authorize(Roles = "Administrator")]
         public IActionResult DeleteMovie(string show_id)
         {
             var movie = _movieContext.Movies.FirstOrDefault(m => m.show_id == show_id);

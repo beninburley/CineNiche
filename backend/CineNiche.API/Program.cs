@@ -201,6 +201,18 @@ builder.Services.Configure<IdentityOptions>(options =>
 {
     options.ClaimsIdentity.UserIdClaimType = ClaimTypes.NameIdentifier;
     options.ClaimsIdentity.UserNameClaimType = ClaimTypes.Email; // Ensure email is stored in claims
+
+    options.Password.RequireDigit = true;
+    options.Password.RequiredLength = 12;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequiredUniqueChars = 1; // Optional
+
+    // Default Lockout settings.
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+    options.Lockout.MaxFailedAccessAttempts = 5;
+    options.Lockout.AllowedForNewUsers = true;
 });
 
 builder.Services.AddScoped<IUserClaimsPrincipalFactory<IdentityUser>, CustomUserClaimsPrincipalFactory>();
@@ -208,11 +220,26 @@ builder.Services.AddScoped<IUserClaimsPrincipalFactory<IdentityUser>, CustomUser
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Cookie.HttpOnly = true;
-    options.Cookie.SameSite = SameSiteMode.None; // change after adding https for production, change to strict i think
+    options.Cookie.SameSite = SameSiteMode.None; // Keep for local dev with cookies
     options.Cookie.Name = ".AspNetCore.Identity.Application";
-    options.LoginPath = "/login";
     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+
+    // Remove redirect behavior — return proper HTTP status codes for APIs
+    options.LoginPath = PathString.Empty;
+    options.AccessDeniedPath = PathString.Empty;
+
+    options.Events.OnRedirectToAccessDenied = context =>
+    {
+        context.Response.StatusCode = StatusCodes.Status403Forbidden;
+        return Task.CompletedTask;
+    };
+    options.Events.OnRedirectToLogin = context =>
+    {
+        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+        return Task.CompletedTask;
+    };
 });
+
 
 builder.Services.AddCors(options =>
 {
@@ -236,6 +263,8 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+} else {
+    app.UseHsts();
 }
 
 app.UseCors("AllowFrontend"); // ? now it's in the right spot
@@ -249,6 +278,27 @@ app.MapControllers();
 
 //Added MapGroup ???
 app.MapGroup("/").MapIdentityApi<IdentityUser>();
+
+app.MapGet("/claims", (ClaimsPrincipal user) =>
+{
+    var claims = user.Claims.Select(c => new { c.Type, c.Value }).ToList();
+    return Results.Json(claims);
+}).RequireAuthorization();
+
+app.MapGet("/checkadmin", async (UserManager<IdentityUser> userManager, ClaimsPrincipal user) =>
+{
+    var email = user.FindFirstValue(ClaimTypes.Email);
+    if (email == null)
+        return Results.Unauthorized();
+
+    var identityUser = await userManager.FindByEmailAsync(email);
+    if (identityUser == null)
+        return Results.NotFound();
+
+    var roles = await userManager.GetRolesAsync(identityUser);
+    return Results.Json(new { email, roles });
+}).RequireAuthorization();
+
 
 app.MapPost("/logout", async (HttpContext context, SignInManager<IdentityUser> signInManager) =>
 {

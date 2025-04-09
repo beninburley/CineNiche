@@ -132,7 +132,7 @@ const AdminMoviesPage = () => {
               </thead>
               <tbody>
                 {pagedMovies.map((m) => (
-                  <tr key={m.show_id}>
+                  <tr key={m.show_id || m.title}>
                     <td>{m.show_id}</td>
                     <td>{m.title}</td>
                     <td>{m.director}</td>
@@ -141,13 +141,13 @@ const AdminMoviesPage = () => {
                     <td>{m.categoriesString}</td>
                     <td>
                       <button
-                        className='btn btn-primary btn-sm w-100 mb-1'
+                        className='edit-button'
                         onClick={() => setEditingMovie(m)}
                       >
                         Edit
                       </button>
                       <button
-                        className='btn btn-danger btn-sm w-100'
+                        className='delete-button'
                         onClick={() => handleDelete(m.show_id!)}
                       >
                         Delete

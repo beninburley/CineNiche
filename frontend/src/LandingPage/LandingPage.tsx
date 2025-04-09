@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import './LandingPage.css';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
+import CookieAsk from './CookieAsk';
 
 //feratured movies
 const exampleMovies = [
@@ -71,7 +72,9 @@ const LandingPage: React.FC = () => {
           </Link>
         </div>
         <nav>
-          <a href='/login'>Log In</a>
+          <a className='button1' href='/login'>
+            Log In
+          </a>
           <a href='/signup' className='cta-button'>
             Sign Up
           </a>
@@ -124,7 +127,7 @@ const LandingPage: React.FC = () => {
       <section className='testimonial-section reveal'>
         <blockquote>
           “CineNiche made me fall in love with cinema all over again.”
-          <cite>– A real user (probably Lena)</cite>
+          <cite>-Lena Park, a movie fanatic</cite>
         </blockquote>
       </section>
 
@@ -134,6 +137,7 @@ const LandingPage: React.FC = () => {
           Join CineNiche
         </a>
       </section>
+      <CookieAsk />
       <Footer />
     </div>
   );

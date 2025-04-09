@@ -23,8 +23,8 @@ function CookieAsk() {
         console.log('Cookies declined');
       }}
     >
-      We use cookies to enhance the user experience. By clicking "Accept", you
-      consent to our use of cookies.
+      This website uses cookies only for authentication purposes. No tracking or
+      analytics cookies are used.
     </CookieConsent>
   );
 }
