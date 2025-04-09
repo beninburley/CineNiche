@@ -70,6 +70,7 @@ namespace CineNiche.API.Controllers
         }
 
         [HttpPost("AddMovie")]
+        [Authorize(Roles = "Administrator")]
         public IActionResult AddMovie([FromBody] Movie newMovie)
         {
             if (newMovie == null)
@@ -81,6 +82,7 @@ namespace CineNiche.API.Controllers
         }
 
         [HttpPut("UpdateMovie/{show_id}")]
+        [Authorize(Roles = "Administrator")]
         public IActionResult UpdateMovie(string show_id, [FromBody] Movie updatedMovie)
         {
             var existingMovie = _movieContext.Movies.FirstOrDefault(m => m.show_id == show_id);
@@ -94,6 +96,7 @@ namespace CineNiche.API.Controllers
         }
 
         [HttpDelete("DeleteMovie/{show_id}")]
+        [Authorize(Roles = "Administrator")]
         public IActionResult DeleteMovie(string show_id)
         {
             var movie = _movieContext.Movies.FirstOrDefault(m => m.show_id == show_id);
