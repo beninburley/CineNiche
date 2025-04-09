@@ -39,7 +39,9 @@ const AdminMoviesPage = () => {
   }, [selectedCategories]);
 
   const handleDelete = async (show_id: string) => {
-    const confirmDelete = window.confirm('Are you sure you want to delete this movie?');
+    const confirmDelete = window.confirm(
+      'Are you sure you want to delete this movie?'
+    );
     if (!confirmDelete) return;
 
     try {
@@ -73,10 +75,7 @@ const AdminMoviesPage = () => {
         </div>
 
         {!showForm && (
-          <button
-            className='admin-button'
-            onClick={() => setShowForm(true)}
-          >
+          <button className='admin-button' onClick={() => setShowForm(true)}>
             Add Movie
           </button>
         )}
@@ -142,13 +141,13 @@ const AdminMoviesPage = () => {
                     <td>{m.categoriesString}</td>
                     <td>
                       <button
-                        className='btn btn-primary btn-sm w-100 mb-1'
+                        className='edit-button'
                         onClick={() => setEditingMovie(m)}
                       >
                         Edit
                       </button>
                       <button
-                        className='btn btn-danger btn-sm w-100'
+                        className='delete-button'
                         onClick={() => handleDelete(m.show_id!)}
                       >
                         Delete
