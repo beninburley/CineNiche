@@ -8,6 +8,7 @@ import Login from './Login/Login';
 import MovieDetailPage from './pages/MovieDetailPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Unauthorized from './pages/Unauthorized';
+import SearchPage from './SearchPage/SearchPage';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/movie/:id' element={<MovieDetailPage />} />
           <Route path='/privacy-policy' element={<PrivacyPolicy />} />
           <Route path='/unauthorized' element={<Unauthorized />} />
+          <Route path='/search' element={<SearchPage />} />
         </Routes>
       </Router>
     </>

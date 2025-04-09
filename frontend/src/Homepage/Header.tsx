@@ -1,11 +1,18 @@
 // src/components/Header.tsx
-import React, { useContext } from 'react';
-import './Homepage.css';
-import { UserContext } from '../components/AuthorizeView';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import SearchInput from '../components/SearchInput'; // Adjust the import path as necessary
+import './Homepage.css'; // Still linking your styles
 
 const Header: React.FC = () => {
-  const user = useContext(UserContext);
+  const [searchText, setSearchText] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!searchText.trim()) return;
+    navigate(`/search?q=${encodeURIComponent(searchText)}`);
+  };
 
   return (
     <header className='header'>
@@ -17,11 +24,10 @@ const Header: React.FC = () => {
         <nav className='nav'>
           <ul className='nav-list'>
             <li>
-              <a href='/home'>Home</a> {/* Main user dashboard */}
+              <a href='/home'>Home</a>
             </li>
             <li>
-              <a href='/home#explore'>Browse</a>{' '}
-              {/* Scroll to movie carousels or explore section */}
+              <a href='/search'>Browse</a>
             </li>
 
             {/* Admin-only Link */}
@@ -35,9 +41,13 @@ const Header: React.FC = () => {
           </ul>
         </nav>
 
-        <div className='search-bar'>
-          <input type='text' placeholder='Search movies...' />
-        </div>
+        <form onSubmit={handleSearchSubmit} className='search-bar'>
+          <SearchInput
+            value={searchText}
+            onChange={setSearchText}
+            placeholder='Search movies...'
+          />
+        </form>
       </div>
     </header>
   );
