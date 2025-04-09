@@ -20,9 +20,27 @@ const FilmJourneyCarousel: React.FC = () => {
     loadMovies();
   }, []);
 
-  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    e.currentTarget.onerror = null;
-    e.currentTarget.src = 'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Insidious.jpg';
+  const handleImageError = (
+    e: React.SyntheticEvent<HTMLImageElement, Event>
+  ) => {
+    e.currentTarget.onerror = null; // Prevent infinite loop
+
+    const fallbackImages = [
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Insidious.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/12%20ROUND%20GUN.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/17%20Again.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/6%20Balloons.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/6%20Underground.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/6%20Years.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/USS%20Indianapolis%20Men%20of%20Courage.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Main%20Meri%20Patni%20Aur%20Woh.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/DreamWorks%20Spooky%20Stories%20Volume%202.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/The%20Royal%20Bengal%20Tiger.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Caregiver.jpg',
+    ];
+
+    const randomIndex = Math.floor(Math.random() * fallbackImages.length);
+    e.currentTarget.src = fallbackImages[randomIndex];
   };
 
   return (

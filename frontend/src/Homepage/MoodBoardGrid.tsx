@@ -20,9 +20,22 @@ const MoodBoardGrid: React.FC = () => {
     loadMovies();
   }, []);
 
-  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    e.currentTarget.onerror = null; // Prevent infinite loop if fallback image also fails
-    e.currentTarget.src = 'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Insidious.jpg';
+  const handleImageError = (
+    e: React.SyntheticEvent<HTMLImageElement, Event>
+  ) => {
+    e.currentTarget.onerror = null; // Prevent infinite loop
+
+    const fallbackImages = [
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Insidious.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/12%20ROUND%20GUN.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/17%20Again.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/6%20Balloons.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/6%20Underground.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/6%20Years.jpg',
+    ];
+
+    const randomIndex = Math.floor(Math.random() * fallbackImages.length);
+    e.currentTarget.src = fallbackImages[randomIndex];
   };
 
   return (

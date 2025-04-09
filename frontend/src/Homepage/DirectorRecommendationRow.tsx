@@ -42,12 +42,37 @@ const DirectorRecommendationRow: React.FC = () => {
       </h2>
       <div className='recommendation-wrapper'>
         <div className='recommendation-row'>
-          {recommendedMovies.map((movie) => (
+        {recommendedMovies.map((movie) => (
             <div key={movie.show_id} className='recommendation-card'>
               <img
-                src={':) FIX THIS LATER SMH'} // Update this once your image URL logic is set
+                src={`https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/${movie.title}.jpg`}
                 alt={movie.title}
                 className='recommendation-image'
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  const fallbackImages = [
+                    'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Open%20Season%202.jpg',
+                    'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Insidious.jpg',
+                    'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/12%20ROUND%20GUN.jpg',
+                    'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/17%20Again.jpg',
+                    'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Go%20Live%20Your%20Way.jpg',
+                    'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Judy%20Moody%20and%20the%20Not%20Bummer%20Summer.jpg',
+                    'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/No%20Strings%20Attached.jpg', 
+                    'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Security.jpg' ,
+                    'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Seth%20Meyers%20Lobby%20Baby.jpg',
+                    'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/The%20Mayo%20Clinic.jpg',
+                    'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Limitless.jpg'
+
+
+
+
+                    
+                  ];
+                  const randomIndex = Math.floor(
+                    Math.random() * fallbackImages.length
+                  );
+                  e.currentTarget.src = fallbackImages[randomIndex];
+                }}
               />
               <p className='recommendation-title'>{movie.title}</p>
             </div>
