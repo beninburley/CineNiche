@@ -19,17 +19,19 @@ const LoginPage = () => {
       setError('Please fill in all fields.');
       return;
     }
-
-    const loginUrl = rememberme
-      ? `${import.meta.env.VITE_API_URL}/login?useCookies=true`
-      : `${import.meta.env.VITE_API_URL}/login?useSessionCookies=true`;
+    // IT SHOULD BE NOTED I CHANGED THE URL TO NOT INCLUDE THAT SESSION STUFF BECAUSE WELLS CONFIGURED IT WRONG
+    const loginUrl = `${import.meta.env.VITE_API_URL}/login`; // ✅ Clean base login endpoint
 
     try {
       const response = await fetch(loginUrl, {
         method: 'POST',
-        credentials: 'include',
+        credentials: 'include', // ✅ Required for cookie-based auth
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({
+          email,
+          password,
+          rememberMe: rememberme, // ✅ ✅ ✅ This must be in the body
+        }),
       });
 
       const contentLength = response.headers.get('content-length');
@@ -45,6 +47,7 @@ const LoginPage = () => {
       navigate('/home');
     } catch (err: any) {
       setError(err.message || 'Error logging in.');
+      console.error('Login failed:', err);
     }
   };
 
