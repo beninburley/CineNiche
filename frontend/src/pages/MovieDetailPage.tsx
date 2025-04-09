@@ -4,6 +4,8 @@ import { Movie } from '../types/Movie';
 import StarRating from '../components/StarRating';
 import AuthorizeView, { AuthorizedUser } from '../components/AuthorizeView';
 import Logout from '../components/Logout';
+import Header from '../Homepage/Header';
+import ContentRecommendationRow from '../Homepage/ContentRecommendation';
 
 const MovieDetailPage = () => {
   const { id } = useParams();
@@ -11,11 +13,9 @@ const MovieDetailPage = () => {
 
   useEffect(() => {
     const fetchMovie = async () => {
-      const res = await fetch(
-        `https://214cinenichebackend-g8a5h7bqe5auc5hw.westus3-01.azurewebsites.net/movie/${id}`, {
-          credentials: 'include',
-        }
-      );
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/movie/${id}`, {
+        credentials: 'include',
+      });
       const data = await res.json();
       setMovie(data);
     };
@@ -27,6 +27,7 @@ const MovieDetailPage = () => {
 
   return (
     <AuthorizeView>
+      <Header />
       <span>
         <Logout>
           Logout <AuthorizedUser value='email' />
@@ -41,6 +42,13 @@ const MovieDetailPage = () => {
         {/* ⭐ 5-star rating component */}
         <StarRating movieId={movie.show_id} />
       </div>
+      <section className='section user-recommendations'>
+        <h2 className='section-title'>Similar to {movie.title}</h2>
+        <ContentRecommendationRow
+          seedShowId={movie.show_id}
+          seedShowTitle={movie.title}
+        />
+      </section>
     </AuthorizeView>
   );
 };

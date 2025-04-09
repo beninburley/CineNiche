@@ -1,31 +1,45 @@
-// src/components/UndergroundPick.tsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Homepage.css';
-
-// Placeholder mock data
-const undergroundPick = {
-  title: 'Mirrors of Dust',
-  imageUrl: '/images/underground.jpg',
-  description:
-    'An unreleased short from 1982 that explores memory through decaying Super 8 footage. Haunting, beautiful, and almost lost to time.',
-  director: 'Sofia El-Mir',
-};
+import { fetchMoviesByIds } from '../api/MoviesAPI';
+import { Movie } from '../types/Movie';
+import { Link } from 'react-router-dom';
 
 const UndergroundPick: React.FC = () => {
+  const [movie, setMovie] = useState<Movie | null>(null);
+
+  useEffect(() => {
+    const loadUndergroundPick = async () => {
+      try {
+        const [fetchedMovie] = await fetchMoviesByIds(['s4706']);
+        setMovie(fetchedMovie);
+      } catch (error) {
+        console.error('Failed to fetch underground pick movie:', error);
+      }
+    };
+
+    loadUndergroundPick();
+  }, []);
+
+  if (!movie) {
+    return <p>Loading Underground Pick...</p>;
+  }
+
   return (
     <div className='underground-pick-card'>
       <img
-        src={undergroundPick.imageUrl}
-        alt={undergroundPick.title}
+        src={movie.posterUrl}
+        alt={movie.title}
         className='underground-image'
       />
       <div className='underground-info'>
-        <h3 className='underground-title'>{undergroundPick.title}</h3>
+        <h3 className='underground-title'>{movie.title}</h3>
         <p className='underground-director'>
-          Directed by {undergroundPick.director}
+          Directed by {movie.director || 'Unknown'}
         </p>
-        <p className='underground-description'>{undergroundPick.description}</p>
-        <button className='underground-button'>Watch the Pick</button>
+        <p className='underground-description'>{movie.description}</p>
+        <Link to={`/movie/${movie.show_id}`}>
+          <button className='underground-button'>Watch the Pick</button>
+        </Link>
       </div>
     </div>
   );

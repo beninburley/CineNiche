@@ -1,8 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 using System.Net;
 using System.Text;
+using static System.Net.WebRequestMethods;
+
+
 
 namespace CineNiche.API.Data
 {
@@ -22,22 +26,60 @@ namespace CineNiche.API.Data
         public string? description { get; set; }
 
 
+        private static readonly Random rand = new Random();
+
         [NotMapped]
+        public string PosterUrl
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(title))
+                {
+                    return $"https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/{WebUtility.UrlEncode(
+                        RemoveDiacritics(title)
+                            .Replace("?", "")
+                            .Replace(":", "")
+                            .Replace("'", "")
+                            .Replace(".", "")
+                            .Replace("&", "")
+                            .Replace("-", "")
+                            .Replace("!", "")
+                            .Replace("’", "")
+                    ).Replace("+", "%20")}.jpg";
+                }
 
-        //get the URL
-        public string? PosterUrl =>
-    !string.IsNullOrEmpty(title)
-        ? $"https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/{WebUtility.UrlEncode(
-            title
-                .Normalize(NormalizationForm.FormC) 
-                .Replace("?","")
-                .Replace(":", "")                        // Remove colon
-                .Replace("'", "")                        // Remove apostrophe
-                .Replace(".", "")          
-                .Replace("&","")
-          ).Replace("+", "%20")}.jpg"
-        : null;
+                string[] defaultPosters = new[]
+                {
+            "https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Insidious.jpg",
+            "https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/12%20ROUND%20GUN.jpg",
+            "https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/17%20Again.jpg",
+            "https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/6%20Balloons.jpg",
+            "https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/6%20Underground.jpg",
+            "https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/6%20Years.jpg"
+        };
 
+                int index = rand.Next(defaultPosters.Length);
+                return defaultPosters[index];
+            }
+        }
+
+
+
+        private static string RemoveDiacritics(string text)
+        {
+            var normalized = text.Normalize(NormalizationForm.FormD);
+            var sb = new StringBuilder();
+
+            foreach (var ch in normalized)
+            {
+                if (CharUnicodeInfo.GetUnicodeCategory(ch) != UnicodeCategory.NonSpacingMark)
+                {
+                    sb.Append(ch);
+                }
+            }
+
+            return sb.ToString().Normalize(NormalizationForm.FormC);
+        }
 
 
         public bool? Action { get; set; }
