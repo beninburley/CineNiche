@@ -43,7 +43,6 @@ const ContentRecommendationRow: React.FC<Props> = ({
 
   return (
     <>
-      <h2 className='section-title'>Because you liked {seedShowTitle}:</h2>
       <div className='recommendation-wrapper'>
         <div className='recommendation-row'>
           {recommendedMovies.map((movie) => (

@@ -5,6 +5,7 @@ import StarRating from '../components/StarRating';
 import AuthorizeView, { AuthorizedUser } from '../components/AuthorizeView';
 import Logout from '../components/Logout';
 import Header from '../Homepage/Header';
+import ContentRecommendationRow from '../Homepage/ContentRecommendation';
 
 const MovieDetailPage = () => {
   const { id } = useParams();
@@ -41,6 +42,13 @@ const MovieDetailPage = () => {
         {/* ⭐ 5-star rating component */}
         <StarRating movieId={movie.show_id} />
       </div>
+      <section className='section user-recommendations'>
+        <h2 className='section-title'>Similar to {movie.title}</h2>
+        <ContentRecommendationRow
+          seedShowId={movie.show_id}
+          seedShowTitle={movie.title}
+        />
+      </section>
     </AuthorizeView>
   );
 };
