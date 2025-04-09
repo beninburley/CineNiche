@@ -1,6 +1,7 @@
 // src/components/MoodBoardGrid.tsx
 import React from 'react';
 import './Homepage.css';
+import { Link } from 'react-router-dom';
 
 // Mock data for now
 const moodBoardMovies = [
@@ -34,17 +35,19 @@ const MoodBoardGrid: React.FC = () => {
   return (
     <div className='moodboard-grid'>
       {moodBoardMovies.map((movie) => (
-        <div key={movie.id} className='moodboard-card'>
-          <img
-            src={movie.imageUrl}
-            alt={movie.title}
-            className='moodboard-image'
-          />
-          <div className='moodboard-overlay'>
-            <h3 className='moodboard-title'>{movie.title}</h3>
-            <p className='moodboard-genre'>{movie.genre}</p>
+        <Link to={`/movie/${movie.id}`}>
+          <div key={movie.id} className='moodboard-card'>
+            <img
+              src={movie.imageUrl}
+              alt={movie.title}
+              className='moodboard-image'
+            />
+            <div className='moodboard-overlay'>
+              <h3 className='moodboard-title'>{movie.title}</h3>
+              <p className='moodboard-genre'>{movie.genre}</p>
+            </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

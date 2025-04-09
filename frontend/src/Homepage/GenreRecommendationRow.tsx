@@ -4,6 +4,7 @@ import { fetchGenreRecommendations } from '../api/RecommendAPI';
 import { fetchMoviesByIds } from '../api/MoviesAPI';
 import { GenreRec } from '../types/GenreRec';
 import { Movie } from '../types/Movie';
+import { Link } from 'react-router-dom';
 
 interface GenreBlock {
   genre: string;
@@ -60,14 +61,16 @@ const GenreRecommendationRow: React.FC = () => {
           <div className='recommendation-wrapper'>
             <div className='recommendation-row'>
               {block.movies.map((movie) => (
-                <div key={movie.show_id} className='recommendation-card'>
-                  <img
-                    src={':) FIX THIS LATER SMH'} // Add your actual image URL logic here
-                    alt={movie.title}
-                    className='recommendation-image'
-                  />
-                  <p className='recommendation-title'>{movie.title}</p>
-                </div>
+                <Link to={`/movie/${movie.show_id}`}>
+                  <div key={movie.show_id} className='recommendation-card'>
+                    <img
+                      src={':) FIX THIS LATER SMH'} // Add your actual image URL logic here
+                      alt={movie.title}
+                      className='recommendation-image'
+                    />
+                    <p className='recommendation-title'>{movie.title}</p>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>

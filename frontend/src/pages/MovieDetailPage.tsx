@@ -4,6 +4,7 @@ import { Movie } from '../types/Movie';
 import StarRating from '../components/StarRating';
 import AuthorizeView, { AuthorizedUser } from '../components/AuthorizeView';
 import Logout from '../components/Logout';
+import Header from '../Homepage/Header';
 
 const MovieDetailPage = () => {
   const { id } = useParams();
@@ -11,11 +12,9 @@ const MovieDetailPage = () => {
 
   useEffect(() => {
     const fetchMovie = async () => {
-      const res = await fetch(
-        `https://214cinenichebackend-g8a5h7bqe5auc5hw.westus3-01.azurewebsites.net/movie/${id}`, {
-          credentials: 'include',
-        }
-      );
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/movie/${id}`, {
+        credentials: 'include',
+      });
       const data = await res.json();
       setMovie(data);
     };
@@ -27,6 +26,7 @@ const MovieDetailPage = () => {
 
   return (
     <AuthorizeView>
+      <Header />
       <span>
         <Logout>
           Logout <AuthorizedUser value='email' />

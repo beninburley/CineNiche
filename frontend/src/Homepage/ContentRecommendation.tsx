@@ -4,6 +4,7 @@ import { fetchContentRecommendations } from '../api/RecommendAPI';
 import { fetchMoviesByIds } from '../api/MoviesAPI';
 import { ContentRec } from '../types/ContentRec';
 import { Movie } from '../types/Movie';
+import { Link } from 'react-router-dom';
 
 interface Props {
   seedShowId: string;
@@ -46,14 +47,16 @@ const ContentRecommendationRow: React.FC<Props> = ({
       <div className='recommendation-wrapper'>
         <div className='recommendation-row'>
           {recommendedMovies.map((movie) => (
-            <div key={movie.show_id} className='recommendation-card'>
-              <img
-                src={':) FIX THIS LATER SMH'}
-                alt={movie.title}
-                className='recommendation-image'
-              />
-              <p className='recommendation-title'>{movie.title}</p>
-            </div>
+            <Link to={`/movie/${movie.show_id}`}>
+              <div key={movie.show_id} className='recommendation-card'>
+                <img
+                  src={':) FIX THIS LATER SMH'}
+                  alt={movie.title}
+                  className='recommendation-image'
+                />
+                <p className='recommendation-title'>{movie.title}</p>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

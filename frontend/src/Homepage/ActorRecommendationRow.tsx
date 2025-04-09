@@ -4,6 +4,7 @@ import { fetchActorRecommendations } from '../api/RecommendAPI';
 import { fetchMoviesByIds } from '../api/MoviesAPI';
 import { ActorRec } from '../types/ActorRec';
 import { Movie } from '../types/Movie';
+import { Link } from 'react-router-dom';
 
 const ActorRecommendationRow: React.FC = () => {
   const [recommendedMovies, setRecommendedMovies] = useState<Movie[]>([]);
@@ -41,14 +42,16 @@ const ActorRecommendationRow: React.FC = () => {
       <div className='recommendation-wrapper'>
         <div className='recommendation-row'>
           {recommendedMovies.map((movie) => (
-            <div key={movie.show_id} className='recommendation-card'>
-              <img
-                src={':) FIX THIS LATER SMH'} // ← update this once images are ready
-                alt={movie.title}
-                className='recommendation-image'
-              />
-              <p className='recommendation-title'>{movie.title}</p>
-            </div>
+            <Link to={`/movie/${movie.show_id}`}>
+              <div key={movie.show_id} className='recommendation-card'>
+                <img
+                  src={':)'} // ← update with your actual image property
+                  alt={movie.title}
+                  className='recommendation-image'
+                />
+                <p className='recommendation-title'>{movie.title}</p>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

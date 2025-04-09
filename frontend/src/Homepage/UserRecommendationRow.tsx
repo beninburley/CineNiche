@@ -4,6 +4,7 @@ import './Homepage.css';
 import { Movie } from '../types/Movie';
 import { fetchCollabRecommendations } from '../api/RecommendAPI';
 import { fetchMoviesByIds } from '../api/MoviesAPI';
+import { Link } from 'react-router-dom';
 
 const UserRecommendationRow: React.FC = () => {
   const [recommendedMovies, setRecommendedMovies] = useState<Movie[]>([]);
@@ -33,15 +34,16 @@ const UserRecommendationRow: React.FC = () => {
     <div className='recommendation-wrapper'>
       <div className='recommendation-row'>
         {recommendedMovies.map((movie) => (
-          <div key={movie.show_id} className='recommendation-card'>
-            <img
-              src={`https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/${movie.title}.jpg`}
-            
-              alt={movie.title}
-              className='recommendation-image'
-            />
-            <p className='recommendation-title'>{movie.title}</p>
-          </div>
+          <Link to={`/movie/${movie.show_id}`}>
+            <div key={movie.show_id} className='recommendation-card'>
+              <img
+                src={`https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/${movie.title}.jpg`}
+                alt={movie.title}
+                className='recommendation-image'
+              />
+              <p className='recommendation-title'>{movie.title}</p>
+            </div>
+          </Link>
         ))}
       </div>
     </div>

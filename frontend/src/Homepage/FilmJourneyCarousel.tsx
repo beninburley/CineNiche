@@ -1,6 +1,7 @@
 // src/components/FilmJourneyCarousel.tsx
 import React from 'react';
 import './Homepage.css';
+import { Link } from 'react-router-dom';
 
 // Mock data
 const journeys = [
@@ -35,17 +36,19 @@ const FilmJourneyCarousel: React.FC = () => {
     <div className='carousel-wrapper'>
       <div className='carousel'>
         {journeys.map((journey) => (
-          <div key={journey.id} className='carousel-card'>
-            <img
-              src={journey.imageUrl}
-              alt={journey.title}
-              className='carousel-image'
-            />
-            <div className='carousel-info'>
-              <h3 className='carousel-title'>{journey.title}</h3>
-              <p className='carousel-description'>{journey.description}</p>
+          <Link to={`/movie/${journey.id}`}>
+            <div key={journey.id} className='carousel-card'>
+              <img
+                src={journey.imageUrl}
+                alt={journey.title}
+                className='carousel-image'
+              />
+              <div className='carousel-info'>
+                <h3 className='carousel-title'>{journey.title}</h3>
+                <p className='carousel-description'>{journey.description}</p>
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
