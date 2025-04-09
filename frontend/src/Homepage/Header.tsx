@@ -1,26 +1,39 @@
 // src/components/Header.tsx
-import React from 'react';
-import './Homepage.css'; // Link to your CSS file for this component
+import React, { useContext } from 'react';
+import './Homepage.css';
+import { UserContext } from '../components/AuthorizeView';
+import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
+  const user = useContext(UserContext);
+
   return (
     <header className='header'>
       <div className='header-container'>
         <div className='logo'>
-          <a href='/'>CineNiche</a>
+          <Link to='/'>CineNiche</Link>
         </div>
 
         <nav className='nav'>
           <ul className='nav-list'>
             <li>
-              <a href='/explore'>Explore</a>
+              <Link to='/explore'>Explore</Link>
             </li>
             <li>
-              <a href='/watchlist'>Watchlist</a>
+              <Link to='/watchlist'>Watchlist</Link>
             </li>
             <li>
-              <a href='/account'>Account</a>
+              <Link to='/account'>Account</Link>
             </li>
+
+            {/* Admin-only Link */}
+            {user && user.role === 'Administrator' && (
+              <li>
+                <Link to='/adminmovies' className='admin-button'>
+                  Admin Dashboard
+                </Link>
+              </li>
+            )}
           </ul>
         </nav>
 
