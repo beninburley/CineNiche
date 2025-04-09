@@ -35,7 +35,8 @@ const UserRecommendationRow: React.FC = () => {
         {recommendedMovies.map((movie) => (
           <div key={movie.show_id} className='recommendation-card'>
             <img
-              src={':) FIX THIS LATER SMH'}
+              src={`https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/${movie.title}.jpg`}
+            
               alt={movie.title}
               className='recommendation-image'
             />
