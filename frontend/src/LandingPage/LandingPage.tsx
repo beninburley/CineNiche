@@ -3,37 +3,8 @@ import React, { useEffect } from 'react';
 import './LandingPage.css';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
-
-//feratured movies
-const exampleMovies = [
-  {
-    title: '6 Balloons',
-    label: 'Award Winning Drama',
-    posterUrl: '/img/moviePosters/6-Balloons.jpg',
-  },
-  {
-    title: 'Captain Fantastic',
-    label: 'Indie Comedy-Drama',
-    posterUrl: '/img/moviePosters/Captain Fantastic.jpg',
-  },
-
-  {
-    title: 'Grass Is Greener',
-    label: 'Cult Classic Romantic Comedy',
-    posterUrl: '/img/moviePosters/Grass-Is-Greener.jpg',
-  },
-  {
-    title: 'How the Beatles Changed the World',
-    label: 'Musical Revolution Documentary',
-    posterUrl: '/img/moviePosters/How the Beatles Changed the World.jpg',
-  },
-
-  {
-    title: 'The Influence',
-    label: 'Horror Thriller',
-    posterUrl: '/img/moviePosters/The Influence.jpg',
-  },
-];
+import { Movie } from '../types/Movie';
+import { fetchSuggestedMovies } from '../api/MoviesAPI';
 
 // Custom hook for scroll-triggered animations
 const useScrollReveal = () => {
@@ -61,7 +32,21 @@ const useScrollReveal = () => {
 
 const LandingPage: React.FC = () => {
   useScrollReveal();
+  const [suggestedMovies, setSuggestedMovies] = React.useState<Movie[]>([]);
+  useEffect(() => {
+    loadSuggestedMovies();
+  }, []);
 
+  const loadSuggestedMovies = async () => {
+    try {
+      const data = await fetchSuggestedMovies(5);
+
+      setSuggestedMovies(data);
+    } catch (error) {
+      setSuggestedMovies([]);
+      console.error('Error fetching suggested movies:', error);
+    }
+  };
   return (
     <div className='landing-page'>
       <header className='landing-header'>
@@ -107,10 +92,10 @@ const LandingPage: React.FC = () => {
       <section className='film-examples-section reveal'>
         <h2>What You’ll Find on CineNiche</h2>
         <div className='film-grid'>
-          {exampleMovies.map((movie) => (
+          {(suggestedMovies || []).map((movie) => (
             <div className='film-card' key={movie.title}>
               <img src={movie.posterUrl} alt={movie.title} />
-              <span className='film-label'>{movie.label}</span>
+              <span className='film-label'>{movie.categoriesString}</span>
             </div>
           ))}
         </div>

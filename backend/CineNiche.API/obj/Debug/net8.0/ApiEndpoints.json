@@ -97,7 +97,7 @@
   },
   {
     "ContainingType": "Program\u002B\u003C\u003Ec",
-    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_6",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_7",
     "RelativePath": "logout",
     "HttpMethod": "POST",
     "IsController": false,
@@ -273,6 +273,22 @@
   },
   {
     "ContainingType": "CineNiche.API.Controllers.MovieController",
+    "Method": "GetMoviesByIds",
+    "RelativePath": "Movie/batch",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "showIds",
+        "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CineNiche.API.Controllers.MovieController",
     "Method": "DeleteMovie",
     "RelativePath": "Movie/DeleteMovie/{show_id}",
     "HttpMethod": "DELETE",
@@ -299,6 +315,22 @@
   },
   {
     "ContainingType": "CineNiche.API.Controllers.MovieController",
+    "Method": "GetSuggestedMovies",
+    "RelativePath": "Movie/SuggestedMovies",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "count",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CineNiche.API.Controllers.MovieController",
     "Method": "UpdateMovie",
     "RelativePath": "Movie/UpdateMovie/{show_id}",
     "HttpMethod": "PUT",
@@ -320,7 +352,7 @@
   },
   {
     "ContainingType": "Program\u002B\u003C\u003Ec",
-    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_7",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_8",
     "RelativePath": "pingauth",
     "HttpMethod": "GET",
     "IsController": false,
@@ -333,6 +365,86 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "CineNiche.API.Controllers.RecommendationController",
+    "Method": "GetRecActors",
+    "RelativePath": "Recommendation/actor/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CineNiche.API.Controllers.RecommendationController",
+    "Method": "GetCollab",
+    "RelativePath": "Recommendation/collab/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CineNiche.API.Controllers.RecommendationController",
+    "Method": "GetContent",
+    "RelativePath": "Recommendation/content/{showId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "showId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CineNiche.API.Controllers.RecommendationController",
+    "Method": "GetRecDirectors",
+    "RelativePath": "Recommendation/director/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CineNiche.API.Controllers.RecommendationController",
+    "Method": "GetRecGenre",
+    "RelativePath": "Recommendation/genre/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Microsoft.AspNetCore.Routing.IdentityApiEndpointRouteBuilderExtensions\u002B\u003C\u003Ec__DisplayClass1_0\u00601[[Microsoft.AspNetCore.Identity.IdentityUser, Microsoft.Extensions.Identity.Stores, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",

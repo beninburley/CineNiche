@@ -132,6 +132,24 @@ namespace CineNiche.API.Controllers
             );
         }
 
+
+        [HttpGet("SuggestedMovies")]
+        public IActionResult GetSuggestedMovies(int count = 5)
+        {
+            // Fetch all movies (or a reasonable subset) into memory before applying the random order
+            var moviesList = _movieContext.Movies.ToList();
+
+            // Apply the random order and take 4 movies in-memory
+            var randomMovies = moviesList
+                .OrderBy(r => Guid.NewGuid())
+                .Take(count)
+                .ToList();
+
+            return Ok(randomMovies);
+        }
+
+
+
         [HttpPost("batch")]
         public IActionResult GetMoviesByIds([FromBody] List<string> showIds)
         {
@@ -142,6 +160,6 @@ namespace CineNiche.API.Controllers
             return Ok(movies);
         }
 
-
+        
     }
 }
