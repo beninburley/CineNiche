@@ -132,7 +132,7 @@ const AdminMoviesPage = () => {
               </thead>
               <tbody>
                 {pagedMovies.map((m) => (
-                  <tr key={m.show_id}>
+                  <tr key={m.show_id || m.title}>
                     <td>{m.show_id}</td>
                     <td>{m.title}</td>
                     <td>{m.director}</td>
