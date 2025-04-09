@@ -1,12 +1,14 @@
 // src/components/Header.tsx
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import SearchInput from '../components/SearchInput'; // Adjust the import path as necessary
 import './Homepage.css'; // Still linking your styles
+import { UserContext } from '../components/AuthorizeView';
 
 const Header: React.FC = () => {
   const [searchText, setSearchText] = useState('');
   const navigate = useNavigate();
+  const user = useContext(UserContext);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
