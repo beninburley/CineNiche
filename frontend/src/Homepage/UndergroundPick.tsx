@@ -4,11 +4,12 @@ import './Homepage.css';
 
 // Placeholder mock data
 const undergroundPick = {
-  title: 'Mirrors of Dust',
-  imageUrl: '/images/underground.jpg',
+  title: 'Guernsey Literary and Potato Peel Pie Society',
+  imageUrl: '/public/img/undergound.jpg',
+
   description:
-    'An unreleased short from 1982 that explores memory through decaying Super 8 footage. Haunting, beautiful, and almost lost to time.',
-  director: 'Sofia El-Mir',
+    'In the aftermath of World War II, a writer forms an unexpected bond with the residents of Guernsey Island when she decides to write a book about their experiences during the war. Then she learns the secret they are afraid to reveal.',
+  director: 'Mike Newell',
 };
 
 const UndergroundPick: React.FC = () => {
