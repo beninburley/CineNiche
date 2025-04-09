@@ -91,7 +91,8 @@ builder.Services.AddCors(options =>
         policy.WithOrigins("http://localhost:3000", "https://mango-wave-0d9aec81e.6.azurestaticapps.net")
               .AllowCredentials()
               .AllowAnyHeader()
-              .AllowAnyMethod();
+              .AllowAnyMethod()
+              .WithExposedHeaders("Content-Length", "Set-Cookie");
     });
 });
 
@@ -109,9 +110,11 @@ if (app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseCors("AllowFrontend"); // ? now it's in the right spot
+
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowFrontend"); // ? now it's in the right spot
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -141,6 +144,7 @@ app.MapGet("/checkadmin", async (UserManager<IdentityUser> userManager, ClaimsPr
 }).RequireAuthorization();
 
 
+
 app.MapPost("/logout", async (HttpContext context, SignInManager<IdentityUser> signInManager) =>
 {
     await signInManager.SignOutAsync();
@@ -168,6 +172,7 @@ app.MapGet("/pingauth", (ClaimsPrincipal user) =>
     return Results.Json(new { email = email }); // Return as JSON
 }).RequireAuthorization();
 
+
 using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
@@ -188,6 +193,32 @@ using (var scope = app.Services.CreateScope())
         await userManager.AddToRoleAsync(adminUser, roleName);
     }
 }
+
+// app.MapPost("/login", async (
+//     SignInManager<IdentityUser> signInManager,
+//     UserManager<IdentityUser> userManager,
+//     HttpContext context,
+//     LoginRequest login
+// ) =>
+// {
+//     var user = await userManager.FindByEmailAsync(login.Email);
+//     if (user == null)
+//         return Results.BadRequest(new { message = "Invalid email or password." });
+
+//     if (await userManager.IsLockedOutAsync(user))
+//         return Results.BadRequest(new { message = "Too many failed login attempts. Please wait and try again." });
+
+//     var result = await signInManager.PasswordSignInAsync(user, login.Password, true, lockoutOnFailure: true);
+
+//     if (result.Succeeded)
+//         return Results.Ok();
+
+//     if (result.IsLockedOut)
+//         return Results.BadRequest(new { message = "Too many failed login attempts. Please wait and try again." });
+
+//     return Results.BadRequest(new { message = "Invalid email or password." });
+// });
+
 
 
 app.Run();
