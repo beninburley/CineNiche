@@ -1,17 +1,18 @@
 import React, { useState, useEffect, createContext } from 'react';
 import { Navigate } from 'react-router-dom';
 
-const UserContext = createContext<User | null>(null);
+export const UserContext = createContext<User | null>(null);
 
 interface User {
   email: string;
+  role: string;
 }
 
 function AuthorizeView(props: { children: React.ReactNode }) {
   const [authorized, setAuthorized] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true); // add a loading state
   //const navigate = useNavigate();
-  let emptyuser: User = { email: '' };
+  let emptyuser: User = { email: '', role: '' };
 
   const [user, setUser] = useState(emptyuser);
 
@@ -30,8 +31,8 @@ function AuthorizeView(props: { children: React.ReactNode }) {
 
         const data = await response.json();
 
-        if (data.email) {
-          setUser({ email: data.email });
+        if (data.email && data.role) {
+          setUser({ email: data.email, role: data.role });
           setAuthorized(true);
         } else {
           throw new Error('Invalid user session');
@@ -68,6 +69,16 @@ export function AuthorizedUser(props: { value: string }) {
   if (!user) return null; // Prevents errors if context is null
 
   return props.value === 'email' ? <>{user.email}</> : null;
+}
+
+export function AdminOnlyView({ children }: { children: React.ReactNode }) {
+  const user = React.useContext(UserContext);
+
+  if (!user) return null;
+  if (user.role !== 'Administrator')
+    return <Navigate to='/unauthorized' replace />;
+
+  return <>{children}</>;
 }
 
 export default AuthorizeView;

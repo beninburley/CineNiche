@@ -1,13 +1,17 @@
 // src/components/Header.tsx
-import React from 'react';
-import './Homepage.css'; // Link to your CSS file for this component
+import React, { useContext } from 'react';
+import './Homepage.css';
+import { UserContext } from '../components/AuthorizeView';
+import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
+  const user = useContext(UserContext);
+
   return (
     <header className='header'>
       <div className='header-container'>
         <div className='logo'>
-          <a href='/'>CineNiche</a>
+          <Link to='/'>CineNiche</Link>
         </div>
 
         <nav className='nav'>
@@ -19,9 +23,15 @@ const Header: React.FC = () => {
               <a href='/home#explore'>Browse</a>{' '}
               {/* Scroll to movie carousels or explore section */}
             </li>
-            <li>
-              <a href='/adminmovies'>Admin</a> {/* Admin movie manager */}
-            </li>
+
+            {/* Admin-only Link */}
+            {user && user.role === 'Administrator' && (
+              <li>
+                <Link to='/adminmovies' className='admin-button'>
+                  Admin Dashboard
+                </Link>
+              </li>
+            )}
           </ul>
         </nav>
 
