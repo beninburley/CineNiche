@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "D:\\CineNiche\\backend\\CineNiche.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E72B5D24-5A00-4B79-8883-07307998EE14}|CineNiche.API.csproj|d:\\cineniche\\backend\\cineniche.api\\controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E72B5D24-5A00-4B79-8883-07307998EE14}|CineNiche.API.csproj|solutionrelative:controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E72B5D24-5A00-4B79-8883-07307998EE14}|CineNiche.API.csproj|d:\\cineniche\\backend\\cineniche.api\\data\\moviedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E72B5D24-5A00-4B79-8883-07307998EE14}|CineNiche.API.csproj|solutionrelative:data\\moviedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:1:0:{E72B5D24-5A00-4B79-8883-07307998EE14}|CineNiche.API.csproj|d:\\cineniche\\backend\\cineniche.api\\controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:1:0:{E72B5D24-5A00-4B79-8883-07307998EE14}|CineNiche.API.csproj|solutionrelative:controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E72B5D24-5A00-4B79-8883-07307998EE14}|CineNiche.API.csproj|d:\\cineniche\\backend\\cineniche.api\\data\\showidsequence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -17,6 +13,18 @@
     {
       "AbsoluteMoniker": "D:0:0:{E72B5D24-5A00-4B79-8883-07307998EE14}|CineNiche.API.csproj|d:\\cineniche\\backend\\cineniche.api\\cineniche.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{E72B5D24-5A00-4B79-8883-07307998EE14}|CineNiche.API.csproj|solutionrelative:cineniche.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:1:0:{E72B5D24-5A00-4B79-8883-07307998EE14}|CineNiche.API.csproj|d:\\cineniche\\backend\\cineniche.api\\data\\moviedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:1:0:{E72B5D24-5A00-4B79-8883-07307998EE14}|CineNiche.API.csproj|solutionrelative:data\\moviedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:2:0:{E72B5D24-5A00-4B79-8883-07307998EE14}|CineNiche.API.csproj|d:\\cineniche\\backend\\cineniche.api\\controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:2:0:{E72B5D24-5A00-4B79-8883-07307998EE14}|CineNiche.API.csproj|solutionrelative:controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:2:0:{E72B5D24-5A00-4B79-8883-07307998EE14}|CineNiche.API.csproj|d:\\cineniche\\backend\\cineniche.api\\data\\moviedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:2:0:{E72B5D24-5A00-4B79-8883-07307998EE14}|CineNiche.API.csproj|solutionrelative:data\\moviedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -59,7 +67,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "MovieDbContext.cs",
               "DocumentMoniker": "D:\\CineNiche\\backend\\CineNiche.API\\Data\\MovieDbContext.cs",
               "RelativeDocumentMoniker": "Data\\MovieDbContext.cs",
@@ -71,24 +79,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "MovieController.cs",
-              "DocumentMoniker": "C:\\Users\\daynes13\\OneDrive - Brigham Young University\\Desktop\\Intex\\CineNiche\\backend\\CineNiche.API\\Controllers\\MovieController.cs",
+              "DocumentMoniker": "D:\\CineNiche\\backend\\CineNiche.API\\Controllers\\MovieController.cs",
               "RelativeDocumentMoniker": "Controllers\\MovieController.cs",
-              "ToolTip": "C:\\Users\\daynes13\\OneDrive - Brigham Young University\\Desktop\\Intex\\CineNiche\\backend\\CineNiche.API\\Controllers\\MovieController.cs",
+              "ToolTip": "D:\\CineNiche\\backend\\CineNiche.API\\Controllers\\MovieController.cs",
               "RelativeToolTip": "Controllers\\MovieController.cs",
               "ViewState": "AgIAAIcAAAAAAAAAAAAwwJUAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T16:20:34.674Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T16:20:34.674Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "MovieDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\daynes13\\OneDrive - Brigham Young University\\Desktop\\Intex\\CineNiche\\backend\\CineNiche.API\\Data\\MovieDbContext.cs",
+              "DocumentMoniker": "D:\\CineNiche\\backend\\CineNiche.API\\Data\\MovieDbContext.cs",
               "RelativeDocumentMoniker": "Data\\MovieDbContext.cs",
-              "ToolTip": "C:\\Users\\daynes13\\OneDrive - Brigham Young University\\Desktop\\Intex\\CineNiche\\backend\\CineNiche.API\\Data\\MovieDbContext.cs",
+              "ToolTip": "D:\\CineNiche\\backend\\CineNiche.API\\Data\\MovieDbContext.cs",
               "RelativeToolTip": "Data\\MovieDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -96,7 +103,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "ShowIdSequence.cs",
               "DocumentMoniker": "D:\\CineNiche\\backend\\CineNiche.API\\Data\\ShowIdSequence.cs",
               "RelativeDocumentMoniker": "Data\\ShowIdSequence.cs",
@@ -108,7 +115,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "CineNiche.API.csproj",
               "DocumentMoniker": "D:\\CineNiche\\backend\\CineNiche.API\\CineNiche.API.csproj",
               "RelativeDocumentMoniker": "CineNiche.API.csproj",

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace CineNiche.API.Controllers
 {
@@ -178,6 +179,29 @@ namespace CineNiche.API.Controllers
             return Ok(movies);
         }
 
-        
+        [HttpGet("GetRecommenderId")]
+        public async Task<IActionResult> GetRecommenderUserId()
+        {
+            var email = User.FindFirstValue(ClaimTypes.Email); // Get logged-in user's email
+
+            if (email == null)
+            {
+                return Unauthorized("User email not found.");
+            }
+
+            // Try to find the matching user in your movie database by email
+            var user = await _movieContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+
+            if (user == null)
+            {
+                return NotFound("No matching movie user found for this email.");
+            }
+
+            return Ok(new { recommenderId = user.user_id });
+        }
+
+
+
+
     }
 }
