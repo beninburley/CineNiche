@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Net;
+using System.Text;
 
 namespace CineNiche.API.Data
 {
@@ -9,6 +11,7 @@ namespace CineNiche.API.Data
         [Key]
         public string? show_id { get; set; }
         public string? type { get; set; }
+        private string? _title;
         public string? title { get; set; }
         public string? director { get; set; }
         public string? cast { get; set; }
@@ -17,6 +20,25 @@ namespace CineNiche.API.Data
         public string? rating { get; set; }
         public string? duration { get; set; }
         public string? description { get; set; }
+
+
+        [NotMapped]
+
+        //get the URL
+        public string? PosterUrl =>
+    !string.IsNullOrEmpty(title)
+        ? $"https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/{WebUtility.UrlEncode(
+            title
+                .Normalize(NormalizationForm.FormC) 
+                .Replace("?","")
+                .Replace(":", "")                        // Remove colon
+                .Replace("'", "")                        // Remove apostrophe
+                .Replace(".", "")          
+                .Replace("&","")
+          ).Replace("+", "%20")}.jpg"
+        : null;
+
+
 
         public bool? Action { get; set; }
         public bool? Adventure { get; set; }
