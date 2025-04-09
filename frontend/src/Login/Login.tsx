@@ -19,8 +19,10 @@ const LoginPage = () => {
       setError('Please fill in all fields.');
       return;
     }
-    // IT SHOULD BE NOTED I CHANGED THE URL TO NOT INCLUDE THAT SESSION STUFF BECAUSE WELLS CONFIGURED IT WRONG
-    const loginUrl = `${import.meta.env.VITE_API_URL}/login`; // ✅ Clean base login endpoint
+
+    const loginUrl = rememberme
+      ? `${import.meta.env.VITE_API_URL}/login?useCookies=true`
+      : `${import.meta.env.VITE_API_URL}/login?useSessionCookies=true`; // ✅ Clean base login endpoint
 
     try {
       const response = await fetch(loginUrl, {

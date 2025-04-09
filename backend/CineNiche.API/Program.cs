@@ -47,6 +47,9 @@ builder.Services.AddIdentityCore<IdentityUser>(options =>
     .AddSignInManager()
     .AddDefaultTokenProviders();
 
+// builder.Services.AddAuthentication(IdentityConstants.ApplicationScheme)
+//     .AddCookie(IdentityConstants.ApplicationScheme);
+
 builder.Services.AddIdentityApiEndpoints<IdentityUser>(); // This stays to expose endpoints
  //This needs to be uncommented for deployment
 
@@ -58,14 +61,14 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 builder.Services.AddScoped<IUserClaimsPrincipalFactory<IdentityUser>, CustomUserClaimsPrincipalFactory>();
 
-// builder.Services.ConfigureApplicationCookie(options =>
-// {
-//     options.Cookie.HttpOnly = true;
-//     options.Cookie.SameSite = SameSiteMode.None; // change after adding https for production, change to strict i think
-//     options.Cookie.Name = ".AspNetCore.Identity.Application";
-//     options.LoginPath = "/login";
-//     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-// });
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.HttpOnly = true;
+    options.Cookie.SameSite = SameSiteMode.None; // change after adding https for production, change to strict i think
+    options.Cookie.Name = ".AspNetCore.Identity.Application";
+    options.LoginPath = "/login";
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+});
 
 builder.Services.AddCors(options =>
 {
@@ -99,7 +102,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapIdentityApi<IdentityUser>();
+//Added MapGroup ???
+app.MapGroup("/").MapIdentityApi<IdentityUser>();
 
 app.MapPost("/logout", async (HttpContext context, SignInManager<IdentityUser> signInManager) =>
 {
