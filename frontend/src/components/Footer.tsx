@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
+import './Footer.css'; // Link to your CSS file for this component
 
 function Footer() {
   return (
     <footer className='landing-footer'>
       <p>
         &copy; 2025 CineNiche •{' '}
-        <a href='/Privacy.html' className='custom-signup'>
+        <Link to='/privacy-policy' className='footer-link'>
           Privacy Policy
-        </a>
+        </Link>
       </p>
     </footer>
   );

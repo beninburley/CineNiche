@@ -6,6 +6,7 @@ import LandingPage from './LandingPage/LandingPage';
 import SignUp from './SignUp/SignUp';
 import Login from './Login/Login';
 import MovieDetailPage from './pages/MovieDetailPage';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/' element={<Homepage />} />
           <Route path='/movie/:id' element={<MovieDetailPage />} />
+          <Route path='/privacy-policy' element={<PrivacyPolicy />} />
         </Routes>
       </Router>
     </>

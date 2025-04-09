@@ -7,19 +7,20 @@ const Header: React.FC = () => {
     <header className='header'>
       <div className='header-container'>
         <div className='logo'>
-          <a href='/'>CineNiche</a>
+          <a href='/home'>CineNiche</a>
         </div>
 
         <nav className='nav'>
           <ul className='nav-list'>
             <li>
-              <a href='/explore'>Explore</a>
+              <a href='/home'>Home</a> {/* Main user dashboard */}
             </li>
             <li>
-              <a href='/watchlist'>Watchlist</a>
+              <a href='/home#explore'>Browse</a>{' '}
+              {/* Scroll to movie carousels or explore section */}
             </li>
             <li>
-              <a href='/account'>Account</a>
+              <a href='/adminmovies'>Admin</a> {/* Admin movie manager */}
             </li>
           </ul>
         </nav>
