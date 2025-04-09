@@ -177,7 +177,6 @@ namespace CineNiche.API.Controllers
 
             return Ok(movies);
         }
-
-        
+      
     }
 }
