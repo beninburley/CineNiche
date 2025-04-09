@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { Movie } from '../types/Movie';
 import { fetchSuggestedMovies } from '../api/MoviesAPI';
+import CookieAsk from './CookieAsk';
 
 // Custom hook for scroll-triggered animations
 const useScrollReveal = () => {
