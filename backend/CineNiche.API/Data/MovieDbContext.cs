@@ -9,10 +9,13 @@ namespace CineNiche.API.Data
         }
 
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<ShowIdSequence> ShowIdSequence { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Movie>().ToTable("movies_titles");
+            modelBuilder.Entity<ShowIdSequence>().ToTable("ShowIdSequence"); 
         }
     }
 }
