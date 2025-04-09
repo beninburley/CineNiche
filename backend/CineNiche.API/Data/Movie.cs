@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 using System.Net;
 using System.Text;
+
+
 
 namespace CineNiche.API.Data
 {
@@ -21,23 +24,38 @@ namespace CineNiche.API.Data
         public string? duration { get; set; }
         public string? description { get; set; }
 
-
+       
         [NotMapped]
-
-        //get the URL
-        public string? PosterUrl =>
+        public string PosterUrl =>
     !string.IsNullOrEmpty(title)
         ? $"https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/{WebUtility.UrlEncode(
-            title
-                .Normalize(NormalizationForm.FormC) 
-                .Replace("?","")
-                .Replace(":", "")                        // Remove colon
-                .Replace("'", "")                        // Remove apostrophe
-                .Replace(".", "")          
-                .Replace("&","")
+            RemoveDiacritics(title)
+                .Replace("?", "")
+                .Replace(":", "")
+                .Replace("'", "")
+                .Replace(".", "")
+                .Replace("&", "")
+                .Replace("-", "")
+                .Replace("!", "")
+                .Replace("’", "")
           ).Replace("+", "%20")}.jpg"
-        : null;
+        : "https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Insidious.jpg";
 
+        private static string RemoveDiacritics(string text)
+        {
+            var normalized = text.Normalize(NormalizationForm.FormD);
+            var sb = new StringBuilder();
+
+            foreach (var ch in normalized)
+            {
+                if (CharUnicodeInfo.GetUnicodeCategory(ch) != UnicodeCategory.NonSpacingMark)
+                {
+                    sb.Append(ch);
+                }
+            }
+
+            return sb.ToString().Normalize(NormalizationForm.FormC);
+        }
 
 
         public bool? Action { get; set; }
