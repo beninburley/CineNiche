@@ -17,7 +17,7 @@ const ContentRecommendationRow: React.FC<Props> = ({
 }) => {
   const [recommendedMovies, setRecommendedMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(true);
-
+  console.log(seedShowTitle); //Not a solid fix but for some reason it needs done
   useEffect(() => {
     const loadRecommendations = async () => {
       try {
@@ -49,7 +49,7 @@ const ContentRecommendationRow: React.FC<Props> = ({
             <Link to={`/movie/${movie.show_id}`}>
               <div key={movie.show_id} className='recommendation-card'>
                 <img
-                  src={':) FIX THIS LATER SMH'}
+                  src={movie.posterUrl}
                   alt={movie.title}
                   className='recommendation-image'
                 />
