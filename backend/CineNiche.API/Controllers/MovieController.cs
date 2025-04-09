@@ -76,10 +76,25 @@ namespace CineNiche.API.Controllers
             if (newMovie == null)
                 return BadRequest("Movie data is required.");
 
+            // Get the current sequence row (should only be one row in the table)
+            var sequence = _movieContext.ShowIdSequence.FirstOrDefault();
+            if (sequence == null)
+            {
+                return StatusCode(500, "Show ID sequence is not initialized.");
+            }
+
+            // Increment the last ID and generate the new show_id
+            sequence.LastId += 1;
+            newMovie.show_id = $"s{sequence.LastId}";
+
+            // Save movie and update the sequence
             _movieContext.Movies.Add(newMovie);
+            _movieContext.ShowIdSequence.Update(sequence);
             _movieContext.SaveChanges();
+
             return Ok(newMovie);
         }
+
 
         [HttpPut("UpdateMovie/{show_id}")]
         [Authorize(Roles = "Administrator")]
