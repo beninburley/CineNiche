@@ -8,7 +8,10 @@ import MovieFilter from '../components/MovieFilter';
 import './AdminMoviesPage.css';
 import Footer from '../components/Footer';
 import SearchInput from '../components/SearchInput';
-import AuthorizeView, { AuthorizedUser } from '../components/AuthorizeView';
+import AuthorizeView, {
+  AdminOnlyView,
+  AuthorizedUser,
+} from '../components/AuthorizeView';
 import Logout from '../components/Logout';
 
 const AdminMoviesPage = () => {
@@ -66,117 +69,119 @@ const AdminMoviesPage = () => {
 
   return (
     <AuthorizeView>
-      <div className='admin-page'>
-        <div className='admin-header'>
-          <h1>Admin - Movies</h1>
-          <Logout>
-            Logout <AuthorizedUser value='email' />
-          </Logout>
-        </div>
+      <AdminOnlyView>
+        <div className='admin-page'>
+          <div className='admin-header'>
+            <h1>Admin - Movies</h1>
+            <Logout>
+              Logout <AuthorizedUser value='email' />
+            </Logout>
+          </div>
 
-        {!showForm && (
-          <button className='admin-button' onClick={() => setShowForm(true)}>
-            Add Movie
-          </button>
-        )}
-
-        {showForm && (
-          <NewMovieForm
-            onSuccess={() => {
-              setShowForm(false);
-              fetchMovies(pageSize, pageNum, []).then((data) =>
-                setAllMovies(data.movies)
-              );
-            }}
-            onCancel={() => setShowForm(false)}
-          />
-        )}
-
-        <SearchInput
-          value={searchQuery}
-          onChange={setSearchQuery}
-          placeholder='Search by title...'
-        />
-
-        {editingMovie && (
-          <EditMovieForm
-            movie={editingMovie}
-            onSuccess={() => {
-              setEditingMovie(null);
-              fetchMovies(pageSize, pageNum, []).then((data) =>
-                setAllMovies(data.movies)
-              );
-            }}
-            onCancel={() => setEditingMovie(null)}
-          />
-        )}
-
-        <MovieFilter
-          selectedCategories={selectedCategories}
-          setSelectedCategories={setSelectedCategories}
-        />
-
-        <div className='table-wrapper'>
-          {pagedMovies.length > 0 ? (
-            <table className='movie-table'>
-              <thead className='table-dark'>
-                <tr>
-                  <th>Show ID</th>
-                  <th>Title</th>
-                  <th>Director</th>
-                  <th>Cast</th>
-                  <th>Release Year</th>
-                  <th>Genres</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {pagedMovies.map((m) => (
-                  <tr key={m.show_id || m.title}>
-                    <td>{m.show_id}</td>
-                    <td>{m.title}</td>
-                    <td>{m.director}</td>
-                    <td>{m.cast}</td>
-                    <td>{m.release_year}</td>
-                    <td>{m.categoriesString}</td>
-                    <td>
-                      <button
-                        className='edit-button'
-                        onClick={() => setEditingMovie(m)}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        className='delete-button'
-                        onClick={() => handleDelete(m.show_id!)}
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          ) : (
-            <div className='no-results'>
-              <p>No movies found.</p>
-            </div>
+          {!showForm && (
+            <button className='admin-button' onClick={() => setShowForm(true)}>
+              Add Movie
+            </button>
           )}
 
-          <Pagination
-            currentPage={pageNum}
-            totalPages={Math.ceil(filteredMovies.length / pageSize)}
-            pageSize={pageSize}
-            onPageChange={setPageNum}
-            onPageSizeChange={(newSize) => {
-              setPageSize(newSize);
-              setPageNum(1);
-            }}
-          />
-        </div>
+          {showForm && (
+            <NewMovieForm
+              onSuccess={() => {
+                setShowForm(false);
+                fetchMovies(pageSize, pageNum, []).then((data) =>
+                  setAllMovies(data.movies)
+                );
+              }}
+              onCancel={() => setShowForm(false)}
+            />
+          )}
 
-        <Footer />
-      </div>
+          <SearchInput
+            value={searchQuery}
+            onChange={setSearchQuery}
+            placeholder='Search by title...'
+          />
+
+          {editingMovie && (
+            <EditMovieForm
+              movie={editingMovie}
+              onSuccess={() => {
+                setEditingMovie(null);
+                fetchMovies(pageSize, pageNum, []).then((data) =>
+                  setAllMovies(data.movies)
+                );
+              }}
+              onCancel={() => setEditingMovie(null)}
+            />
+          )}
+
+          <MovieFilter
+            selectedCategories={selectedCategories}
+            setSelectedCategories={setSelectedCategories}
+          />
+
+          <div className='table-wrapper'>
+            {pagedMovies.length > 0 ? (
+              <table className='movie-table'>
+                <thead className='table-dark'>
+                  <tr>
+                    <th>Show ID</th>
+                    <th>Title</th>
+                    <th>Director</th>
+                    <th>Cast</th>
+                    <th>Release Year</th>
+                    <th>Genres</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pagedMovies.map((m) => (
+                    <tr key={m.show_id || m.title}>
+                      <td>{m.show_id}</td>
+                      <td>{m.title}</td>
+                      <td>{m.director}</td>
+                      <td>{m.cast}</td>
+                      <td>{m.release_year}</td>
+                      <td>{m.categoriesString}</td>
+                      <td>
+                        <button
+                          className='edit-button'
+                          onClick={() => setEditingMovie(m)}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          className='delete-button'
+                          onClick={() => handleDelete(m.show_id!)}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <div className='no-results'>
+                <p>No movies found.</p>
+              </div>
+            )}
+
+            <Pagination
+              currentPage={pageNum}
+              totalPages={Math.ceil(filteredMovies.length / pageSize)}
+              pageSize={pageSize}
+              onPageChange={setPageNum}
+              onPageSizeChange={(newSize) => {
+                setPageSize(newSize);
+                setPageNum(1);
+              }}
+            />
+          </div>
+
+          <Footer />
+        </div>
+      </AdminOnlyView>
     </AuthorizeView>
   );
 };

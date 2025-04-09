@@ -6,8 +6,7 @@ import LandingPage from './LandingPage/LandingPage';
 import SignUp from './SignUp/SignUp';
 import Login from './Login/Login';
 import MovieDetailPage from './pages/MovieDetailPage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
+import Unauthorized from './pages/Unauthorized';
 
 function App() {
   return (
@@ -21,6 +20,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/' element={<Homepage />} />
           <Route path='/movie/:id' element={<MovieDetailPage />} />
+          <Route path='/unauthorized' element={<Unauthorized />} />
         </Routes>
       </Router>
     </>
