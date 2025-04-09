@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Movie } from '../types/Movie';
 import { updateMovie } from '../api/MoviesAPI';
 
@@ -52,25 +52,25 @@ const EditMovieForm = ({ movie, onSuccess, onCancel }: EditMovieFormProps) => {
     setFormData({ ...formData, [name]: parsedValue });
   };
 
-  const handleGenreChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedGenres = Array.from(
-      e.target.selectedOptions,
-      (option) => option.value
-    );
+  // const handleGenreChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   const selectedGenres = Array.from(
+  //     e.target.selectedOptions,
+  //     (option) => option.value
+  //   );
 
-    const updatedFlags = genreOptions.reduce((acc, genre) => {
-      const propName = camelize(genre);
-      acc[propName] = selectedGenres.includes(genre);
-      return acc;
-    }, {} as any);
+  //   const updatedFlags = genreOptions.reduce((acc, genre) => {
+  //     const propName = camelize(genre);
+  //     acc[propName] = selectedGenres.includes(genre);
+  //     return acc;
+  //   }, {} as any);
 
-    setFormData({
-      ...formData,
-      ...updatedFlags,
-      categories: selectedGenres,
-      categoriesString: selectedGenres.join(', '),
-    });
-  };
+  //   setFormData({
+  //     ...formData,
+  //     ...updatedFlags,
+  //     categories: selectedGenres,
+  //     categoriesString: selectedGenres.join(', '),
+  //   });
+  // };
 
   const camelize = (text: string): string => {
     return text
