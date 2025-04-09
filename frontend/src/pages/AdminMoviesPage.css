@@ -46,12 +46,12 @@
 
 .delete-button {
   background-color: #1e1e1e;
-  color: #771515;
+  color: #991b1b;
   border: none;
   padding: 0.4rem 0.8rem;
   border-radius: 6px;
   width: 100%;
-  border: 1px solid #771515;
+  border: 1px solid #991b1b;
 }
 
 .movie-table {
@@ -291,4 +291,14 @@
     align-items: flex-start;
     gap: 1rem;
   }
+}
+
+.logo-link {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.logo-link:hover {
+  color: #e6b800;
 }

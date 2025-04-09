@@ -10,6 +10,7 @@ import Footer from '../components/Footer';
 import SearchInput from '../components/SearchInput';
 import AuthorizeView, { AuthorizedUser } from '../components/AuthorizeView';
 import Logout from '../components/Logout';
+import { Link } from 'react-router-dom';
 
 const AdminMoviesPage = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -68,7 +69,11 @@ const AdminMoviesPage = () => {
     <AuthorizeView>
       <div className='admin-page'>
         <div className='admin-header'>
-          <h1>Admin - Movies</h1>
+          <h1>
+            <Link to='/home' className='logo-link'>
+              CineNiche
+            </Link>
+          </h1>
           <Logout>
             Logout <AuthorizedUser value='email' />
           </Logout>
