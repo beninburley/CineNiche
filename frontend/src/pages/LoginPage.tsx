@@ -37,16 +37,18 @@ function LoginPage() {
       return;
     }
 
-    const loginUrl = rememberme
-      ? `${import.meta.env.VITE_API_URL}/login?useCookies=true`
-      : `${import.meta.env.VITE_API_URL}/login?useSessionCookies=true`;
+    // const loginUrl = rememberme
+    //   ? `${import.meta.env.VITE_API_URL}/login?useCookies=true`
+    //   : `${import.meta.env.VITE_API_URL}/login?useSessionCookies=true`;
+
+    const loginUrl = `${import.meta.env.VITE_API_URL}/auth/login`;
 
     try {
       const response = await fetch(loginUrl, {
         method: 'POST',
         credentials: 'include', // ✅ Ensures cookies are sent & received
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password, rememberMe: rememberme }),
       });
 
       // Ensure we only parse JSON if there is content
