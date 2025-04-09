@@ -437,13 +437,15 @@
   text-shadow: 0 0 8px #ffcc00;
 }
 .authorized-banner {
-  background-color: #1e1e1e;
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  z-index: 2000;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: #1c1c1c;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 3rem;
+  padding-top: 20px;
 }
 
 .page-wrapper {
