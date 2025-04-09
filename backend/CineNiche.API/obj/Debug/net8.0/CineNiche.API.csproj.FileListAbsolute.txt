@@ -299,12 +299,6 @@ C:\Users\daynes13\OneDrive - Brigham Young University\Desktop\Intex\CineNiche\ba
 C:\Users\daynes13\OneDrive - Brigham Young University\Desktop\Intex\CineNiche\backend\CineNiche.API\obj\Debug\net8.0\CineNiche.API.genruntimeconfig.cache
 C:\Users\daynes13\OneDrive - Brigham Young University\Desktop\Intex\CineNiche\backend\CineNiche.API\obj\Debug\net8.0\ref\CineNiche.API.dll
 <<<<<<< HEAD
-C:\Users\daynes13\OneDrive - Brigham Young University\Desktop\Intex\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\publish\web.config
-C:\Users\daynes13\OneDrive - Brigham Young University\Desktop\Intex\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\publish\appsettings.Development.json
-C:\Users\daynes13\OneDrive - Brigham Young University\Desktop\Intex\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\publish\appsettings.json
-C:\Users\daynes13\OneDrive - Brigham Young University\Desktop\Intex\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\publish\CineNiche.API.deps.json
-C:\Users\daynes13\OneDrive - Brigham Young University\Desktop\Intex\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\publish\CineNiche.API.runtimeconfig.json
-C:\Users\daynes13\OneDrive - Brigham Young University\Desktop\Intex\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\publish\CineNiche.API.staticwebassets.endpoints.json
 =======
 C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\appsettings.json
@@ -717,6 +711,15 @@ C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\bin\Debug\net8
 C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 >>>>>>> origin/joshua
+<<<<<<< HEAD
+C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\Identity.sqlite
+C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\publish\web.config
+C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\publish\appsettings.Development.json
+C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\publish\appsettings.json
+C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\publish\CineNiche.API.deps.json
+C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\publish\CineNiche.API.runtimeconfig.json
+C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\publish\CineNiche.API.staticwebassets.endpoints.json
+=======
 D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\Identity.sqlite
 D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\Humanizer.dll
 D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
@@ -909,3 +912,5 @@ D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\runtimes\win\lib\net7.0\Micr
 D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\Users\daynes13\OneDrive - Brigham Young University\Desktop\Intex\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\Identity.sqlite
+>>>>>>> jefferson

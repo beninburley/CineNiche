@@ -1,4 +1,3 @@
-// src/pages/LandingPage.tsx
 import React, { useEffect } from 'react';
 import './LandingPage.css';
 import { Link } from 'react-router-dom';
@@ -34,6 +33,7 @@ const useScrollReveal = () => {
 const LandingPage: React.FC = () => {
   useScrollReveal();
   const [suggestedMovies, setSuggestedMovies] = React.useState<Movie[]>([]);
+
   useEffect(() => {
     loadSuggestedMovies();
   }, []);
@@ -41,13 +41,31 @@ const LandingPage: React.FC = () => {
   const loadSuggestedMovies = async () => {
     try {
       const data = await fetchSuggestedMovies(5);
-
       setSuggestedMovies(data);
     } catch (error) {
       setSuggestedMovies([]);
       console.error('Error fetching suggested movies:', error);
     }
   };
+
+  // ✅ Fallback image handler
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    e.currentTarget.onerror = null; // Prevent infinite loop
+  
+    const fallbackImages = [
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Insidious.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/12%20ROUND%20GUN.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/17%20Again.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/6%20Balloons.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/6%20Underground.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/6%20Years.jpg'
+    ];
+  
+    const randomIndex = Math.floor(Math.random() * fallbackImages.length);
+    e.currentTarget.src = fallbackImages[randomIndex];
+  };
+  
+
   return (
     <div className='landing-page'>
       <header className='landing-header'>
@@ -97,7 +115,11 @@ const LandingPage: React.FC = () => {
         <div className='film-grid'>
           {(suggestedMovies || []).map((movie) => (
             <div className='film-card' key={movie.title}>
-              <img src={movie.posterUrl} alt={movie.title} />
+              <img
+                src={movie.posterUrl}
+                alt={movie.title}
+                onError={handleImageError}
+              />
               <span className='film-label'>{movie.categoriesString}</span>
             </div>
           ))}
@@ -122,6 +144,7 @@ const LandingPage: React.FC = () => {
           Join CineNiche
         </a>
       </section>
+
       <CookieAsk />
       <Footer />
     </div>
