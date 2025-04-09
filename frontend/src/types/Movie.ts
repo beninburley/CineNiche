@@ -9,6 +9,7 @@ export interface Movie {
   rating: string;
   duration: string;
   description: string;
+  posterUrl: string;
 
   action: boolean;
   adventure: boolean;

@@ -1,33 +1,55 @@
 // src/components/Header.tsx
-import React from 'react';
-import './Homepage.css'; // Link to your CSS file for this component
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import SearchInput from '../components/SearchInput'; // Adjust the import path as necessary
+import './Homepage.css'; // Still linking your styles
+import { UserContext } from '../components/AuthorizeView';
 
 const Header: React.FC = () => {
+  const [searchText, setSearchText] = useState('');
+  const navigate = useNavigate();
+  const user = useContext(UserContext);
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!searchText.trim()) return;
+    navigate(`/search?q=${encodeURIComponent(searchText)}`);
+  };
+
   return (
     <header className='header'>
       <div className='header-container'>
         <div className='logo'>
-          <a href='/home'>CineNiche</a>
+          <Link to='/'>CineNiche</Link>
         </div>
 
         <nav className='nav'>
           <ul className='nav-list'>
             <li>
-              <a href='/home'>Home</a> {/* Main user dashboard */}
+              <a href='/home'>Home</a>
             </li>
             <li>
-              <a href='/home#explore'>Browse</a>{' '}
-              {/* Scroll to movie carousels or explore section */}
+              <a href='/search'>Browse</a>
             </li>
-            <li>
-              <a href='/adminmovies'>Admin</a> {/* Admin movie manager */}
-            </li>
+
+            {/* Admin-only Link */}
+            {user && user.role === 'Administrator' && (
+              <li>
+                <Link to='/adminmovies' className='admin-button'>
+                  Admin Dashboard
+                </Link>
+              </li>
+            )}
           </ul>
         </nav>
 
-        <div className='search-bar'>
-          <input type='text' placeholder='Search movies...' />
-        </div>
+        <form onSubmit={handleSearchSubmit} className='search-bar'>
+          <SearchInput
+            value={searchText}
+            onChange={setSearchText}
+            placeholder='Search movies...'
+          />
+        </form>
       </div>
     </header>
   );

@@ -1,0 +1,68 @@
+/* SearchPage.css */
+
+.search-page-wrapper {
+  background-color: #121212;
+  min-height: 100vh;
+  padding: 2rem;
+  color: #f5f5f5;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.search-page-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.search-page-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #ffcc00;
+  border-left: 4px solid #ffcc00;
+  padding-left: 1rem;
+  text-transform: uppercase;
+}
+
+.search-loading,
+.search-error,
+.search-empty {
+  font-size: 1.1rem;
+  color: #bbb;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.movie-card {
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  padding: 1.2rem;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+  color: #f5f5f5;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  background-color: #2a2a2a;
+}
+
+.movie-card h3 {
+  font-size: 1.2rem;
+  color: #ffcc00;
+  margin-bottom: 0.5rem;
+}
+
+.movie-card p {
+  font-size: 0.95rem;
+  color: #ddd;
+  margin-bottom: 0.3rem;
+}

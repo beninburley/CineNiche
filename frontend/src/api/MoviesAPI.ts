@@ -33,6 +33,23 @@ export const fetchMovies = async (
   }
 };
 
+export const fetchSuggestedMovies = async (count: number): Promise<Movie[]> => {
+  try {
+    const response = await fetch(`${API_URL}/suggestedMovies?count=${count}`, {
+      credentials: 'include',
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch suggested movies');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching suggested movies', error);
+    throw error;
+  }
+};
+
 export const addMovie = async (newMovie: Movie): Promise<Movie> => {
   try {
     const response = await fetch(`${API_URL}/AddMovie`, {

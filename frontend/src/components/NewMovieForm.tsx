@@ -55,6 +55,7 @@ const NewMovieForm = ({ onSuccess, onCancel }: NewMovieFormProps) => {
     rating: '',
     duration: '',
     description: '',
+    posterUrl: '',
 
     // Genre flags — initially all false
     action: false,
