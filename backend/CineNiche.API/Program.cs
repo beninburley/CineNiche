@@ -105,6 +105,8 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+} else {
+    app.UseHsts();
 }
 
 app.UseCors("AllowFrontend"); // ? now it's in the right spot
