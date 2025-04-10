@@ -1,39 +1,38 @@
 // src/components/Header.tsx
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import SearchInput from '../components/SearchInput'; // Adjust the import path as necessary
-import './Homepage.css'; // Still linking your styles
-import { UserContext } from '../components/AuthorizeView';
+import { UserContext, AuthorizedUser } from '../components/AuthorizeView';
+import Logout from '../components/Logout';
+import './Homepage.css';
 
 const Header: React.FC = () => {
   const [searchText, setSearchText] = useState('');
   const navigate = useNavigate();
   const user = useContext(UserContext);
 
-  const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!searchText.trim()) return;
-    navigate(`/search?q=${encodeURIComponent(searchText)}`);
-  };
+  useEffect(() => {
+    const trimmed = searchText.trim();
+    if (trimmed) {
+      navigate(`/search?q=${encodeURIComponent(trimmed)}`);
+    }
+  }, [searchText, navigate]);
 
   return (
     <header className='header'>
       <div className='header-container'>
-        <div className='logo'>
-          <Link to='/'>CineNiche</Link>
+        <div className='logo' style={{ marginTop: '10px' }}>
+          <Link to='/home'>CineNiche</Link>
         </div>
 
         <nav className='nav'>
           <ul className='nav-list'>
             <li>
-              <a href='/home'>Home</a>
+              <Link to='/home'>Home</Link>
             </li>
             <li>
-              <a href='/search'>Browse</a>
+              <Link to='/search'>Browse</Link>
             </li>
-
-            {/* Admin-only Link */}
-            {user && user.role === 'Administrator' && (
+            {user?.role === 'Administrator' && (
               <li>
                 <Link to='/adminmovies' className='admin-button'>
                   Admin Dashboard
@@ -43,13 +42,27 @@ const Header: React.FC = () => {
           </ul>
         </nav>
 
-        <form onSubmit={handleSearchSubmit} className='search-bar'>
-          <SearchInput
-            value={searchText}
-            onChange={setSearchText}
-            placeholder='Search movies...'
-          />
-        </form>
+        <div className='header-actions'>
+          <form className='search-bar' onSubmit={(e) => e.preventDefault()}>
+            <input
+              type='text'
+              placeholder='Search movies...'
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+            />
+          </form>
+
+          {user && (
+            <div className='user-info'>
+              <span className='user-email'>
+                <AuthorizedUser value='email' />
+              </span>
+              <div className='logout'>
+                <Logout>Logout</Logout>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );
