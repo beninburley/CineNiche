@@ -12,6 +12,8 @@ namespace CineNiche.API.Data
         public DbSet<GenreRec> GenreRecs { get; set; }
         public DbSet<ContentRec> ContentRecs { get; set; }
 
+        public DbSet<HybridRec> HybridRecs {get; set;}
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Composite Keys (since these tables have no primary keys)
@@ -30,6 +32,9 @@ namespace CineNiche.API.Data
 
             modelBuilder.Entity<ContentRec>()
                 .HasKey(cr => new { cr.SeedShowId, cr.RecommendedShowId });
+
+            modelBuilder.Entity<HybridRec>()
+                .HasKey(hr => new { hr.SeedShowId, hr.UserId, hr.RecommendedShowId, hr.Rank});
         }
     }
 }

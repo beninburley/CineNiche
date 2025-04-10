@@ -1,6 +1,5 @@
 // src/components/SearchInput.tsx
 import React from 'react';
-import DOMPurify from 'dompurify'; // ✅ Add this
 import './SearchInput.css';
 
 interface SearchInputProps {
@@ -12,21 +11,18 @@ interface SearchInputProps {
 const SearchInput: React.FC<SearchInputProps> = ({
   value,
   onChange,
-  placeholder = 'Search...',
+  // placeholder = 'Search...',
 }) => {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const sanitizedValue = DOMPurify.sanitize(e.target.value); //This makes sure nothing malicious is put in the search bar
-    onChange(sanitizedValue);
-  };
-
   return (
-    <input
-      type='text'
-      className='search-input'
-      value={value}
-      placeholder={placeholder}
-      onChange={handleChange}
-    />
+    <div className='admin-search-wrapper'>
+      <input
+        type='text'
+        placeholder='Search by title...'
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className='admin-search-input'
+      />
+    </div>
   );
 };
 

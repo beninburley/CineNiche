@@ -5,6 +5,10 @@
   color: #f5f5f5;
   padding: 2rem;
   font-family: 'Helvetica Neue', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 70%;
 }
 
 .admin-page h1 {
@@ -13,47 +17,52 @@
   color: #ffcc00;
 }
 
-.admin-button {
+/* --- Shared Button Styles --- */
+.admin-button,
+.edit-button,
+.new-movie-form button {
   background-color: #ffcc00;
   color: #000;
   border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
   font-weight: bold;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-bottom: 1rem;
-  width: 200px;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin-bottom: 20px;
 }
 
-.admin-button:hover {
+.admin-button {
+  padding: 0.6rem 1.2rem;
+  width: 200px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.admin-button:hover,
+.new-movie-form button:hover {
   background-color: #e6b800;
 }
 
 .edit-button {
-  background-color: #ffcc00;
-  color: white;
-  border: none;
   padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  margin-bottom: 4px;
   width: 100%;
+  margin-bottom: 4px;
+}
+
+.edit-button:hover {
+  background-color: #e6b800;
+  color: #000;
 }
 
 .delete-button {
   background-color: #1e1e1e;
   color: #991b1b;
-  border: none;
   padding: 0.4rem 0.8rem;
   border-radius: 6px;
   width: 100%;
   border: 1px solid #991b1b;
 }
 
+/* ========== Table ========== */
 .movie-table {
   width: 100%;
   border-collapse: collapse;
@@ -76,8 +85,25 @@
   background-color: #1a1a1a;
 }
 
-/* ========== Modal Overlay + Form ========== */
+.table-wrapper {
+  min-height: 600px;
+  position: relative;
+}
 
+/* ========== Empty State ========== */
+.no-results {
+  color: #999;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 3rem 1rem;
+  border: 1px dashed #444;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  margin-top: 2rem;
+  flex: 1;
+}
+
+/* ========== Modal ========== */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -134,8 +160,7 @@
   color: #ffcc00;
 }
 
-/* ========== Form Styling ========== */
-
+/* ========== New Movie Form ========== */
 .new-movie-form {
   display: flex;
   flex-direction: column;
@@ -171,23 +196,7 @@
   height: 150px;
 }
 
-.new-movie-form button {
-  background-color: #ffcc00;
-  color: #000;
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 30px;
-  font-weight: bold;
-  margin-right: 1rem;
-  margin-top: 1.5rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.new-movie-form button:hover {
-  background-color: #e6b800;
-}
-
+/* ========== Genre Tags ========== */
 .genre-tags {
   display: flex;
   flex-wrap: wrap;
@@ -221,78 +230,43 @@
   border-color: #ffcc00;
 }
 
-.table-wrapper {
-  min-height: 600px; /* Or whatever looks good for your data */
-  position: relative;
-}
-.admin-page {
-  min-height: 100vh;
+/* ========== Controls Section ========== */
+.admin-actions-row {
   display: flex;
-  flex-direction: column;
-  min-width: 70%;
-}
-
-.no-results {
-  color: #999;
-  font-size: 1.2rem;
-  text-align: center;
-  padding: 3rem 1rem;
-  border: 1px dashed #444;
-  border-radius: 8px;
-  background-color: #1a1a1a;
-  margin-top: 2rem;
-  flex: 1;
-}
-
-/* --- Top control bar (button + search + filters) --- */
-.admin-controls {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  margin: 2rem auto;
+  padding: 1rem 1.5rem;
+  max-width: 1000px;
+  background-color: #1c1c1c;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   gap: 1rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
 }
 
-/* Optional: Give search input and filters a bit of width control */
-.admin-controls .search-input {
+.admin-actions-row input[type='text'] {
   flex: 1;
-  min-width: 250px;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #2a2a2a;
+  color: #f5f5f5;
 }
 
-.admin-controls .admin-button {
-  flex-shrink: 0;
-  margin-bottom: 0; /* Already handled by wrapper margin */
-}
-
-/* Admin header alignment */
-.admin-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
-}
-
-.admin-header h1 {
-  margin: 0;
-}
-
-/* Optional: Wrap everything neatly on smaller screens */
-@media (max-width: 768px) {
-  .admin-controls {
+@media (max-width: 600px) {
+  .admin-actions-row {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .admin-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
+  .admin-button {
+    width: 100%;
+    margin-top: 1rem;
   }
 }
 
+/* Optional: Branding */
 .logo-link {
   color: #ffcc00;
   text-decoration: none;
@@ -301,4 +275,42 @@
 
 .logo-link:hover {
   color: #e6b800;
+}
+/* Search bar wrapper */
+.admin-search-wrapper {
+  max-width: 1000px;
+  margin: 1.5rem auto 2rem;
+  padding: 0 1rem;
+  width: 100%;
+  padding-right: 40px;
+}
+
+/* Search input */
+.admin-search-input {
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  background-color: #2a2a2a;
+  color: #f5f5f5;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.2s ease;
+}
+
+.admin-search-input::placeholder {
+  color: #aaa;
+}
+
+.admin-search-input:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+}
+
+.admin-top-button {
+  display: flex;
+  justify-content: flex-end;
+  margin: 2rem auto 1rem;
+  max-width: 1000px;
+  padding: 0 1rem;
 }

@@ -8,7 +8,7 @@ const review = {
   reviewer: 'Lena P.',
   quote:
     '“This film lingers in your bones. Raw, poetic, and painfully honest—it reminds me why I fell in love with cinema in the first place.”',
-  avatarUrl: '/images/user-lena.jpg', // Optional profile image
+  avatarUrl: '/img/minion.webp', // Optional profile image
 };
 
 const ReviewHighlight: React.FC = () => {

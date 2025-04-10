@@ -48,8 +48,8 @@ const FilmJourneyCarousel: React.FC = () => {
     <div className='carousel-wrapper'>
       <div className='carousel'>
         {movies.map((movie) => (
-          <Link to={`/movie/${movie.show_id}`}>
-            <div key={movie.title} className='carousel-card'>
+          <Link to={`/movie/${movie.show_id}`} key={movie.title}>
+            <div className='carousel-card'>
               <img
                 src={movie.posterUrl}
                 alt={movie.title}

@@ -67,5 +67,15 @@ namespace CineNiche.API.Controllers
 
             return Ok(recs);
         }
+
+        [HttpGet("hybrid/{userId}/{showId}")]
+        public IActionResult GetHybrid(string showId, int userId)
+        {
+            var recs = _recommendationContext.HybridRecs.Where(r => r.SeedShowId == showId && r.UserId == userId).OrderBy(r => r.Rank).ToList();
+            
+            if (recs == null || recs.Count == 0) return NotFound();
+
+            return Ok(recs);
+        }
     }
 }

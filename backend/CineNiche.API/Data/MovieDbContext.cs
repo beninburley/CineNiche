@@ -12,6 +12,8 @@ namespace CineNiche.API.Data
         public DbSet<ShowIdSequence> ShowIdSequence { get; set; }
         public DbSet<UserLink> UserLinks { get; set; }
         public DbSet<MovieUser> Users { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
+
 
 
 
@@ -22,7 +24,9 @@ namespace CineNiche.API.Data
             modelBuilder.Entity<ShowIdSequence>().ToTable("ShowIdSequence");
             modelBuilder.Entity<UserLink>().ToTable("UserLink");
             modelBuilder.Entity<MovieUser>().ToTable("movies_users");
-
+            modelBuilder.Entity<Rating>().ToTable("movies_ratings");
+            modelBuilder.Entity<Rating>()
+                .HasKey(r => new { r.UserId, r.ShowId });
 
         }
     }

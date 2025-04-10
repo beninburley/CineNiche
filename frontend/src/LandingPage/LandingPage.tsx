@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { Movie } from '../types/Movie';
 import { fetchSuggestedMovies } from '../api/MoviesAPI';
-import CookieAsk from './CookieAsk';
 
 // Custom hook for scroll-triggered animations
 const useScrollReveal = () => {
@@ -49,22 +48,23 @@ const LandingPage: React.FC = () => {
   };
 
   // ✅ Fallback image handler
-  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+  const handleImageError = (
+    e: React.SyntheticEvent<HTMLImageElement, Event>
+  ) => {
     e.currentTarget.onerror = null; // Prevent infinite loop
-  
+
     const fallbackImages = [
       'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Insidious.jpg',
       'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/12%20ROUND%20GUN.jpg',
       'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/17%20Again.jpg',
       'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/6%20Balloons.jpg',
       'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/6%20Underground.jpg',
-      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/6%20Years.jpg'
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/6%20Years.jpg',
     ];
-  
+
     const randomIndex = Math.floor(Math.random() * fallbackImages.length);
     e.currentTarget.src = fallbackImages[randomIndex];
   };
-  
 
   return (
     <div className='landing-page'>
@@ -145,7 +145,6 @@ const LandingPage: React.FC = () => {
         </a>
       </section>
 
-      <CookieAsk />
       <Footer />
     </div>
   );

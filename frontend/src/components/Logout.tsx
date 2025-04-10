@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import './Logout.css'; // Import your CSS file for styling
+import Cookies from 'js-cookie'; // ✅ Add this
+import './Logout.css';
 
 function Logout(props: { children: React.ReactNode }) {
   const navigate = useNavigate();
@@ -8,15 +9,19 @@ function Logout(props: { children: React.ReactNode }) {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://localhost:5000/logout', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/logout`, {
         method: 'POST',
-        credentials: 'include', // Ensure cookies are sent
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
       });
 
       if (response.ok) {
+        // ✅ Clear user-specific cookies
+        Cookies.remove('userConsent');
+
+        // ✅ Redirect to login
         navigate('/login');
       } else {
         console.error('Logout failed:', response.status);

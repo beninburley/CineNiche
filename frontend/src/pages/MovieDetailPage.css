@@ -1,0 +1,103 @@
+.movie-detail-wrapper {
+  padding: 3rem 2rem;
+  background-color: #121212;
+  margin-bottom: -20px;
+}
+
+.movie-detail-box {
+  display: flex;
+  justify-content: space-between;
+  background-color: #1c1c1c;
+  border-radius: 12px;
+  padding: 2rem;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  align-items: stretch;
+}
+
+.movie-detail-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.movie-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #ffcc00;
+  margin-bottom: 1rem;
+}
+
+.movie-description {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #ddd;
+  line-height: 1.6;
+}
+
+.movie-detail-left p {
+  color: #ccc;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.movie-detail-left strong {
+  color: #ffcc00;
+}
+
+.movie-detail-right {
+  flex: 0 0 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie-poster {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 0 12px rgba(255, 204, 0, 0.25);
+}
+
+.section.user-recommendations {
+  animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section.user-recommendations {
+  background-color: #1c1c1c;
+  width: 100%;
+  padding: 3rem 0;
+  margin: 0;
+}
+
+.section.user-recommendations .section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem; /* padding gives the cards breathing room */
+}
+
+.section.user-recommendations .section-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #ffcc00;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

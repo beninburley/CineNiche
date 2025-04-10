@@ -1,52 +1,56 @@
 import React, { useEffect, useState } from 'react';
-import './Homepage.css';
-import { fetchContentRecommendations } from '../api/RecommendAPI';
+import { fetchHybridRecommendations } from '../api/RecommendAPI';
 import { fetchMoviesByIds } from '../api/MoviesAPI';
-import { ContentRec } from '../types/ContentRec';
 import { Movie } from '../types/Movie';
 import { Link } from 'react-router-dom';
+import { HybridRec } from '../types/HybridRec';
+import './Homepage.css';
 
 interface Props {
   seedShowId: string;
-  seedShowTitle: string; // Used to display "Because you liked {title}"
+  userId: number;
+  movieTitle: string;
 }
 
-const ContentRecommendationRow: React.FC<Props> = ({
+const HybridRecommendationRow: React.FC<Props> = ({
   seedShowId,
-  seedShowTitle,
+  userId,
+  movieTitle,
 }) => {
   const [recommendedMovies, setRecommendedMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(true);
-  console.log(seedShowTitle); //Not a solid fix but for some reason it needs done
+
   useEffect(() => {
     const loadRecommendations = async () => {
       try {
-        const recs: ContentRec[] =
-          await fetchContentRecommendations(seedShowId);
+        const recs: HybridRec[] = await fetchHybridRecommendations(
+          seedShowId,
+          userId
+        );
         if (recs.length === 0) return;
 
         const showIds = recs.map((rec) => rec.recommendedShowId);
         const movies = await fetchMoviesByIds(showIds);
         setRecommendedMovies(movies);
       } catch (error) {
-        console.error('Failed to load content-based recommendations:', error);
+        console.error('Failed to load hybrid recommendations:', error);
       } finally {
         setLoading(false);
       }
     };
 
     loadRecommendations();
-  }, [seedShowId]);
+  }, [seedShowId, userId]);
 
-  if (loading) return <div>Loading content-based recommendations...</div>;
-  if (recommendedMovies.length === 0) return null;
+  if (loading || recommendedMovies.length === 0) return null;
 
   return (
-    <>
+    <section className='section user-recommendations'>
+      <h2 className='section-title'>Because you liked {movieTitle}</h2>
       <div className='recommendation-wrapper'>
         <div className='recommendation-row'>
           {recommendedMovies.map((movie) => (
-            <Link to={`/movie/${movie.show_id}`} key={movie.show_id}>
+            <Link key={movie.show_id} to={`/movie/${movie.show_id}`}>
               <div className='recommendation-card'>
                 <img
                   src={movie.posterUrl}
@@ -59,8 +63,8 @@ const ContentRecommendationRow: React.FC<Props> = ({
           ))}
         </div>
       </div>
-    </>
+    </section>
   );
 };
 
-export default ContentRecommendationRow;
+export default HybridRecommendationRow;
