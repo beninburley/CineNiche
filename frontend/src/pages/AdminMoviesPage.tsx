@@ -4,7 +4,6 @@ import { Movie } from '../types/Movie';
 import NewMovieForm from '../components/NewMovieForm';
 import EditMovieForm from '../components/EditMovieForm';
 import Pagination from '../components/Pagination';
-import MovieFilter from '../components/MovieFilter';
 import './AdminMoviesPage.css';
 import Footer from '../components/Footer';
 import SearchInput from '../components/SearchInput';
@@ -115,12 +114,6 @@ const AdminMoviesPage = () => {
               onCancel={() => setEditingMovie(null)}
             />
           )}
-
-          {/* --- Filters --- */}
-          <MovieFilter
-            selectedCategories={selectedCategories}
-            setSelectedCategories={setSelectedCategories}
-          />
 
           {/* --- Movie Table --- */}
           <div className='table-wrapper'>
