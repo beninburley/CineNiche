@@ -153,6 +153,7 @@ namespace CineNiche.API.Controllers
 
 
         [HttpGet("SuggestedMovies")]
+        [AllowAnonymous]
         public IActionResult GetSuggestedMovies(int count = 5)
         {
             // Fetch all movies (or a reasonable subset) into memory before applying the random order
