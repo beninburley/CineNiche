@@ -1,3 +1,4 @@
+// Search Page
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { fetchMovies } from '../api/MoviesAPI';
@@ -71,6 +72,7 @@ const SearchPage = () => {
 
   const visibleMovies = filteredMovies.slice(0, visibleCount);
 
+  // Only able to access if authorized. This is the page that contains the search bar and genre filtering.
   return (
     <AuthorizeView>
       <Header />

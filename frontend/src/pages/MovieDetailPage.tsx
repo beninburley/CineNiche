@@ -9,6 +9,7 @@ import ContentRecommendationRow from '../Homepage/ContentRecommendation';
 import './MovieDetailPage.css'; // Make sure this is imported!
 import Footer from '../components/Footer';
 
+// This page is created when someone clicks on a movie. It returns the details of the movie, the options to give a rating, and recommended movies based off that movie
 const MovieDetailPage = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState<Movie | null>(null);

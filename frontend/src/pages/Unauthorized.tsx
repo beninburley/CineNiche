@@ -5,3 +5,5 @@ export default function Unauthorized() {
     </div>
   );
 }
+
+// returns this page if an unauthorized user tries to access a site that they dont have permission to access (specifically adminMovies)

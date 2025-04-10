@@ -3,6 +3,7 @@ import './PrivacyPolicy.css';
 import Header from '../Homepage/Header';
 import Footer from '../components/Footer';
 
+// Privacy policy page that includes our GDPR-Approved Privacy Policy
 const PrivacyPolicyPage: React.FC = () => {
   return (
     <>
