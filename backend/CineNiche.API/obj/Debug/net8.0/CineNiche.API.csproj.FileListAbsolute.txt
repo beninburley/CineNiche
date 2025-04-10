@@ -712,12 +712,6 @@ C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\bin\Debug\net8
 C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 >>>>>>> origin/joshua
 C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\Identity.sqlite
-C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\publish\web.config
-C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\publish\appsettings.Development.json
-C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\publish\appsettings.json
-C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\publish\CineNiche.API.deps.json
-C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\publish\CineNiche.API.runtimeconfig.json
-C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\publish\CineNiche.API.staticwebassets.endpoints.json
 D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\Identity.sqlite
 D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\Humanizer.dll
 D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
