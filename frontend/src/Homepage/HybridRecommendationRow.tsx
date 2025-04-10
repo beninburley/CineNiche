@@ -54,9 +54,15 @@ const HybridRecommendationRow: React.FC<Props> = ({
               <div className='recommendation-card'>
                 <img
                   src={movie.posterUrl}
-                  alt={movie.title}
-                  className='recommendation-image'
+                  alt={`${movie.title} poster`}
+                  className='movie-poster'
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src =
+                      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Limitless.jpg'; // or any default fallback poster
+                  }}
                 />
+
                 <p className='recommendation-title'>{movie.title}</p>
               </div>
             </Link>
