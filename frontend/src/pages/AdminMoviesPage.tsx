@@ -11,6 +11,7 @@ import SearchInput from '../components/SearchInput';
 import AuthorizeView, { AdminOnlyView } from '../components/AuthorizeView';
 import Header from '../Homepage/Header';
 
+//Push to go
 const AdminMoviesPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
