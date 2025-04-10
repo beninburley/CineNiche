@@ -1,13 +1,45 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const StarRating = ({ movieId }: { movieId: string }) => {
   const [rating, setRating] = useState(0);
   const [hovered, setHovered] = useState<number | null>(null);
   const [message, setMessage] = useState('');
 
+  useEffect(() => {
+    setRating(0); // Clear old rating
+    setMessage(''); // Clear old message
+    setHovered(null); // Reset hover
+  }, [movieId]);
+
+  // Load the current user's rating for this movie
+  useEffect(() => {
+    const fetchRating = async () => {
+      try {
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}/movie/rating/${movieId}`,
+          {
+            method: 'GET',
+            credentials: 'include',
+          }
+        );
+
+        if (res.ok) {
+          const data = await res.json();
+          if (data.rating) {
+            setRating(data.rating);
+          }
+        }
+      } catch (err) {
+        console.error('Failed to load user rating:', err);
+      }
+    };
+
+    fetchRating();
+  }, [movieId]);
+
   const handleRating = async (newRating: number) => {
     setRating(newRating);
-    setMessage(''); // clear any existing message
+    setMessage('');
 
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URL}/movie/rate`, {
@@ -28,6 +60,7 @@ const StarRating = ({ movieId }: { movieId: string }) => {
     }
   };
 
+  // when there is a rating, the stars populate. if not, the user can still leave a rating that adds to the DB
   return (
     <div>
       <p style={{ marginBottom: '0.5rem' }}>

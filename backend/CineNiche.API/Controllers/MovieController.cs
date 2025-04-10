@@ -8,7 +8,7 @@ namespace CineNiche.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize] // All API calls are wrapped in authorize tag 
     public class MovieController : ControllerBase
     {
         private MovieDbContext _movieContext;
@@ -70,6 +70,8 @@ namespace CineNiche.API.Controllers
             return Ok(allCategories);
         }
 
+// Some calls, such as the add movie, can only be performed by the admin role
+
         [HttpPost("AddMovie")]
         [Authorize(Roles = "Administrator")]
         public IActionResult AddMovie([FromBody] Movie newMovie)
@@ -96,6 +98,7 @@ namespace CineNiche.API.Controllers
             return Ok(newMovie);
         }
 
+        // Here an admin can update movies
 
         [HttpPut("UpdateMovie/{show_id}")]
         [Authorize(Roles = "Administrator")]
@@ -110,6 +113,8 @@ namespace CineNiche.API.Controllers
 
             return Ok(updatedMovie);
         }
+
+        // Here an admin can delete movies
 
         [HttpDelete("DeleteMovie/{show_id}")]
         [Authorize(Roles = "Administrator")]
@@ -169,6 +174,7 @@ namespace CineNiche.API.Controllers
         }
 
 
+        // This helps with the ML stuff
 
         [HttpPost("batch")]
         public IActionResult GetMoviesByIds([FromBody] List<string> showIds)
@@ -179,6 +185,8 @@ namespace CineNiche.API.Controllers
 
             return Ok(movies);
         }
+
+        // This ensures that a user is linked between the identity table and the movies_users table
 
         [HttpGet("GetRecommenderId")]
         public async Task<IActionResult> GetRecommenderUserId()
@@ -200,6 +208,8 @@ namespace CineNiche.API.Controllers
 
             return Ok(new { recommenderId = user.user_id });
         }
+
+        // This gives the rating to a movie
 
         [HttpPost("rate")]
         public async Task<IActionResult> RateMovie([FromBody] RateRequest request)
@@ -246,6 +256,37 @@ namespace CineNiche.API.Controllers
             public string MovieId { get; set; } = string.Empty;
             public int Rating { get; set; }
         }
+
+        // This is what allows us to autofill the amount of stars a movie has been given by a rater
+        
+        [HttpGet("rating/{movieId}")]
+        public async Task<IActionResult> GetUserRating(string movieId)
+        {
+            // Grab the logged-in user's email from claims
+            var email = User.FindFirstValue(ClaimTypes.Email);
+
+            if (string.IsNullOrEmpty(email))
+                return Unauthorized("Email claim not found.");
+
+            // Find user in movie.db using email
+            var movieUser = await _movieContext.Users
+                .FirstOrDefaultAsync(u => u.Email == email);
+
+            if (movieUser == null)
+                return NotFound("No matching movie user found.");
+
+            // Now get the user's rating
+            var rating = await _movieContext.Ratings
+                .FirstOrDefaultAsync(r => r.UserId == movieUser.user_id && r.ShowId == movieId);
+
+            if (rating == null)
+                return Ok(new { rating = (int?)null });
+
+            return Ok(new { rating = rating.Value });
+        }
+
+
+
 
 
 

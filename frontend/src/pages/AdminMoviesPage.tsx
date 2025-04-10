@@ -11,7 +11,7 @@ import SearchInput from '../components/SearchInput';
 import AuthorizeView, { AdminOnlyView } from '../components/AuthorizeView';
 import Header from '../Homepage/Header';
 
-//Push to go
+// Admin view of the movies page
 const AdminMoviesPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -66,6 +66,8 @@ const AdminMoviesPage = () => {
 
   return (
     <AuthorizeView>
+      {' '}
+      {/* Not only must you be authenticated, but you must also be an admin to view this page */}
       <AdminOnlyView>
         <div className='admin-page'>
           <Header hideSearchBar />

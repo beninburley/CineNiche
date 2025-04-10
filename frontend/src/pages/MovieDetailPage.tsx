@@ -7,15 +7,17 @@ import Header from '../Homepage/Header';
 import ContentRecommendationRow from '../Homepage/ContentRecommendation';
 import HybridRecommendationRow from '../Homepage/HybridRecommendationRow';
 import Footer from '../components/Footer';
-
 import './MovieDetailPage.css';
 
+// Movie detail page - Displays when you click on a movie
 const MovieDetailPage = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState<Movie | null>(null);
   const [recommenderId, setRecommenderId] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const user = useContext(UserContext);
+  const [hasHybridRecommendations, setHasHybridRecommendations] =
+    useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,11 +34,22 @@ const MovieDetailPage = () => {
         if (user?.email) {
           const recRes = await fetch(
             `${import.meta.env.VITE_API_URL}/movie/GetRecommenderId`,
-            { credentials: 'include' }
+            {
+              credentials: 'include',
+            }
           );
           if (!recRes.ok) throw new Error('Failed to get recommender ID');
           const recData = await recRes.json();
           setRecommenderId(recData.recommenderId);
+
+          // Now test if the hybrid fetch works
+          const hybridTestRes = await fetch(
+            `${import.meta.env.VITE_API_URL}/recommendation/hybrid/${recData.recommenderId}/${movieData.show_id}`,
+            {
+              credentials: 'include',
+            }
+          );
+          setHasHybridRecommendations(hybridTestRes.ok);
         }
       } catch (err) {
         console.error('Error loading movie or recommender data:', err);
@@ -52,6 +65,8 @@ const MovieDetailPage = () => {
 
   return (
     <AuthorizeView>
+      {' '}
+      {/* Only authorized people can view the details of the movie */}
       <Header />
       <div className='movie-detail-wrapper'>
         <div className='movie-detail-box'>
@@ -67,36 +82,45 @@ const MovieDetailPage = () => {
             <p>
               <strong>Genres:</strong> {movie.categoriesString}
             </p>
-            <StarRating movieId={movie.show_id} />
+            <StarRating movieId={movie.show_id} />{' '}
+            {/* Star rating component shows the rating (if previously rated) and allows user to rate */}
           </div>
           <div className='movie-detail-right'>
             <img
               src={movie.posterUrl}
               alt={`${movie.title} poster`}
               className='movie-poster'
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src =
+                  'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Limitless.jpg'; // or any default fallback poster
+              }}
             />
           </div>
         </div>
       </div>
-
-      {recommenderId && (
-        <HybridRecommendationRow
-          seedShowId={movie.show_id}
-          userId={recommenderId}
-          movieTitle={movie.title}
-        />
+      {/* Show the hybrid recommender */}
+      {hasHybridRecommendations && recommenderId && (
+        <section className='section user-recommendations'>
+          <div className='section-inner'>
+            <HybridRecommendationRow
+              seedShowId={movie.show_id}
+              userId={recommenderId}
+              movieTitle={movie.title}
+            />
+          </div>
+        </section>
       )}
-
       <section className='section user-recommendations'>
         <div className='section-inner'>
           <h2 className='section-title'>Similar to {movie.title}</h2>
+          {/* Content recommender */}
           <ContentRecommendationRow
             seedShowId={movie.show_id}
             seedShowTitle={movie.title}
           />
         </div>
       </section>
-
       <Footer />
     </AuthorizeView>
   );

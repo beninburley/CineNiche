@@ -13,6 +13,7 @@ import GenreRecommendationRow from './GenreRecommendationRow';
 import Footer from '../components/Footer';
 import AuthorizeView, { UserContext } from '../components/AuthorizeView';
 
+// This is the homepage. There are so many components, sorry if it isn't clear what each does
 const Homepage: React.FC = () => {
   const user = useContext(UserContext);
   const [recommenderId, setRecommenderId] = useState<number>(99); // default to 99

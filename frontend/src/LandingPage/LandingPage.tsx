@@ -65,6 +65,7 @@ const LandingPage: React.FC = () => {
     const randomIndex = Math.floor(Math.random() * fallbackImages.length);
     e.currentTarget.src = fallbackImages[randomIndex];
   };
+  // Content for landing page screen
 
   return (
     <div className='landing-page'>
