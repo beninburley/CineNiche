@@ -7,9 +7,9 @@ import Header from '../Homepage/Header';
 import ContentRecommendationRow from '../Homepage/ContentRecommendation';
 import HybridRecommendationRow from '../Homepage/HybridRecommendationRow';
 import Footer from '../components/Footer';
-
 import './MovieDetailPage.css';
 
+// Movie detail page - Displays when you click on a movie
 const MovieDetailPage = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState<Movie | null>(null);
@@ -65,6 +65,8 @@ const MovieDetailPage = () => {
 
   return (
     <AuthorizeView>
+      {' '}
+      {/* Only authorized people can view the details of the movie */}
       <Header />
       <div className='movie-detail-wrapper'>
         <div className='movie-detail-box'>
@@ -80,7 +82,8 @@ const MovieDetailPage = () => {
             <p>
               <strong>Genres:</strong> {movie.categoriesString}
             </p>
-            <StarRating movieId={movie.show_id} />
+            <StarRating movieId={movie.show_id} />{' '}
+            {/* Star rating component shows the rating (if previously rated) and allows user to rate */}
           </div>
           <div className='movie-detail-right'>
             <img
@@ -91,7 +94,7 @@ const MovieDetailPage = () => {
           </div>
         </div>
       </div>
-
+      {/* Show the hybrid recommender */}
       {hasHybridRecommendations && recommenderId && (
         <HybridRecommendationRow
           seedShowId={movie.show_id}
@@ -99,17 +102,16 @@ const MovieDetailPage = () => {
           movieTitle={movie.title}
         />
       )}
-
       <section className='section user-recommendations'>
         <div className='section-inner'>
           <h2 className='section-title'>Similar to {movie.title}</h2>
+          {/* Content recommender */}
           <ContentRecommendationRow
             seedShowId={movie.show_id}
             seedShowTitle={movie.title}
           />
         </div>
       </section>
-
       <Footer />
     </AuthorizeView>
   );

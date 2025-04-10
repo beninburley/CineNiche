@@ -5,6 +5,8 @@ interface FetchMovieResponse {
   totalNumMovies: number;
 }
 
+// this variable will determine the link depending on if you're in prod or dev
+
 const API_URL = `${import.meta.env.VITE_API_URL}/movie`;
 
 export const fetchMovies = async (
@@ -33,6 +35,8 @@ export const fetchMovies = async (
   }
 };
 
+// this will load movies in a variety of ways throughout the site
+
 export const fetchSuggestedMovies = async (count: number): Promise<Movie[]> => {
   try {
     const response = await fetch(`${API_URL}/suggestedMovies?count=${count}`, {
@@ -49,6 +53,8 @@ export const fetchSuggestedMovies = async (count: number): Promise<Movie[]> => {
     throw error;
   }
 };
+
+// post route to add movies if you're a admin
 
 export const addMovie = async (newMovie: Movie): Promise<Movie> => {
   try {
@@ -71,6 +77,8 @@ export const addMovie = async (newMovie: Movie): Promise<Movie> => {
     throw error;
   }
 };
+
+// update movie
 
 export const updateMovie = async (
   show_id: string,
@@ -98,6 +106,8 @@ export const updateMovie = async (
   }
 };
 
+// delete movies
+
 export const deleteMovie = async (show_id: string): Promise<void> => {
   try {
     const response = await fetch(`${API_URL}/DeleteMovie/${show_id}`, {
@@ -113,6 +123,8 @@ export const deleteMovie = async (show_id: string): Promise<void> => {
     throw error;
   }
 };
+
+// fetch movies by ID to help out with the search and page details
 
 export const fetchMoviesByIds = async (showIds: string[]): Promise<Movie[]> => {
   try {

@@ -60,6 +60,7 @@ const StarRating = ({ movieId }: { movieId: string }) => {
     }
   };
 
+  // when there is a rating, the stars populate. if not, the user can still leave a rating that adds to the DB
   return (
     <div>
       <p style={{ marginBottom: '0.5rem' }}>

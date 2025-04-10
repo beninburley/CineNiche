@@ -7,6 +7,9 @@ interface PaginationProps {
   onPageChange: (newPage: number) => void;
   onPageSizeChange: (newSize: number) => void;
 }
+// Pretty standard pagination component, the cool thing is that it doesn't show
+// all the pages of the movies (theres a ton), instead it shows the next pages and
+// then theres a button to skip to the end. I think that's cool
 
 const Pagination = ({
   currentPage,

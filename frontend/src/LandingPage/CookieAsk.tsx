@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 
+// This component asks the user if they will accept cookies and determines what to do
+
 function CookieAsk() {
   const [shouldShowBanner, setShouldShowBanner] = useState(false);
 
