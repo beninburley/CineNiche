@@ -247,6 +247,35 @@ namespace CineNiche.API.Controllers
             public int Rating { get; set; }
         }
 
+        [HttpGet("rating/{movieId}")]
+        public async Task<IActionResult> GetUserRating(string movieId)
+        {
+            // Grab the logged-in user's email from claims
+            var email = User.FindFirstValue(ClaimTypes.Email);
+
+            if (string.IsNullOrEmpty(email))
+                return Unauthorized("Email claim not found.");
+
+            // Find user in movie.db using email
+            var movieUser = await _movieContext.Users
+                .FirstOrDefaultAsync(u => u.Email == email);
+
+            if (movieUser == null)
+                return NotFound("No matching movie user found.");
+
+            // Now get the user's rating
+            var rating = await _movieContext.Ratings
+                .FirstOrDefaultAsync(r => r.UserId == movieUser.user_id && r.ShowId == movieId);
+
+            if (rating == null)
+                return Ok(new { rating = (int?)null });
+
+            return Ok(new { rating = rating.Value });
+        }
+
+
+
+
 
 
 
