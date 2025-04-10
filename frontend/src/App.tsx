@@ -28,7 +28,14 @@ function App() {
           <Route path='/' element={<LandingPage />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/movie/:id' element={<MovieDetailPage />} />
+          <Route
+            path='/movie/:id'
+            element={
+              <AuthorizeView>
+                <MovieDetailPage />
+              </AuthorizeView>
+            }
+          />
           <Route path='/privacy-policy' element={<PrivacyPolicy />} />
           <Route path='/unauthorized' element={<Unauthorized />} />
           <Route path='/search' element={<SearchPage />} />
