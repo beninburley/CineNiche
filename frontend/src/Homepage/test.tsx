@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import './Homepage.css';
 import { Link } from 'react-router-dom';
 
@@ -11,6 +11,16 @@ const movies = [
       'Four astronomers from England celebrate 50 years of friendship and achievement by taking a reflective road trip through the American Southwest.',
     show_id: 's4148',
   },
+
+  {
+    title: 'Deep',
+    imageUrl:
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Deep.jpg',
+    description:
+      'Four insomniac med school students are lured into a neuroscience experiment that spirals out of control — and must find a way out before it’s too late.',
+    show_id: 's440',
+  },
+
   {
     title: 'Mantra',
     imageUrl:
@@ -24,15 +34,16 @@ const movies = [
     imageUrl:
       'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Lupin.jpg',
     description:
-      'Inspired by the adventures of Arsène Lupin, gentleman thief Assane Diop sets out to avenge his father for an injustice inflicted by a wealthy family.',
+      'Inspired by the adventures of Arsène Lupin gentleman thief Assane Diop sets out to avenge his father for an injustice inflicted by a wealthy family.',
     show_id: 's735',
   },
+
   {
     title: 'Peppermint',
     imageUrl:
       'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Peppermint.jpg',
     description:
-      'After her family is murdered, a mild-mannered mom remakes herself into a badass vigilante in order to exact violent justice.',
+      'After her family is murdered a mild-mannered mom remakes herself into a badass vigilante in order to exact violent justice.',
     show_id: 's1621',
   },
   {
@@ -48,7 +59,7 @@ const movies = [
     imageUrl:
       'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Wakfu.jpg',
     description:
-      'Yugo, a 12-year-old Eliatrope with special powers, sets out on a mission to find his true family and uncover the mysteries of Wakfu.',
+      'Yugo a 12-year-old Eliatrope with special powers sets out on a mission to find his true family and uncover the mysteries of Wakfu.',
     show_id: 's4943',
   },
   {
@@ -56,16 +67,14 @@ const movies = [
     imageUrl:
       'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/MANK.jpg',
     description:
-      '1930s Hollywood is reevaluated through the eyes of scathing wit and alcoholic screenwriter Herman J. Mankiewicz as he races to finish "Citizen Kane."',
+      '1930s Hollywood is reevaluated through the eyes of scathing wit and alcoholic screenwriter Herman J. Mankiewicz as he races to finish “Citizen Kane.',
     show_id: 's1596',
   },
 ];
 
 const HeroBanner: React.FC = () => {
-  const movie = useMemo(() => {
-    const randomIndex = Math.floor(Math.random() * movies.length);
-    return movies[randomIndex];
-  }, []);
+  const randomIndex = Math.floor(Math.random() * movies.length);
+  const movie = movies[randomIndex];
 
   return (
     <section
