@@ -16,6 +16,8 @@ const MovieDetailPage = () => {
   const [recommenderId, setRecommenderId] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const user = useContext(UserContext);
+  const [hasHybridRecommendations, setHasHybridRecommendations] =
+    useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,11 +34,22 @@ const MovieDetailPage = () => {
         if (user?.email) {
           const recRes = await fetch(
             `${import.meta.env.VITE_API_URL}/movie/GetRecommenderId`,
-            { credentials: 'include' }
+            {
+              credentials: 'include',
+            }
           );
           if (!recRes.ok) throw new Error('Failed to get recommender ID');
           const recData = await recRes.json();
           setRecommenderId(recData.recommenderId);
+
+          // Now test if the hybrid fetch works
+          const hybridTestRes = await fetch(
+            `${import.meta.env.VITE_API_URL}/recommendation/hybrid/${recData.recommenderId}/${movieData.show_id}`,
+            {
+              credentials: 'include',
+            }
+          );
+          setHasHybridRecommendations(hybridTestRes.ok);
         }
       } catch (err) {
         console.error('Error loading movie or recommender data:', err);
@@ -79,7 +92,7 @@ const MovieDetailPage = () => {
         </div>
       </div>
 
-      {recommenderId && (
+      {hasHybridRecommendations && recommenderId && (
         <HybridRecommendationRow
           seedShowId={movie.show_id}
           userId={recommenderId}
