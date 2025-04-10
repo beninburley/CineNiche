@@ -51,7 +51,7 @@ const SignUpPage = () => {
         navigate('/login');
       } else {
         const data = await response.json();
-        setError(data.message || 'Registration failed.');
+        setError(data.message || 'Registration failed. Try again.');
       }
     } catch (err) {
       console.error(err);
@@ -107,6 +107,16 @@ const SignUpPage = () => {
               onChange={handleChange}
               required
             />
+            <p
+              style={{
+                fontSize: '0.875rem',
+                color: '#aaa',
+                marginTop: '0.25rem',
+              }}
+            >
+              Must be at least 12 characters, include an uppercase letter, a
+              number, and a special character.
+            </p>
 
             {error && <p className='signup-error'>{error}</p>}
 
