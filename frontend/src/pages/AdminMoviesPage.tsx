@@ -27,18 +27,18 @@ const AdminMoviesPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [allMovies, setAllMovies] = useState<Movie[]>([]);
 
-  useEffect(() => {
-    const loadMovies = async () => {
-      try {
-        const data = await fetchMovies(10000, 1, selectedCategories);
-        setAllMovies(data.movies);
-      } catch (error) {
-        setError((error as Error).message);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const loadMovies = async () => {
+    try {
+      const data = await fetchMovies(10000, 1, selectedCategories);
+      setAllMovies(data.movies);
+    } catch (error) {
+      setError((error as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     loadMovies();
   }, [selectedCategories]);
 
@@ -94,9 +94,7 @@ const AdminMoviesPage = () => {
             <NewMovieForm
               onSuccess={() => {
                 setShowForm(false);
-                fetchMovies(pageSize, pageNum, []).then((data) =>
-                  setAllMovies(data.movies)
-                );
+                loadMovies();
               }}
               onCancel={() => setShowForm(false)}
             />
@@ -113,9 +111,7 @@ const AdminMoviesPage = () => {
               movie={editingMovie}
               onSuccess={() => {
                 setEditingMovie(null);
-                fetchMovies(pageSize, pageNum, []).then((data) =>
-                  setAllMovies(data.movies)
-                );
+                loadMovies();
               }}
               onCancel={() => setEditingMovie(null)}
             />
