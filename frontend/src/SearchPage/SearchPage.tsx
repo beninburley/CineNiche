@@ -8,18 +8,37 @@ import Header from '../Homepage/Header';
 import Footer from '../components/Footer';
 import AuthorizeView from '../components/AuthorizeView';
 
+const genreOptions = [
+  'Action',
+  'Adventure',
+  'Anime',
+  'Comedies',
+  'Dramas',
+  'Fantasy',
+  'Documentaries',
+  'Crime',
+  'Romantic',
+  'Horror',
+  'Thrillers',
+  'TV Shows',
+  'International',
+  'Children',
+  'Family',
+  'Reality',
+];
+
 const SearchPage = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
+  const [visibleCount, setVisibleCount] = useState(20);
 
   const location = useLocation();
   const query =
     new URLSearchParams(location.search).get('q')?.toLowerCase() || '';
 
   useEffect(() => {
-    if (!query) return; // ⛔ Don't fetch if there's no search query
-
     const loadMovies = async () => {
       setLoading(true);
       try {
@@ -33,52 +52,95 @@ const SearchPage = () => {
     };
 
     loadMovies();
-  }, [query]);
+  }, []);
 
-  const filteredMovies = movies.filter((movie) =>
-    movie.title.toLowerCase().includes(query)
-  );
+  // Reset visible count when filters change
+  useEffect(() => {
+    setVisibleCount(20);
+  }, [query, selectedGenre]);
+
+  const filteredMovies = movies.filter((movie) => {
+    const matchesQuery = movie.title.toLowerCase().includes(query);
+    const matchesGenre =
+      !selectedGenre ||
+      movie.categoriesString
+        .toLowerCase()
+        .includes(selectedGenre.toLowerCase());
+    return matchesQuery && matchesGenre;
+  });
+
+  const visibleMovies = filteredMovies.slice(0, visibleCount);
 
   return (
-    <>
-      <AuthorizeView>
-        <Header />
-        <div className='search-page-wrapper'>
-          <div className='search-page-container'>
-            <h2 className='search-page-title'>
-              {query ? `Results for "${query}"` : `Browse Movies`}
-            </h2>
+    <AuthorizeView>
+      <Header />
+      <div className='search-page-wrapper'>
+        <div className='search-page-container'>
+          <h2 className='search-page-title'>
+            {query || selectedGenre
+              ? `Results for "${query}" ${selectedGenre ? `in ${selectedGenre}` : ''}`
+              : 'Browse Movies'}
+          </h2>
 
-            {loading && <p className='search-loading'>Loading...</p>}
-            {error && <p className='search-error'>Error: {error}</p>}
-            {!query && (
-              <p className='search-empty'>
-                Start typing in the search bar to find movies.
-              </p>
-            )}
-
-            <div className='movie-grid'>
-              {query &&
-                filteredMovies.map((movie) => (
-                  <Link
-                    to={`/movie/${movie.show_id}`}
-                    key={movie.show_id}
-                    className='movie-card'
-                  >
-                    <h3>{movie.title}</h3>
-                    <p>{movie.categoriesString}</p>
-                  </Link>
-                ))}
-            </div>
-
-            {query && filteredMovies.length === 0 && !loading && (
-              <p className='search-empty'>No movies found.</p>
-            )}
+          <div className='genre-filter genre-filter-top'>
+            {genreOptions.map((genre) => (
+              <span
+                key={genre}
+                className={`genre-tag ${selectedGenre === genre ? 'selected' : ''}`}
+                onClick={() =>
+                  setSelectedGenre(selectedGenre === genre ? null : genre)
+                }
+              >
+                {genre}
+              </span>
+            ))}
           </div>
+
+          {loading && <p className='search-loading'>Loading...</p>}
+          {error && <p className='search-error'>Error: {error}</p>}
+          {!query && !selectedGenre && (
+            <p className='search-empty'>
+              Start typing in the search bar or choose a genre to explore
+              movies.
+            </p>
+          )}
+
+          <div className='movie-grid'>
+            {visibleMovies.map((movie) => (
+              <Link
+                to={`/movie/${movie.show_id}`}
+                key={movie.show_id}
+                className='movie-card'
+              >
+                <img
+                  src={movie.posterUrl}
+                  alt={movie.title}
+                  className='movie-poster'
+                />
+                <h3>{movie.title}</h3>
+                <p>{movie.categoriesString}</p>
+              </Link>
+            ))}
+          </div>
+
+          {filteredMovies.length > visibleMovies.length && (
+            <div className='show-more-container'>
+              <button
+                className='show-more-button'
+                onClick={() => setVisibleCount((prev) => prev + 20)}
+              >
+                Show More
+              </button>
+            </div>
+          )}
+
+          {filteredMovies.length === 0 && !loading && (
+            <p className='search-empty'>No movies found.</p>
+          )}
         </div>
-        <Footer />
-      </AuthorizeView>
-    </>
+      </div>
+      <Footer />
+    </AuthorizeView>
   );
 };
 

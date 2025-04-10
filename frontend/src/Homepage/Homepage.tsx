@@ -11,7 +11,6 @@ import ActorRecommendationRow from './ActorRecommendationRow';
 import DirectorRecommendationRow from './DirectorRecommendationRow';
 import GenreRecommendationRow from './GenreRecommendationRow';
 import Footer from '../components/Footer';
-import Logout from '../components/Logout';
 import AuthorizeView, {
   AuthorizedUser,
   UserContext,
@@ -56,11 +55,6 @@ const Homepage: React.FC = () => {
   return (
     <AuthorizeView>
       <div className='page-wrapper'>
-        <div className='authorized-banner'>
-          <Logout>
-            Logout <AuthorizedUser value='email' />
-          </Logout>
-        </div>
         <div className='homepage'>
           <Header />
 
@@ -72,16 +66,6 @@ const Homepage: React.FC = () => {
               <MoodBoardGrid />
             </section>
 
-            <section className='section film-journeys'>
-              <h2 className='section-title'>Film Journeys</h2>
-              <FilmJourneyCarousel />
-            </section>
-
-            <section className='section underground-pick'>
-              <h2 className='section-title'>Underground Pick</h2>
-              <UndergroundPick />
-            </section>
-
             <section className='section user-recommendations'>
               <h2 className='section-title'>Recommended for You</h2>
               <UserRecommendationRow userId={recommenderId} />
@@ -90,6 +74,10 @@ const Homepage: React.FC = () => {
             <section className='section user-recommendations'>
               <ActorRecommendationRow userId={recommenderId} />
             </section>
+            <section className='section underground-pick'>
+              <h2 className='section-title'>Underground Pick</h2>
+              <UndergroundPick />
+            </section>
 
             <section className='section user-recommendations'>
               <DirectorRecommendationRow userId={recommenderId} />
@@ -97,6 +85,10 @@ const Homepage: React.FC = () => {
 
             <section className='section user-recommendations'>
               <GenreRecommendationRow userId={recommenderId} />
+            </section>
+            <section className='section film-journeys'>
+              <h2 className='section-title'>Film Journeys</h2>
+              <FilmJourneyCarousel />
             </section>
 
             <section className='section reviews'>

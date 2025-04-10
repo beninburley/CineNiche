@@ -1,68 +1,126 @@
-/* SearchPage.css */
-
 .search-page-wrapper {
   background-color: #121212;
   min-height: 100vh;
-  padding: 2rem;
-  color: #f5f5f5;
-  font-family: 'Helvetica Neue', sans-serif;
+  padding-bottom: 4rem;
 }
 
 .search-page-container {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
+  padding: 2rem;
+  color: #f5f5f5;
 }
 
 .search-page-title {
   font-size: 2rem;
-  margin-bottom: 2rem;
+  margin: 1.5rem 0;
+  font-weight: bold;
   color: #ffcc00;
-  border-left: 4px solid #ffcc00;
-  padding-left: 1rem;
-  text-transform: uppercase;
 }
 
-.search-loading,
-.search-error,
-.search-empty {
-  font-size: 1.1rem;
-  color: #bbb;
-  margin: 1rem 0;
-  text-align: center;
-}
-
+/* 🔍 Movie Grid */
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 1.5rem;
-  margin-top: 2rem;
 }
 
 .movie-card {
   background-color: #1e1e1e;
-  border-radius: 10px;
-  padding: 1.2rem;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 1rem;
   text-decoration: none;
-  color: #f5f5f5;
-  transition:
-    transform 0.2s ease,
-    background-color 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease;
 }
 
 .movie-card:hover {
   transform: translateY(-5px);
-  background-color: #2a2a2a;
 }
 
 .movie-card h3 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #ffcc00;
-  margin-bottom: 0.5rem;
+  margin-top: 0.75rem;
 }
 
 .movie-card p {
-  font-size: 0.95rem;
-  color: #ddd;
-  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: 0.25rem;
+}
+
+.movie-poster {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.1);
+}
+
+/* 🎯 Genre Filter Buttons */
+.genre-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.genre-filter-top {
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.genre-tag {
+  background-color: #2a2a2a;
+  color: #f5f5f5;
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.genre-tag:hover {
+  background-color: #444;
+  color: #ffcc00;
+}
+
+.genre-tag.selected {
+  background-color: #ffcc00;
+  color: #000;
+  font-weight: bold;
+}
+
+/* 📌 Loading & Error */
+.search-loading,
+.search-error,
+.search-empty {
+  text-align: center;
+  color: #bbb;
+  margin: 2rem 0;
+}
+
+/* ⬇️ Show More Button */
+.show-more-container {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.show-more-button {
+  background-color: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  padding: 0.7rem 1.8rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.show-more-button:hover {
+  background-color: #e6b800;
 }
