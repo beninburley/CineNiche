@@ -42,8 +42,8 @@ const MoodBoardGrid: React.FC = () => {
   return (
     <div className='moodboard-grid'>
       {movies.map((movie) => (
-        <Link to={`/movie/${movie.show_id}`}>
-          <div key={movie.title} className='moodboard-card'>
+        <Link to={`/movie/${movie.show_id}`} key={movie.title}>
+          <div className='moodboard-card'>
             <img
               src={movie.posterUrl}
               alt={movie.title}

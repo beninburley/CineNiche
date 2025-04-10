@@ -63,3 +63,41 @@
   object-fit: cover;
   box-shadow: 0 0 12px rgba(255, 204, 0, 0.25);
 }
+
+.section.user-recommendations {
+  animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section.user-recommendations {
+  background-color: #1c1c1c;
+  width: 100%;
+  padding: 3rem 0;
+  margin: 0;
+}
+
+.section.user-recommendations .section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem; /* padding gives the cards breathing room */
+}
+
+.section.user-recommendations .section-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #ffcc00;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

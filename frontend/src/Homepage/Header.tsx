@@ -5,7 +5,12 @@ import { UserContext, AuthorizedUser } from '../components/AuthorizeView';
 import Logout from '../components/Logout';
 import './Homepage.css';
 
-const Header: React.FC = () => {
+// 👇 Add props interface
+interface HeaderProps {
+  hideSearchBar?: boolean;
+}
+
+const Header: React.FC<HeaderProps> = ({ hideSearchBar = false }) => {
   const [searchText, setSearchText] = useState('');
   const navigate = useNavigate();
   const user = useContext(UserContext);
@@ -43,14 +48,17 @@ const Header: React.FC = () => {
         </nav>
 
         <div className='header-actions'>
-          <form className='search-bar' onSubmit={(e) => e.preventDefault()}>
-            <input
-              type='text'
-              placeholder='Search movies...'
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
-            />
-          </form>
+          {/* 👇 Conditionally render the search bar */}
+          {!hideSearchBar && (
+            <form className='search-bar' onSubmit={(e) => e.preventDefault()}>
+              <input
+                type='text'
+                placeholder='Search movies...'
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
+              />
+            </form>
+          )}
 
           {user && (
             <div className='user-info'>

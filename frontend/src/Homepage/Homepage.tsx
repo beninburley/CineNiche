@@ -53,7 +53,33 @@ const Homepage: React.FC = () => {
     }
   }, [user]);
 
-  if (loading) return <p>Loading homepage...</p>;
+  // 👇 This must be BEFORE the conditional return
+  useEffect(() => {
+    const handleScroll = () => {
+      const revealElements = document.querySelectorAll('.reveal');
+
+      revealElements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const revealPoint = window.innerHeight * 0.9;
+
+        if (rect.top < revealPoint) {
+          el.classList.add('visible');
+        }
+      });
+    };
+
+    // Add listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Run once on mount in case stuff is already visible
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  if (loading || !recommenderId) return <p>Loading homepage...</p>;
 
   return (
     <AuthorizeView>
@@ -64,39 +90,39 @@ const Homepage: React.FC = () => {
           <main className='homepage-main'>
             <HeroBanner />
 
-            <section className='section mood-board'>
+            <section className='section mood-board reveal'>
               <h2 className='section-title'>Mood Board</h2>
               <MoodBoardGrid />
             </section>
 
-            <section className='section user-recommendations'>
+            <section className='section user-recommendations boxed-section reveal'>
               <h2 className='section-title'>Recommended for You</h2>
               <UserRecommendationRow userId={recommenderId} />
             </section>
 
-            <section className='section user-recommendations'>
+            <section className='section user-recommendations boxed-section reveal'>
               <ActorRecommendationRow userId={recommenderId} />
             </section>
 
-            <section className='section underground-pick'>
+            <section className='section underground-pick reveal'>
               <h2 className='section-title'>Underground Pick</h2>
               <UndergroundPick />
             </section>
 
-            <section className='section user-recommendations'>
+            <section className='section user-recommendations boxed-section reveal'>
               <DirectorRecommendationRow userId={recommenderId} />
             </section>
 
-            <section className='section user-recommendations'>
+            <section className='section user-recommendations boxed-section reveal'>
               <GenreRecommendationRow userId={recommenderId} />
             </section>
 
-            <section className='section film-journeys'>
+            <section className='section film-journeys reveal'>
               <h2 className='section-title'>Film Journeys</h2>
               <FilmJourneyCarousel />
             </section>
 
-            <section className='section reviews'>
+            <section className='section reviews reveal'>
               <h2 className='section-title'>What People Are Saying</h2>
               <ReviewHighlight />
             </section>
