@@ -1,32 +1,54 @@
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Movie } from '../types/Movie';
 import StarRating from '../components/StarRating';
-import AuthorizeView from '../components/AuthorizeView';
+import AuthorizeView, { UserContext } from '../components/AuthorizeView';
 import Header from '../Homepage/Header';
 import ContentRecommendationRow from '../Homepage/ContentRecommendation';
-
-import './MovieDetailPage.css'; // Make sure this is imported!
+import HybridRecommendationRow from '../Homepage/HybridRecommendationRow';
 import Footer from '../components/Footer';
 
-// This page is created when someone clicks on a movie. It returns the details of the movie, the options to give a rating, and recommended movies based off that movie
+import './MovieDetailPage.css';
+
 const MovieDetailPage = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState<Movie | null>(null);
+  const [recommenderId, setRecommenderId] = useState<number | null>(null);
+  const [loading, setLoading] = useState(true);
+  const user = useContext(UserContext);
 
   useEffect(() => {
-    const fetchMovie = async () => {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/movie/${id}`, {
-        credentials: 'include',
-      });
-      const data = await res.json();
-      setMovie(data);
+    const fetchData = async () => {
+      try {
+        const movieRes = await fetch(
+          `${import.meta.env.VITE_API_URL}/movie/${id}`,
+          {
+            credentials: 'include',
+          }
+        );
+        const movieData = await movieRes.json();
+        setMovie(movieData);
+
+        if (user?.email) {
+          const recRes = await fetch(
+            `${import.meta.env.VITE_API_URL}/movie/GetRecommenderId`,
+            { credentials: 'include' }
+          );
+          if (!recRes.ok) throw new Error('Failed to get recommender ID');
+          const recData = await recRes.json();
+          setRecommenderId(recData.recommenderId);
+        }
+      } catch (err) {
+        console.error('Error loading movie or recommender data:', err);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    fetchMovie();
-  }, [id]);
+    fetchData();
+  }, [id, user?.email]);
 
-  if (!movie) return <p>Loading...</p>;
+  if (loading || !movie) return <p>Loading...</p>;
 
   return (
     <AuthorizeView>
@@ -47,7 +69,6 @@ const MovieDetailPage = () => {
             </p>
             <StarRating movieId={movie.show_id} />
           </div>
-
           <div className='movie-detail-right'>
             <img
               src={movie.posterUrl}
@@ -58,6 +79,14 @@ const MovieDetailPage = () => {
         </div>
       </div>
 
+      {recommenderId && (
+        <HybridRecommendationRow
+          seedShowId={movie.show_id}
+          userId={recommenderId}
+          movieTitle={movie.title}
+        />
+      )}
+
       <section className='section user-recommendations'>
         <h2 className='section-title'>Similar to {movie.title}</h2>
         <ContentRecommendationRow
@@ -65,6 +94,7 @@ const MovieDetailPage = () => {
           seedShowTitle={movie.title}
         />
       </section>
+
       <Footer />
     </AuthorizeView>
   );

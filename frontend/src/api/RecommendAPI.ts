@@ -3,6 +3,7 @@ import { CollabRec } from '../types/CollabRec';
 import { ContentRec } from '../types/ContentRec';
 import { DirectorRec } from '../types/DirectorRec';
 import { GenreRec } from '../types/GenreRec';
+import { HybridRec } from '../types/HybridRec';
 
 const RECOMMEND_API_URL = `${import.meta.env.VITE_API_URL}/recommendation`;
 
@@ -87,6 +88,27 @@ export const fetchContentRecommendations = async (
     return await response.json();
   } catch (error) {
     console.error('Error fetching content-based recommendations:', error);
+    throw error;
+  }
+};
+
+export const fetchHybridRecommendations = async (
+  seedShowId: string,
+  userId: number
+): Promise<HybridRec[]> => {
+  try {
+    const response = await fetch(
+      `${RECOMMEND_API_URL}/hybrid/${userId}/${seedShowId}`,
+      {
+        credentials: 'include',
+      }
+    );
+    if (!response.ok) {
+      throw new Error('Failed to fetch hybrid recommendations');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching hybrid recommendations:', error);
     throw error;
   }
 };

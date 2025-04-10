@@ -11,10 +11,7 @@ import ActorRecommendationRow from './ActorRecommendationRow';
 import DirectorRecommendationRow from './DirectorRecommendationRow';
 import GenreRecommendationRow from './GenreRecommendationRow';
 import Footer from '../components/Footer';
-import AuthorizeView, {
-  AuthorizedUser,
-  UserContext,
-} from '../components/AuthorizeView';
+import AuthorizeView, { UserContext } from '../components/AuthorizeView';
 
 const Homepage: React.FC = () => {
   const user = useContext(UserContext);
