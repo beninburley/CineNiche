@@ -56,14 +56,16 @@ const MovieDetailPage = () => {
           </div>
         </div>
       </div>
-
       <section className='section user-recommendations'>
-        <h2 className='section-title'>Similar to {movie.title}</h2>
-        <ContentRecommendationRow
-          seedShowId={movie.show_id}
-          seedShowTitle={movie.title}
-        />
+        <div className='section-inner'>
+          <h2 className='section-title'>Similar to {movie.title}</h2>
+          <ContentRecommendationRow
+            seedShowId={movie.show_id}
+            seedShowTitle={movie.title}
+          />
+        </div>
       </section>
+
       <Footer />
     </AuthorizeView>
   );

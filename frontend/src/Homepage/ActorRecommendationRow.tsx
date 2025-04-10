@@ -40,8 +40,8 @@ const ActorRecommendationRow: React.FC<Props> = ({ userId }) => {
   if (!actorName || recommendedMovies.length === 0) return null;
 
   return (
-    <>
-      <h2 className='section-title'>Because you like {actorName}:</h2>
+    <section className='section user-recommendations'>
+      <h2 className='section-title'>Because you like {actorName}</h2>
       <div className='recommendation-wrapper'>
         <div className='recommendation-row'>
           {recommendedMovies.map((movie) => (
@@ -55,7 +55,6 @@ const ActorRecommendationRow: React.FC<Props> = ({ userId }) => {
                     e.currentTarget.onerror = null;
                     const fallbackImages = [
                       'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Open%20Season%202.jpg',
-
                       'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/12%20ROUND%20GUN.jpg',
                       'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/17%20Again.jpg',
                       'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Go%20Live%20Your%20Way.jpg',
@@ -78,7 +77,7 @@ const ActorRecommendationRow: React.FC<Props> = ({ userId }) => {
           ))}
         </div>
       </div>
-    </>
+    </section>
   );
 };
 

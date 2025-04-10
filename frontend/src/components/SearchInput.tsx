@@ -14,13 +14,15 @@ const SearchInput: React.FC<SearchInputProps> = ({
   placeholder = 'Search...',
 }) => {
   return (
-    <input
-      type='text'
-      className='search-input'
-      value={value}
-      placeholder={placeholder}
-      onChange={(e) => onChange(e.target.value)}
-    />
+    <div className='admin-search-wrapper'>
+      <input
+        type='text'
+        placeholder='Search by title...'
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className='admin-search-input'
+      />
+    </div>
   );
 };
 

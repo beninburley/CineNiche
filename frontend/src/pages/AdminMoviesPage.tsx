@@ -8,15 +8,10 @@ import MovieFilter from '../components/MovieFilter';
 import './AdminMoviesPage.css';
 import Footer from '../components/Footer';
 import SearchInput from '../components/SearchInput';
-import AuthorizeView, {
-  AdminOnlyView,
-  AuthorizedUser,
-} from '../components/AuthorizeView';
-import Logout from '../components/Logout';
-import { Link } from 'react-router-dom';
+import AuthorizeView, { AdminOnlyView } from '../components/AuthorizeView';
+import Header from '../Homepage/Header';
 
 const AdminMoviesPage = () => {
-  // const [movies, setMovies] = useState<Movie[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [pageSize, setPageSize] = useState<number>(5);
@@ -52,7 +47,7 @@ const AdminMoviesPage = () => {
       await deleteMovie(show_id);
       setAllMovies(allMovies.filter((m) => m.show_id !== show_id));
     } catch (error) {
-      alert('Failed to delete project. Please try again');
+      alert('Failed to delete movie. Please try again');
     }
   };
 
@@ -72,24 +67,21 @@ const AdminMoviesPage = () => {
     <AuthorizeView>
       <AdminOnlyView>
         <div className='admin-page'>
-          <div className='admin-header'>
-            <h1>Admin - Movies</h1>
-            <h1>
-              <Link to='/home' className='logo-link'>
-                CineNiche
-              </Link>
-            </h1>
-            <Logout>
-              Logout <AuthorizedUser value='email' />
-            </Logout>
+          <Header hideSearchBar />
+
+          {/* --- Add Movie Button --- */}
+          <div className='admin-top-button'>
+            {!showForm && (
+              <button
+                className='admin-button'
+                onClick={() => setShowForm(true)}
+              >
+                Add Movie
+              </button>
+            )}
           </div>
 
-          {!showForm && (
-            <button className='admin-button' onClick={() => setShowForm(true)}>
-              Add Movie
-            </button>
-          )}
-
+          {/* --- New Movie Form --- */}
           {showForm && (
             <NewMovieForm
               onSuccess={() => {
@@ -102,12 +94,16 @@ const AdminMoviesPage = () => {
             />
           )}
 
-          <SearchInput
-            value={searchQuery}
-            onChange={setSearchQuery}
-            placeholder='Search by title...'
-          />
+          {/* --- Search Input --- */}
+          <div className='admin-search-bar'>
+            <SearchInput
+              value={searchQuery}
+              onChange={setSearchQuery}
+              placeholder='Search by title...'
+            />
+          </div>
 
+          {/* --- Edit Movie Form --- */}
           {editingMovie && (
             <EditMovieForm
               movie={editingMovie}
@@ -121,11 +117,13 @@ const AdminMoviesPage = () => {
             />
           )}
 
+          {/* --- Filters --- */}
           <MovieFilter
             selectedCategories={selectedCategories}
             setSelectedCategories={setSelectedCategories}
           />
 
+          {/* --- Movie Table --- */}
           <div className='table-wrapper'>
             {pagedMovies.length > 0 ? (
               <table className='movie-table'>

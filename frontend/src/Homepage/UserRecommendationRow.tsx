@@ -37,8 +37,8 @@ const UserRecommendationRow: React.FC<Props> = ({ userId }) => {
     <div className='recommendation-wrapper'>
       <div className='recommendation-row'>
         {recommendedMovies.map((movie) => (
-          <Link to={`/movie/${movie.show_id}`}>
-            <div key={movie.show_id} className='recommendation-card'>
+          <Link to={`/movie/${movie.show_id}`} key={movie.show_id}>
+            <div className='recommendation-card'>
               <img
                 src={`https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/${movie.title}.jpg`}
                 alt={movie.title}
