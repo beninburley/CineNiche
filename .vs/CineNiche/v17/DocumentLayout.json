@@ -1,41 +1,41 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\joshu\\School\\Winter 2025\\CineNiche\\",
+  "WorkspaceRootPath": "D:\\CineNiche\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|c:\\users\\joshu\\school\\winter 2025\\cineniche\\backend\\cineniche.api\\data\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|d:\\cineniche\\backend\\cineniche.api\\data\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|solutionrelative:backend\\cineniche.api\\data\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|c:\\users\\joshu\\school\\winter 2025\\cineniche\\backend\\cineniche.api\\data\\recommendationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|d:\\cineniche\\backend\\cineniche.api\\data\\recommendationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|solutionrelative:backend\\cineniche.api\\data\\recommendationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|c:\\users\\joshu\\school\\winter 2025\\cineniche\\backend\\cineniche.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|d:\\cineniche\\backend\\cineniche.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|solutionrelative:backend\\cineniche.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|c:\\users\\joshu\\school\\winter 2025\\cineniche\\backend\\cineniche.api\\data\\moviedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|d:\\cineniche\\backend\\cineniche.api\\data\\moviedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|solutionrelative:backend\\cineniche.api\\data\\moviedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|c:\\users\\joshu\\school\\winter 2025\\cineniche\\backend\\cineniche.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|d:\\cineniche\\backend\\cineniche.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|solutionrelative:backend\\cineniche.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|c:\\users\\joshu\\school\\winter 2025\\cineniche\\backend\\cineniche.api\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|d:\\cineniche\\backend\\cineniche.api\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|solutionrelative:backend\\cineniche.api\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|c:\\users\\joshu\\school\\winter 2025\\cineniche\\backend\\cineniche.api\\data\\noopemailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|d:\\cineniche\\backend\\cineniche.api\\data\\noopemailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|solutionrelative:backend\\cineniche.api\\data\\noopemailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|c:\\users\\joshu\\school\\winter 2025\\cineniche\\backend\\cineniche.api\\services\\customuserclaimsprincipalfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|d:\\cineniche\\backend\\cineniche.api\\services\\customuserclaimsprincipalfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|solutionrelative:backend\\cineniche.api\\services\\customuserclaimsprincipalfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|c:\\users\\joshu\\school\\winter 2025\\cineniche\\backend\\cineniche.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|d:\\cineniche\\backend\\cineniche.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{F2B98C0F-E765-B1DD-37B3-6E0964E66D7D}|backend\\CineNiche.API\\CineNiche.API.csproj|solutionrelative:backend\\cineniche.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
@@ -46,8 +46,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 22,
+          "SelectedChildIndex": 23,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:4:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:27:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
@@ -101,32 +117,12 @@
               "Name": "ST:28:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RecommendationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\joshu\\School\\Winter 2025\\CineNiche\\backend\\CineNiche.API\\Data\\RecommendationDbContext.cs",
-              "RelativeDocumentMoniker": "backend\\CineNiche.API\\Data\\RecommendationDbContext.cs",
-              "ToolTip": "C:\\Users\\joshu\\School\\Winter 2025\\CineNiche\\backend\\CineNiche.API\\Data\\RecommendationDbContext.cs",
-              "RelativeToolTip": "backend\\CineNiche.API\\Data\\RecommendationDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T15:52:19.937Z"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "appsettings.Development.json",
-              "DocumentMoniker": "C:\\Users\\joshu\\School\\Winter 2025\\CineNiche\\backend\\CineNiche.API\\appsettings.Development.json",
+              "DocumentMoniker": "D:\\CineNiche\\backend\\CineNiche.API\\appsettings.Development.json",
               "RelativeDocumentMoniker": "backend\\CineNiche.API\\appsettings.Development.json",
-              "ToolTip": "C:\\Users\\joshu\\School\\Winter 2025\\CineNiche\\backend\\CineNiche.API\\appsettings.Development.json",
+              "ToolTip": "D:\\CineNiche\\backend\\CineNiche.API\\appsettings.Development.json",
               "RelativeToolTip": "backend\\CineNiche.API\\appsettings.Development.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -136,9 +132,9 @@
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "RoleController.cs",
-              "DocumentMoniker": "C:\\Users\\joshu\\School\\Winter 2025\\CineNiche\\backend\\CineNiche.API\\Controllers\\RoleController.cs",
+              "DocumentMoniker": "D:\\CineNiche\\backend\\CineNiche.API\\Controllers\\RoleController.cs",
               "RelativeDocumentMoniker": "backend\\CineNiche.API\\Controllers\\RoleController.cs",
-              "ToolTip": "C:\\Users\\joshu\\School\\Winter 2025\\CineNiche\\backend\\CineNiche.API\\Controllers\\RoleController.cs",
+              "ToolTip": "D:\\CineNiche\\backend\\CineNiche.API\\Controllers\\RoleController.cs",
               "RelativeToolTip": "backend\\CineNiche.API\\Controllers\\RoleController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -148,9 +144,9 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\joshu\\School\\Winter 2025\\CineNiche\\backend\\CineNiche.API\\Program.cs",
+              "DocumentMoniker": "D:\\CineNiche\\backend\\CineNiche.API\\Program.cs",
               "RelativeDocumentMoniker": "backend\\CineNiche.API\\Program.cs",
-              "ToolTip": "C:\\Users\\joshu\\School\\Winter 2025\\CineNiche\\backend\\CineNiche.API\\Program.cs",
+              "ToolTip": "D:\\CineNiche\\backend\\CineNiche.API\\Program.cs",
               "RelativeToolTip": "backend\\CineNiche.API\\Program.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAAAIEAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -160,9 +156,9 @@
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "NoOpEmailSender.cs",
-              "DocumentMoniker": "C:\\Users\\joshu\\School\\Winter 2025\\CineNiche\\backend\\CineNiche.API\\Data\\NoOpEmailSender.cs",
+              "DocumentMoniker": "D:\\CineNiche\\backend\\CineNiche.API\\Data\\NoOpEmailSender.cs",
               "RelativeDocumentMoniker": "backend\\CineNiche.API\\Data\\NoOpEmailSender.cs",
-              "ToolTip": "C:\\Users\\joshu\\School\\Winter 2025\\CineNiche\\backend\\CineNiche.API\\Data\\NoOpEmailSender.cs",
+              "ToolTip": "D:\\CineNiche\\backend\\CineNiche.API\\Data\\NoOpEmailSender.cs",
               "RelativeToolTip": "backend\\CineNiche.API\\Data\\NoOpEmailSender.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -172,9 +168,9 @@
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "CustomUserClaimsPrincipalFactory.cs",
-              "DocumentMoniker": "C:\\Users\\joshu\\School\\Winter 2025\\CineNiche\\backend\\CineNiche.API\\Services\\CustomUserClaimsPrincipalFactory.cs",
+              "DocumentMoniker": "D:\\CineNiche\\backend\\CineNiche.API\\Services\\CustomUserClaimsPrincipalFactory.cs",
               "RelativeDocumentMoniker": "backend\\CineNiche.API\\Services\\CustomUserClaimsPrincipalFactory.cs",
-              "ToolTip": "C:\\Users\\joshu\\School\\Winter 2025\\CineNiche\\backend\\CineNiche.API\\Services\\CustomUserClaimsPrincipalFactory.cs",
+              "ToolTip": "D:\\CineNiche\\backend\\CineNiche.API\\Services\\CustomUserClaimsPrincipalFactory.cs",
               "RelativeToolTip": "backend\\CineNiche.API\\Services\\CustomUserClaimsPrincipalFactory.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -184,9 +180,9 @@
               "$type": "Document",
               "DocumentIndex": 8,
               "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\joshu\\School\\Winter 2025\\CineNiche\\backend\\CineNiche.API\\Properties\\launchSettings.json",
+              "DocumentMoniker": "D:\\CineNiche\\backend\\CineNiche.API\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "backend\\CineNiche.API\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\joshu\\School\\Winter 2025\\CineNiche\\backend\\CineNiche.API\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\CineNiche\\backend\\CineNiche.API\\Properties\\launchSettings.json",
               "RelativeToolTip": "backend\\CineNiche.API\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAIBZwBQAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -196,9 +192,9 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Movie.cs",
-              "DocumentMoniker": "C:\\Users\\joshu\\School\\Winter 2025\\CineNiche\\backend\\CineNiche.API\\Data\\Movie.cs",
+              "DocumentMoniker": "D:\\CineNiche\\backend\\CineNiche.API\\Data\\Movie.cs",
               "RelativeDocumentMoniker": "backend\\CineNiche.API\\Data\\Movie.cs",
-              "ToolTip": "C:\\Users\\joshu\\School\\Winter 2025\\CineNiche\\backend\\CineNiche.API\\Data\\Movie.cs",
+              "ToolTip": "D:\\CineNiche\\backend\\CineNiche.API\\Data\\Movie.cs",
               "RelativeToolTip": "backend\\CineNiche.API\\Data\\Movie.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAgwDQAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -207,11 +203,23 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RecommendationDbContext.cs",
+              "DocumentMoniker": "D:\\CineNiche\\backend\\CineNiche.API\\Data\\RecommendationDbContext.cs",
+              "RelativeDocumentMoniker": "backend\\CineNiche.API\\Data\\RecommendationDbContext.cs",
+              "ToolTip": "D:\\CineNiche\\backend\\CineNiche.API\\Data\\RecommendationDbContext.cs",
+              "RelativeToolTip": "backend\\CineNiche.API\\Data\\RecommendationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T15:52:19.937Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
               "Title": "MovieDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\joshu\\School\\Winter 2025\\CineNiche\\backend\\CineNiche.API\\Data\\MovieDbContext.cs",
+              "DocumentMoniker": "D:\\CineNiche\\backend\\CineNiche.API\\Data\\MovieDbContext.cs",
               "RelativeDocumentMoniker": "backend\\CineNiche.API\\Data\\MovieDbContext.cs",
-              "ToolTip": "C:\\Users\\joshu\\School\\Winter 2025\\CineNiche\\backend\\CineNiche.API\\Data\\MovieDbContext.cs",
+              "ToolTip": "D:\\CineNiche\\backend\\CineNiche.API\\Data\\MovieDbContext.cs",
               "RelativeToolTip": "backend\\CineNiche.API\\Data\\MovieDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwA4AAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

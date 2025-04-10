@@ -900,3 +900,9 @@ D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\runtimes\win\lib\net7.0\Syst
 D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 C:\Users\daynes13\OneDrive - Brigham Young University\Desktop\Intex\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\Identity.sqlite
 >>>>>>> jefferson
+D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\web.config
+D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\appsettings.Development.json
+D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\appsettings.json
+D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\CineNiche.API.deps.json
+D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\CineNiche.API.runtimeconfig.json
+D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\CineNiche.API.staticwebassets.endpoints.json
