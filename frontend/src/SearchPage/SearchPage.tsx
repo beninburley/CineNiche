@@ -118,6 +118,11 @@ const SearchPage = () => {
                   src={movie.posterUrl}
                   alt={movie.title}
                   className='movie-poster'
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src =
+                      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/The%20Innocence%20Files.jpg';
+                  }}
                 />
                 <h3>{movie.title}</h3>
                 <p>{movie.categoriesString}</p>

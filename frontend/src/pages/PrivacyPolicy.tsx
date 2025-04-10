@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './PrivacyPolicy.css';
 import Header from '../Homepage/Header';
 import Footer from '../components/Footer';
 
 // Privacy policy page that includes our GDPR-Approved Privacy Policy
 const PrivacyPolicyPage: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
-      <Header />
+      <Header hideSearchBar hideNavLinks logoDestination='/' />
+
       <div className='privacy-policy-container'>
         <div className='privacy-policy'>
           <h1>Privacy Policy</h1>

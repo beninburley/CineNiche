@@ -90,17 +90,26 @@ const MovieDetailPage = () => {
               src={movie.posterUrl}
               alt={`${movie.title} poster`}
               className='movie-poster'
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src =
+                  'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Limitless.jpg'; // or any default fallback poster
+              }}
             />
           </div>
         </div>
       </div>
       {/* Show the hybrid recommender */}
       {hasHybridRecommendations && recommenderId && (
-        <HybridRecommendationRow
-          seedShowId={movie.show_id}
-          userId={recommenderId}
-          movieTitle={movie.title}
-        />
+        <section className='section user-recommendations'>
+          <div className='section-inner'>
+            <HybridRecommendationRow
+              seedShowId={movie.show_id}
+              userId={recommenderId}
+              movieTitle={movie.title}
+            />
+          </div>
+        </section>
       )}
       <section className='section user-recommendations'>
         <div className='section-inner'>

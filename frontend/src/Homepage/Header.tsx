@@ -1,16 +1,20 @@
-// src/components/Header.tsx
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext, AuthorizedUser } from '../components/AuthorizeView';
 import Logout from '../components/Logout';
 import './Homepage.css';
 
-// 👇 Add props interface
 interface HeaderProps {
   hideSearchBar?: boolean;
+  hideNavLinks?: boolean;
+  logoDestination?: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ hideSearchBar = false }) => {
+const Header: React.FC<HeaderProps> = ({
+  hideSearchBar = false,
+  hideNavLinks = false,
+  logoDestination = '/home',
+}) => {
   const [searchText, setSearchText] = useState('');
   const navigate = useNavigate();
   const user = useContext(UserContext);
@@ -26,29 +30,30 @@ const Header: React.FC<HeaderProps> = ({ hideSearchBar = false }) => {
     <header className='header'>
       <div className='header-container'>
         <div className='logo' style={{ marginTop: '10px' }}>
-          <Link to='/home'>CineNiche</Link>
+          <Link to={logoDestination}>CineNiche</Link>
         </div>
 
-        <nav className='nav'>
-          <ul className='nav-list'>
-            <li>
-              <Link to='/home'>Home</Link>
-            </li>
-            <li>
-              <Link to='/search'>Browse</Link>
-            </li>
-            {user?.role === 'Administrator' && (
+        {!hideNavLinks && (
+          <nav className='nav'>
+            <ul className='nav-list'>
               <li>
-                <Link to='/adminmovies' className='admin-button'>
-                  Admin Dashboard
-                </Link>
+                <Link to='/home'>Home</Link>
               </li>
-            )}
-          </ul>
-        </nav>
+              <li>
+                <Link to='/search'>Browse</Link>
+              </li>
+              {user?.role === 'Administrator' && (
+                <li>
+                  <Link to='/adminmovies' className='admin-button'>
+                    Admin Dashboard
+                  </Link>
+                </li>
+              )}
+            </ul>
+          </nav>
+        )}
 
         <div className='header-actions'>
-          {/* 👇 Conditionally render the search bar */}
           {!hideSearchBar && (
             <form className='search-bar' onSubmit={(e) => e.preventDefault()}>
               <input

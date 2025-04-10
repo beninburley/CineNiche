@@ -84,7 +84,8 @@
   background-color: #1c1c1c;
   width: 100%;
   padding: 3rem 0;
-  margin: 0;
+  margin-top: -10px;
+  margin-bottom: -10px;
 }
 
 .section.user-recommendations .section-inner {
@@ -100,4 +101,9 @@
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+section.section.user-recommendations {
+  padding: -10px; /* You might also want to remove the padding if it's not needed */
+  margin-bottom: -10px;
 }
