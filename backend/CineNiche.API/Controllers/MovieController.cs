@@ -201,6 +201,55 @@ namespace CineNiche.API.Controllers
             return Ok(new { recommenderId = user.user_id });
         }
 
+        [HttpPost("rate")]
+        public async Task<IActionResult> RateMovie([FromBody] RateRequest request)
+        {
+            // Get the email of the logged-in user
+            var email = User.FindFirstValue(ClaimTypes.Email);
+
+            if (email == null)
+                return Unauthorized("User email not found.");
+
+            // Find matching user in movie database
+            var movieUser = await _movieContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+
+            if (movieUser == null)
+                return NotFound("No matching movie user found for this email.");
+
+            int movieUserId = movieUser.user_id;
+
+            // Check if this user already rated the movie
+            var existingRating = await _movieContext.Ratings
+                .FirstOrDefaultAsync(r => r.UserId == movieUserId && r.ShowId == request.MovieId);
+
+            if (existingRating != null)
+            {
+                existingRating.Value = request.Rating;
+            }
+            else
+            {
+                var rating = new Rating
+                {
+                    UserId = movieUserId,
+                    ShowId = request.MovieId,
+                    Value = request.Rating
+                };
+                _movieContext.Ratings.Add(rating);
+            }
+
+            await _movieContext.SaveChangesAsync();
+            return Ok(new { message = "Rating saved." });
+        }
+        // DTO to receive frontend POST body
+        public class RateRequest
+        {
+            public string MovieId { get; set; } = string.Empty;
+            public int Rating { get; set; }
+        }
+
+
+
+
 
 
 
