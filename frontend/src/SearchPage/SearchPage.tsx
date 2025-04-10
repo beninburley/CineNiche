@@ -1,8 +1,8 @@
-// Search Page
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { fetchMovies } from '../api/MoviesAPI';
 import { Movie } from '../types/Movie';
+import { escape } from 'lodash';
 
 import './SearchPage.css';
 import Header from '../Homepage/Header';
@@ -55,7 +55,6 @@ const SearchPage = () => {
     loadMovies();
   }, []);
 
-  // Reset visible count when filters change
   useEffect(() => {
     setVisibleCount(20);
   }, [query, selectedGenre]);
@@ -72,7 +71,6 @@ const SearchPage = () => {
 
   const visibleMovies = filteredMovies.slice(0, visibleCount);
 
-  // Only able to access if authorized. This is the page that contains the search bar and genre filtering.
   return (
     <AuthorizeView>
       <Header />
@@ -80,7 +78,9 @@ const SearchPage = () => {
         <div className='search-page-container'>
           <h2 className='search-page-title'>
             {query || selectedGenre
-              ? `Results for "${query}" ${selectedGenre ? `in ${selectedGenre}` : ''}`
+              ? `Results for "${escape(query)}"${
+                  selectedGenre ? ` in ${escape(selectedGenre)}` : ''
+                }`
               : 'Browse Movies'}
           </h2>
 
@@ -88,7 +88,9 @@ const SearchPage = () => {
             {genreOptions.map((genre) => (
               <span
                 key={genre}
-                className={`genre-tag ${selectedGenre === genre ? 'selected' : ''}`}
+                className={`genre-tag ${
+                  selectedGenre === genre ? 'selected' : ''
+                }`}
                 onClick={() =>
                   setSelectedGenre(selectedGenre === genre ? null : genre)
                 }
@@ -99,7 +101,7 @@ const SearchPage = () => {
           </div>
 
           {loading && <p className='search-loading'>Loading...</p>}
-          {error && <p className='search-error'>Error: {error}</p>}
+          {error && <p className='search-error'>Error: {escape(error)}</p>}
           {!query && !selectedGenre && (
             <p className='search-empty'>
               Start typing in the search bar or choose a genre to explore
@@ -124,8 +126,8 @@ const SearchPage = () => {
                       'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/The%20Innocence%20Files.jpg';
                   }}
                 />
-                <h3>{movie.title}</h3>
-                <p>{movie.categoriesString}</p>
+                <h3>{escape(movie.title)}</h3>
+                <p>{escape(movie.categoriesString)}</p>
               </Link>
             ))}
           </div>

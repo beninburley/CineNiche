@@ -107,6 +107,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 } else {
+    //When not in dev mode, use HSTS
     app.UseHsts();
 }
 
