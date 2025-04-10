@@ -1,4 +1,4 @@
-// src/pages/LoginPage.tsx
+// Login page
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
@@ -95,7 +95,7 @@ const LoginPage = () => {
       }
     }
   };
-
+  // What the user sees when they try to login
   return (
     <div className='login-page split-layout'>
       <div className='login-left'>
