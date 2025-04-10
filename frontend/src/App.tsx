@@ -9,6 +9,7 @@ import MovieDetailPage from './pages/MovieDetailPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Unauthorized from './pages/Unauthorized';
 import SearchPage from './SearchPage/SearchPage';
+import AuthorizeView from './components/AuthorizeView';
 
 function App() {
   return (
@@ -16,11 +17,17 @@ function App() {
       <Router>
         <Routes>
           <Route path='adminmovies' element={<AdminMoviesPage />} />
-          <Route path='/home' element={<Homepage />} />
+          <Route
+            path='/home'
+            element={
+              <AuthorizeView>
+                <Homepage />
+              </AuthorizeView>
+            }
+          />
           <Route path='/' element={<LandingPage />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/' element={<Homepage />} />
           <Route path='/movie/:id' element={<MovieDetailPage />} />
           <Route path='/privacy-policy' element={<PrivacyPolicy />} />
           <Route path='/unauthorized' element={<Unauthorized />} />

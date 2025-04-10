@@ -6,10 +6,13 @@ import { fetchCollabRecommendations } from '../api/RecommendAPI';
 import { fetchMoviesByIds } from '../api/MoviesAPI';
 import { Link } from 'react-router-dom';
 
-const UserRecommendationRow: React.FC = () => {
+interface Props {
+  userId: number;
+}
+
+const UserRecommendationRow: React.FC<Props> = ({ userId }) => {
   const [recommendedMovies, setRecommendedMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(true);
-  const userId = 5; // 🔁 Replace this with dynamic value if you have user context
 
   useEffect(() => {
     const loadRecommendations = async () => {
@@ -36,28 +39,29 @@ const UserRecommendationRow: React.FC = () => {
         {recommendedMovies.map((movie) => (
           <Link to={`/movie/${movie.show_id}`}>
             <div key={movie.show_id} className='recommendation-card'>
-            <img
-              src={`https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/${movie.title}.jpg`}
-              alt={movie.title}
-              className='recommendation-image'
-              onError={(e) => {
-                e.currentTarget.onerror = null;
-                const fallbackImages = [
-                  'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/The%20Innocence%20Files.jpg',
-                  'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/My%20Amnesia%20Girl.jpg',
-                  'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Paava%20Kadhaigal.jpg',
-                  'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Cousins.jpg',
-                  'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Man%20of%20Tai%20Chi.jpg',
-                  'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/The%20Parisian%20Agency%20Exclusive%20Properties.jpg'
-                ];
-                const randomIndex = Math.floor(Math.random() * fallbackImages.length);
-                e.currentTarget.src = fallbackImages[randomIndex];
-              }}
-            />
-            <p className='recommendation-title'>{movie.title}</p>
-          </div>
+              <img
+                src={`https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/${movie.title}.jpg`}
+                alt={movie.title}
+                className='recommendation-image'
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  const fallbackImages = [
+                    'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/The%20Innocence%20Files.jpg',
+                    'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/My%20Amnesia%20Girl.jpg',
+                    'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Paava%20Kadhaigal.jpg',
+                    'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Cousins.jpg',
+                    'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Man%20of%20Tai%20Chi.jpg',
+                    'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/The%20Parisian%20Agency%20Exclusive%20Properties.jpg',
+                  ];
+                  const randomIndex = Math.floor(
+                    Math.random() * fallbackImages.length
+                  );
+                  e.currentTarget.src = fallbackImages[randomIndex];
+                }}
+              />
+              <p className='recommendation-title'>{movie.title}</p>
+            </div>
           </Link>
-          
         ))}
       </div>
     </div>
