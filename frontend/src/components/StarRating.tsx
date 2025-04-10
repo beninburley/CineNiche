@@ -5,6 +5,12 @@ const StarRating = ({ movieId }: { movieId: string }) => {
   const [hovered, setHovered] = useState<number | null>(null);
   const [message, setMessage] = useState('');
 
+  useEffect(() => {
+    setRating(0); // Clear old rating
+    setMessage(''); // Clear old message
+    setHovered(null); // Reset hover
+  }, [movieId]);
+
   // Load the current user's rating for this movie
   useEffect(() => {
     const fetchRating = async () => {
