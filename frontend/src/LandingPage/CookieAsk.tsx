@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import CookieConsent from 'react-cookie-consent';
+import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 
 function CookieAsk() {
@@ -53,8 +52,8 @@ function CookieAsk() {
           }}
         >
           <div>
-            This website uses cookies only for authentication purposes. No tracking
-            or analytics cookies are used.
+            This website uses cookies only for authentication purposes. No
+            tracking or analytics cookies are used.
           </div>
 
           <div style={{ display: 'flex', gap: '10px' }}>

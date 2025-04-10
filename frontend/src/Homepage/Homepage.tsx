@@ -12,7 +12,6 @@ import DirectorRecommendationRow from './DirectorRecommendationRow';
 import GenreRecommendationRow from './GenreRecommendationRow';
 import Footer from '../components/Footer';
 import AuthorizeView, { UserContext } from '../components/AuthorizeView';
-import CookieAsk from '../LandingPage/CookieAsk'; // ✅ import it
 
 const Homepage: React.FC = () => {
   const user = useContext(UserContext);
@@ -128,12 +127,11 @@ const Homepage: React.FC = () => {
               <ReviewHighlight />
             </section>
           </main>
-          
+
           <Footer />
         </div>
       </div>
     </AuthorizeView>
-    
   );
 };
 
