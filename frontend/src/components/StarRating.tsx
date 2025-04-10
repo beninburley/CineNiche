@@ -1,13 +1,39 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const StarRating = ({ movieId }: { movieId: string }) => {
   const [rating, setRating] = useState(0);
   const [hovered, setHovered] = useState<number | null>(null);
   const [message, setMessage] = useState('');
 
+  // Load the current user's rating for this movie
+  useEffect(() => {
+    const fetchRating = async () => {
+      try {
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}/movie/rating/${movieId}`,
+          {
+            method: 'GET',
+            credentials: 'include',
+          }
+        );
+
+        if (res.ok) {
+          const data = await res.json();
+          if (data.rating) {
+            setRating(data.rating);
+          }
+        }
+      } catch (err) {
+        console.error('Failed to load user rating:', err);
+      }
+    };
+
+    fetchRating();
+  }, [movieId]);
+
   const handleRating = async (newRating: number) => {
     setRating(newRating);
-    setMessage(''); // clear any existing message
+    setMessage('');
 
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URL}/movie/rate`, {
