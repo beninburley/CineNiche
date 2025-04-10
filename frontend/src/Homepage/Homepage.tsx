@@ -15,28 +15,30 @@ import AuthorizeView, { UserContext } from '../components/AuthorizeView';
 
 const Homepage: React.FC = () => {
   const user = useContext(UserContext);
-  const [recommenderId, setRecommenderId] = useState<number | null>(null);
+  const [recommenderId, setRecommenderId] = useState<number>(99); // default to 99
   const [loading, setLoading] = useState(true);
-
-  console.log(user?.email);
 
   useEffect(() => {
     const getRecommenderId = async () => {
       try {
         const res = await fetch(
           `${import.meta.env.VITE_API_URL}/movie/GetRecommenderId`,
-          {
-            credentials: 'include',
-          }
+          { credentials: 'include' }
         );
 
         if (!res.ok) throw new Error('Failed to get recommender ID');
+
         const data = await res.json();
-        console.log('Recommender ID:', data.recommenderId);
-        setRecommenderId(data.recommenderId);
-        console.log(recommenderId);
+
+        if (data?.recommenderId !== undefined && data.recommenderId !== null) {
+          setRecommenderId(data.recommenderId);
+        } else {
+          console.warn('Recommender ID not found, using default (99)');
+          setRecommenderId(99);
+        }
       } catch (err) {
         console.error('Error fetching recommenderId:', err);
+        setRecommenderId(99);
       } finally {
         setLoading(false);
       }
@@ -44,10 +46,14 @@ const Homepage: React.FC = () => {
 
     if (user?.email) {
       getRecommenderId();
+    } else {
+      // Not logged in, fallback to default
+      setRecommenderId(99);
+      setLoading(false);
     }
   }, [user]);
 
-  if (loading || !recommenderId) return <p>Loading homepage...</p>;
+  if (loading) return <p>Loading homepage...</p>;
 
   return (
     <AuthorizeView>
@@ -71,6 +77,7 @@ const Homepage: React.FC = () => {
             <section className='section user-recommendations'>
               <ActorRecommendationRow userId={recommenderId} />
             </section>
+
             <section className='section underground-pick'>
               <h2 className='section-title'>Underground Pick</h2>
               <UndergroundPick />
@@ -83,6 +90,7 @@ const Homepage: React.FC = () => {
             <section className='section user-recommendations'>
               <GenreRecommendationRow userId={recommenderId} />
             </section>
+
             <section className='section film-journeys'>
               <h2 className='section-title'>Film Journeys</h2>
               <FilmJourneyCarousel />
