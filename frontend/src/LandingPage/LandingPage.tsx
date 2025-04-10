@@ -145,7 +145,7 @@ const LandingPage: React.FC = () => {
         </a>
       </section>
 
-      <CookieAsk />
+      
       <Footer />
     </div>
   );

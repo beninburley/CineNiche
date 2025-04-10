@@ -10,11 +10,13 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import Unauthorized from './pages/Unauthorized';
 import SearchPage from './SearchPage/SearchPage';
 import AuthorizeView from './components/AuthorizeView';
+import CookieAsk from './LandingPage/CookieAsk'; // ✅ import it
 
 function App() {
   return (
     <>
       <Router>
+        <CookieAsk /> {/* ✅ shows on all pages */}
         <Routes>
           <Route path='adminmovies' element={<AdminMoviesPage />} />
           <Route
