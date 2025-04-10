@@ -18,7 +18,7 @@ const AdminMoviesPage = () => {
   const [pageNum, setPageNum] = useState<number>(1);
   const [showForm, setShowForm] = useState(false);
   const [editingMovie, setEditingMovie] = useState<Movie | null>(null);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedCategories] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [allMovies, setAllMovies] = useState<Movie[]>([]);
 
