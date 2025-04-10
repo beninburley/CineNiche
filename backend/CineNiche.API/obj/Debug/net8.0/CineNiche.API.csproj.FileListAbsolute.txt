@@ -371,14 +371,8 @@ C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\obj\Debug\net8
 C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\obj\Debug\net8.0\CineNiche.API.pdb
 C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\obj\Debug\net8.0\CineNiche.API.genruntimeconfig.cache
 C:\Users\joshu\School\Winter 2025\CineNiche\backend\CineNiche.API\obj\Debug\net8.0\ref\CineNiche.API.dll
-D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\web.config
 D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\appsettings.Development.json
 D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\appsettings.json
-D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\appsettings.Development.json
-D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\appsettings.json
-D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\CineNiche.API.deps.json
-D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\CineNiche.API.runtimeconfig.json
-D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\publish\CineNiche.API.staticwebassets.endpoints.json
 D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\CineNiche.API.staticwebassets.endpoints.json
 D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\Movies.db
 D:\CineNiche\backend\CineNiche.API\bin\Debug\net8.0\CineNiche.API.exe
