@@ -1,4 +1,4 @@
-// src/pages/SignUpPage.tsx
+// Sign Up page that handles the registration process
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './SignUp.css';
@@ -35,6 +35,7 @@ const SignUpPage = () => {
       return;
     }
 
+    // Call the registration API and attempt to make an account. If there is an error it returns the registration error message.
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/register`, {
         method: 'POST',
@@ -59,6 +60,7 @@ const SignUpPage = () => {
     }
   };
 
+  // Form for creating an account
   return (
     <div className='signup-page split-layout'>
       <div className='signup-left'>
@@ -112,7 +114,7 @@ const SignUpPage = () => {
                 fontSize: '0.875rem',
                 color: '#aaa',
                 marginTop: '0.25rem',
-              }}
+              }} // New password requirements
             >
               Must be at least 12 characters, include an uppercase letter, a
               number, and a special character.
