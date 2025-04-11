@@ -1,16 +1,10 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import './Homepage.css';
 import { Link } from 'react-router-dom';
 
 const movies = [
-  {
-    title: 'Star Men',
-    imageUrl:
-      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Star%20Men.jpg',
-    description:
-      'Four astronomers from England celebrate 50 years of friendship and achievement by taking a reflective road trip through the American Southwest.',
-    show_id: 's4148',
-  },
+ 
+
   {
     title: 'Mantra',
     imageUrl:
@@ -24,31 +18,32 @@ const movies = [
     imageUrl:
       'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Lupin.jpg',
     description:
-      'Inspired by the adventures of Arsène Lupin, gentleman thief Assane Diop sets out to avenge his father for an injustice inflicted by a wealthy family.',
+      'Inspired by the adventures of Arsène Lupin gentleman thief Assane Diop sets out to avenge his father for an injustice inflicted by a wealthy family.',
     show_id: 's735',
   },
+
   {
-    title: 'Peppermint',
+    title: 'Secrets of Underground London',
     imageUrl:
-      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Peppermint.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Secrets%20of%20Underground%20London.jpg',
     description:
-      'After her family is murdered, a mild-mannered mom remakes herself into a badass vigilante in order to exact violent justice.',
-    show_id: 's1621',
+      'Experts examine the ruins and relics hidden beneath Londons surface unearthing a Roman amphitheater plague pits air raid shelters and more.',
+    show_id: 's7979',
   },
   {
-    title: 'Yellowbird',
+    title: 'Get Organized with The Home Edit',
     imageUrl:
-      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Yellowbird.jpg',
+      'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Get%20Organized%20with%20The%20Home%20Edit.jpg',
     description:
-      'An orphaned bird tags along with a flock on their long migration to Africa and becomes a hero when his newfound "family" runs into trouble.',
-    show_id: 's8777',
+      'Expert home organizers Clea and Joanna help celebrities and everyday clients edit categorize and contain their clutter to create stunning spaces.',
+    show_id: 's2033',
   },
   {
     title: 'Wakfu',
     imageUrl:
       'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/Wakfu.jpg',
     description:
-      'Yugo, a 12-year-old Eliatrope with special powers, sets out on a mission to find his true family and uncover the mysteries of Wakfu.',
+      'Yugo a 12-year-old Eliatrope with special powers sets out on a mission to find his true family and uncover the mysteries of Wakfu.',
     show_id: 's4943',
   },
   {
@@ -56,16 +51,14 @@ const movies = [
     imageUrl:
       'https://storage.googleapis.com/team2-14/Movie%20Posters/Move1/MANK.jpg',
     description:
-      '1930s Hollywood is reevaluated through the eyes of scathing wit and alcoholic screenwriter Herman J. Mankiewicz as he races to finish "Citizen Kane."',
+      '1930s Hollywood is reevaluated through the eyes of scathing wit and alcoholic screenwriter Herman J. Mankiewicz as he races to finish “Citizen Kane.',
     show_id: 's1596',
   },
 ];
 
 const HeroBanner: React.FC = () => {
-  const movie = useMemo(() => {
-    const randomIndex = Math.floor(Math.random() * movies.length);
-    return movies[randomIndex];
-  }, []);
+  const randomIndex = Math.floor(Math.random() * movies.length);
+  const movie = movies[randomIndex];
 
   return (
     <section
