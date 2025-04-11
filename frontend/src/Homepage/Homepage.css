@@ -465,12 +465,16 @@ section.section.user-recommendations {
   margin-bottom: 3rem; /* consistent spacing between sections */
   margin-top: 2rem; /* consistent spacing between sections */
 }
-.carousel-wrapper::-webkit-scrollbar,
-.recommendation-wrapper::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
-}
+
 .carousel-wrapper,
-.recommendation-wrapper {
-  -ms-overflow-style: none; /* IE and Edge */
+.recommendation-wrapper,
+.film-journey-wrapper {
   scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+}
+
+.carousel-wrapper::-webkit-scrollbar,
+.recommendation-wrapper::-webkit-scrollbar,
+.film-journey-wrapper::-webkit-scrollbar {
+  display: none; /* Chrome & Safari */
 }
