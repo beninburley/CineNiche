@@ -24,6 +24,8 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+builder.Configuration.AddEnvironmentVariables();
+
 builder.Services.AddDbContext<MovieDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("MovieConnection")));
 
